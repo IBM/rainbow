@@ -5,7 +5,7 @@
 ## Build generated
 build/
 DerivedData/
-
+.DS_Store
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -50,8 +50,8 @@ playground.xcworkspace
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
+Carthage/Checkouts
+Cartfile.resolved
 Carthage/Build
 
 # fastlane
@@ -65,3 +65,10 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# 3rd party libs
+#
+# Add each 3rd party library here
+# The frameworks folder is where they should go, but keep the frameworks themselves out of Xcode
+Frameworks/Lumina.framework
+
