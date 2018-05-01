@@ -40,6 +40,7 @@ public class App {
     func postInit() throws {
         // Endpoints
         initializeHealthRoutes(app: self)
+        initializeScoreRoutes(app: self) // added these myself, we need to make a separate class for connecting to CouchDB client with methods we need for persistence - will extend the model object with a class here to do this.
     }
 
     public func run() throws {
