@@ -70,5 +70,5 @@ fastlane/test_output
 #
 # Add each 3rd party library here
 # The frameworks folder is where they should go, but keep the frameworks themselves out of Xcode
-Frameworks/Lumina.framework
+Frameworks/*
 
