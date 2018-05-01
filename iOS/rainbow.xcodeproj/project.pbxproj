@@ -15,6 +15,7 @@
 		5338190F209757BB00DE66CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5338190D209757BB00DE66CB /* LaunchScreen.storyboard */; };
 		5338191A209757BB00DE66CB /* rainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381919209757BB00DE66CB /* rainbowTests.swift */; };
 		53381925209757BB00DE66CB /* rainbowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381924209757BB00DE66CB /* rainbowUITests.swift */; };
+		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
 		B4780AA52098BB5C002CA211 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */; };
 		B4780AA62098BB5C002CA211 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B4780AA92098BBBE002CA211 /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4780AA72098BBB0002CA211 /* Lumina.framework */; };
@@ -68,6 +69,7 @@
 		53381920209757BB00DE66CB /* rainbowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rainbowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53381924209757BB00DE66CB /* rainbowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rainbowUITests.swift; sourceTree = "<group>"; };
 		53381926209757BB00DE66CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
 		B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		B4780AA72098BBB0002CA211 /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lumina.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,13 +125,10 @@
 		53381900209757B900DE66CB /* rainbow */ = {
 			isa = PBXGroup;
 			children = (
-				53381901209757B900DE66CB /* AppDelegate.swift */,
-				53381903209757B900DE66CB /* ViewController.swift */,
-				53381905209757B900DE66CB /* Main.storyboard */,
-				5338190B209757BB00DE66CB /* Assets.xcassets */,
-				5338190D209757BB00DE66CB /* LaunchScreen.storyboard */,
-				53381910209757BB00DE66CB /* Info.plist */,
-				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
+				53864AD12098DD38006B8264 /* Config */,
+				53864AD02098DD23006B8264 /* Controller */,
+				53864ACF2098DD1F006B8264 /* View */,
+				53864ACE2098DD19006B8264 /* Model */,
 			);
 			path = rainbow;
 			sourceTree = "<group>";
@@ -159,6 +158,42 @@
 				B4780AA72098BBB0002CA211 /* Lumina.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		53864ACE2098DD19006B8264 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
+				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		53864ACF2098DD1F006B8264 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5338190B209757BB00DE66CB /* Assets.xcassets */,
+				5338190D209757BB00DE66CB /* LaunchScreen.storyboard */,
+				53381905209757B900DE66CB /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		53864AD02098DD23006B8264 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				53381901209757B900DE66CB /* AppDelegate.swift */,
+				53381903209757B900DE66CB /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		53864AD12098DD38006B8264 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				53381910209757BB00DE66CB /* Info.plist */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53381904209757B900DE66CB /* ViewController.swift in Sources */,
+				53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 			);
@@ -486,7 +522,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8T393AQ955;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -509,7 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8T393AQ955;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
