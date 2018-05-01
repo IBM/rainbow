@@ -1,4 +1,0 @@
-module hcapiplugin {
-    umbrella "/Users/davidokunibm/rainbow/Server/rainbow-server/.build/checkouts/omr-agentcore-1826539389957424207/src/hcapiplugin/include"
-    export *
-}
