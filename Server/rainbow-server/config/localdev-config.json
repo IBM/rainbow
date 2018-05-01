@@ -1,0 +1,17 @@
+{
+  "rainbow-server-Cloudant-x9z6": {
+    "host": "localhost",
+    "url": "http://localhost:5984",
+    "username": "",
+    "password": "",
+    "secured": false,
+    "port": 5984
+  },
+  "rainbow-server-PushNotifications-r6m1": {
+    "appGuid": "",
+    "url": "",
+    "admin_url": "",
+    "appSecret": "",
+    "clientSecret": ""
+  }
+}
