@@ -13,4 +13,8 @@ struct ScoreEntry: Codable {
     var startDate: Date
     var finishDate: Date
     var anonymousIdentifier: String
+    
+    func timeTaken() -> TimeInterval {
+        return finishDate.timeIntervalSince(startDate)
+    }
 }
