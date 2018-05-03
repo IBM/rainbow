@@ -55,9 +55,9 @@ func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, Reques
 }
 
 func updateEntry(anonymousIdentifier: String, newEntry: ScoreEntry, completion: @escaping (ScoreEntry?, RequestError?) -> Void) {
-    
+    // TODO
 }
 
 func deleteEntry(anonymousIdentifier: String, completion: @escaping(RequestError?) -> Void) {
-    
+    // TODO
 }

@@ -9,14 +9,18 @@ import Foundation
 import CouchDB
 import SwiftyJSON
 
+enum RainbowPersistenceError: Error {
+    case noAvatar
+}
+
 extension ScoreEntry {
     class Persistence {
         private static func getDatabase(from client: CouchDBClient, completion: @escaping (_ database: Database?, _ error: Error?) -> Void) {
-            client.dbExists("scavenger-hunt-entries") { exists, error in
+            client.dbExists("rainbow-entries") { exists, error in
                 if exists {
-                    completion(Database(connProperties: client.connProperties, dbName: "entries"), nil)
+                    completion(Database(connProperties: client.connProperties, dbName: "rainbow-entries"), nil)
                 } else {
-                    client.createDB("scavenger-hunt-entries", callback: { database, error in
+                    client.createDB("rainbow-entries", callback: { database, error in
                         completion(database, error)
                     })
                 }
@@ -28,7 +32,11 @@ extension ScoreEntry {
                 guard let database = database else {
                     return completion(nil, error)
                 }
-                database.create(entry.toJSONDocument(), callback: { id, _, _, error in
+                var entryCopy = entry
+                guard let updatedCopy = entryCopy.toJSONDocument() else {
+                    return completion(nil, RainbowPersistenceError.noAvatar)
+                }
+                database.create(updatedCopy, callback: { id, _, _, error in
                     completion(id, error)
                 })
             }
@@ -43,7 +51,8 @@ extension ScoreEntry {
                     guard let document = document else {
                         return completion(nil, error)
                     }
-                    return completion(ScoreEntry(document: document), error)
+                    return completion(ScoreEntry(document: document, id: document["_id"].stringValue), nil)
+                    //return completion(ScoreEntry(document: document), error)
                 })
             }
         }
@@ -59,7 +68,7 @@ extension ScoreEntry {
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document) {
+                        if let newEntry = ScoreEntry(document: document["doc"], id: document["_id"].stringValue) {
                             entries.append(newEntry)
                         }
                     }

@@ -50,7 +50,7 @@ extension JSON {
         case .string:
             return Formatter.jsonDateTimeFormatter.date(from: object as! String)
         case .number:
-            return Formatter.jsonDateTimeFormatter.date(from: String(describing:object))
+            return Date(timeIntervalSinceReferenceDate: object as! TimeInterval)
         default:
             return nil
         }
