@@ -13,15 +13,20 @@ import IBMPushNotifications
 public let projectPath = ConfigurationManager.BasePath.project.path
 public let health = Health()
 
-class ApplicationServices {
+public class ApplicationServices {
     // Initialize services
-    public let couchDBService: CouchDBClient
-    public let pushNotificationService: PushNotifications
+    public var couchDBService: CouchDBClient
+    public let pushNotificationService: PushNotifications?
 
     public init(cloudEnv: CloudEnv) throws {
         // Run service initializers
-        couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
-        pushNotificationService = try initializeServicePush(cloudEnv: cloudEnv)
+        do {
+            couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
+            pushNotificationService = try initializeServicePush(cloudEnv: cloudEnv)
+        } catch {
+            couchDBService = CouchDBClient(connectionProperties: ConnectionProperties(host: "localhost", port: 5984, secured: false))
+            pushNotificationService = nil
+        }
     }
 }
 
@@ -40,7 +45,7 @@ public class App {
     func postInit() throws {
         // Endpoints
         initializeHealthRoutes(app: self)
-        initializeScoreRoutes(app: self) // added these myself, we need to make a separate class for connecting to CouchDB client with methods we need for persistence - will extend the model object with a class here to do this.
+        initializeScoreRoutes(app: self)
     }
 
     public func run() throws {
