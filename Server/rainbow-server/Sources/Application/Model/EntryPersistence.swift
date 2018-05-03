@@ -52,7 +52,6 @@ extension ScoreEntry {
                         return completion(nil, error)
                     }
                     return completion(ScoreEntry(document: document, id: document["_id"].stringValue), nil)
-                    //return completion(ScoreEntry(document: document), error)
                 })
             }
         }
