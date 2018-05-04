@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BookletViewController.swift
 //  rainbow
 //
 //  Created by David Okun IBM on 4/30/18.
@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BookletViewController: UIViewController {
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("switched to booklet")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
