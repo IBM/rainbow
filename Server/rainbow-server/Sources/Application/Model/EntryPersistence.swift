@@ -42,6 +42,29 @@ extension ScoreEntry {
             }
         }
         
+        // Update document        
+        static func update(id: String, entry: ScoreEntry, to client: CouchDBClient, completion: @escaping (_ entryID: String?, _ error: Error?) -> Void) {
+            getDatabase(from: client) { database, error in
+                guard let database = database else {
+                    return completion(nil, error)
+                }
+                var entryCopy = entry
+                guard let updatedCopy = entryCopy.toJSONDocument() else {
+                    return completion(nil, RainbowPersistenceError.noAvatar)
+                }
+                
+                database.retrieve(id, callback: { document, error in
+                    guard let document = document else {
+                        return completion(nil, error)
+                    }
+                    
+                    database.update(id, rev: document["_rev"].stringValue, document: updatedCopy, callback: { rev, _, error in
+                        completion(rev, error)
+                    })
+               })
+            }
+        }
+        
         static func get(from client: CouchDBClient, with entryID: String, completion: @escaping (_ entry: ScoreEntry?, _ error: Error?) -> Void) {
             getDatabase(from: client) { database, error in
                 guard let database = database else {
