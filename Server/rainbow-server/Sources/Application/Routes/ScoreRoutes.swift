@@ -16,10 +16,9 @@ func initializeScoreRoutes(app: App) {
     client = app.services.couchDBService
     
     app.router.get("/entries", handler: getAllEntries)
-    app.router.get("/entries/", handler: getOneEntry)
+    app.router.get("/entries", handler: getOneEntry)
     app.router.post("/entries", handler: addNewEntry)
     app.router.put("/entries", handler: updateEntry)
-    app.router.delete("/entries", handler: deleteEntry)
 }
 
 func getAllEntries(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
@@ -54,10 +53,18 @@ func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, Reques
     }
 }
 
-func updateEntry(anonymousIdentifier: String, newEntry: ScoreEntry, completion: @escaping (ScoreEntry?, RequestError?) -> Void) {
-    // TODO
-}
-
-func deleteEntry(anonymousIdentifier: String, completion: @escaping(RequestError?) -> Void) {
-    // TODO
+func updateEntry(anonymousIdentifier: String,newEntry: ScoreEntry, completion: @escaping (ScoreEntry?, RequestError?) -> Void) {
+    Log.info("Updating entry document")
+    guard let client = client else {
+        return completion(nil, .failedDependency)
+    }
+    ScoreEntry.Persistence.update(id: anonymousIdentifier, entry: newEntry, to: client) { revID, error in
+        guard let revID = revID else {
+            return completion(nil, .noContent)
+        }
+        Log.info("Document updated with new revision: ", functionName: revID)
+        ScoreEntry.Persistence.get(from: client, with: anonymousIdentifier, completion: { entry, error in
+            return completion(entry, error as? RequestError)
+        })
+    }
 }
