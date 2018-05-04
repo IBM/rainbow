@@ -54,7 +54,7 @@ func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, Reques
 }
 
 func updateEntry(anonymousIdentifier: String,newEntry: ScoreEntry, completion: @escaping (ScoreEntry?, RequestError?) -> Void) {
-    Log.debug("Updating entry document")
+    Log.info("Updating entry document")
     guard let client = client else {
         return completion(nil, .failedDependency)
     }
@@ -62,7 +62,7 @@ func updateEntry(anonymousIdentifier: String,newEntry: ScoreEntry, completion: @
         guard let revID = revID else {
             return completion(nil, .noContent)
         }
-        Log.debug("Document updated with new revision: ", functionName: revID)
+        Log.info("Document updated with new revision: ", functionName: revID)
         ScoreEntry.Persistence.get(from: client, with: anonymousIdentifier, completion: { entry, error in
             return completion(entry, error as? RequestError)
         })
