@@ -27,17 +27,12 @@ public class ApplicationServices {
         // Run service initializers
         do {
             couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
-            //pushNotificationService = try initializeServicePush(cloudEnv: cloudEnv)
         } catch ServiceInitializationError.CloudantError(let reason) {
             Log.error("Error setting up Cloudant: \(reason)")
             couchDBService = nil
-            //pushNotificationService = nil
         } catch ServiceInitializationError.PushNotificationError(let reason) {
             Log.error("Error setting up Push Notifications: \(reason)")
-            //pushNotificationService = nil
-            //couchDBService = CouchDBClient(connectionProperties: ConnectionProperties(host: "localhost", port: 5984, secured: false))
         } catch {
-            //pushNotificationService = nil
             couchDBService = nil
             Log.error("Unhandled exception during service init.")
         }
