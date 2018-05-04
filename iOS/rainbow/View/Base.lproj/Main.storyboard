@@ -28,7 +28,7 @@
         <!--Booklet View-->
         <scene sceneID="vCC-i1-m2u">
             <objects>
-                <viewController id="fv6-zY-d2b" sceneMemberID="viewController">
+                <viewController id="fv6-zY-d2b" customClass="BookletViewController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jIE-0k-ZHK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -61,11 +61,11 @@
             </objects>
             <point key="canvasLocation" x="-3772" y="-188"/>
         </scene>
-        <!--Item 2-->
+        <!--Camera-->
         <scene sceneID="9IN-VM-o0U">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iwz-5k-rGO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="rBb-Y0-vWz"/>
+                    <tabBarItem key="tabBarItem" title="Camera" id="rBb-Y0-vWz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ylU-Mu-iEc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -83,13 +83,13 @@
         <!--Checklist-->
         <scene sceneID="JD2-C1-76m">
             <objects>
-                <tableViewController id="wy5-KA-9Wt" sceneMemberID="viewController">
+                <tableViewController id="wy5-KA-9Wt" customClass="ChecklistTableViewController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Sc-1a-FEQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BOe-R0-rFJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChecklistTableViewCell" id="BOe-R0-rFJ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BOe-R0-rFJ" id="CWE-dQ-RzZ">
@@ -113,7 +113,7 @@
         <scene sceneID="FP9-Ka-rla">
             <objects>
                 <navigationController title="Booklet" automaticallyAdjustsScrollViewInsets="NO" id="y3q-Cj-LzA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="bqD-fF-QGs"/>
+                    <tabBarItem key="tabBarItem" title="Booklet" id="bqD-fF-QGs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rar-ld-0Bu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -131,13 +131,13 @@
         <!--Leaderboard-->
         <scene sceneID="a6m-0U-IhU">
             <objects>
-                <tableViewController id="hVg-DC-P3z" sceneMemberID="viewController">
+                <tableViewController id="hVg-DC-P3z" customClass="LeaderboardTableViewController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YTu-CY-o4i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ESa-rC-j97">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderboardTableViewCell" id="ESa-rC-j97">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ESa-rC-j97" id="wYn-G5-SUh">
@@ -157,11 +157,11 @@
             </objects>
             <point key="canvasLocation" x="-1908" y="1045"/>
         </scene>
-        <!--Item-->
+        <!--Checklist-->
         <scene sceneID="mbp-sH-mUD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oSh-ar-BYm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="tRA-qh-fFN"/>
+                    <tabBarItem key="tabBarItem" title="Checklist" id="tRA-qh-fFN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0m5-kI-xYq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -180,7 +180,7 @@
         <scene sceneID="PaB-YA-x9x">
             <objects>
                 <navigationController title="Leaders" automaticallyAdjustsScrollViewInsets="NO" id="nQB-Vj-Sab" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="txo-dD-kk8"/>
+                    <tabBarItem key="tabBarItem" title="Leaderboard" id="txo-dD-kk8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FxW-2G-9xw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

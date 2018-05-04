@@ -13,11 +13,16 @@ class CameraController: LuminaViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
-        self.streamingModelTypes = [RainbowModel_1820023450()]
+        self.streamingModelTypes = [DefaultCustomModel_1753554316()]
         self.setShutterButton(visible: false)
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
         self.setSwitchButton(visible: false)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("switched to camera")
     }
 }
 
