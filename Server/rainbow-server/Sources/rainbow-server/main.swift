@@ -5,9 +5,7 @@ import HeliumLogger
 import Application
 
 do {
-
     HeliumLogger.use(LoggerMessageType.info)
-
     let app = try App()
     try app.run()
 

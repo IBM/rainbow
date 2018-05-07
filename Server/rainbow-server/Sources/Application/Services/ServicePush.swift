@@ -4,7 +4,7 @@ import IBMPushNotifications
 
 func initializeServicePush(cloudEnv: CloudEnv) throws -> PushNotifications {
     guard let pushNotificationsCredentials = cloudEnv.getPushSDKCredentials(name: "push") else {
-        throw ServiceInitializationError.PushNotificationError("Could not load credentials for Push Notifications.")
+        throw ServiceInitializationError.pushNotificationError("Could not load credentials for Push Notifications.")
     }
     let pushNotifications = PushNotifications(
         pushRegion: pushNotificationsCredentials.region,
