@@ -23,7 +23,7 @@ Open the rainbow.xcodeproj in XCode. Select the rainbow target, choose the Gener
 
 Drag and drop the Frameworks folder to the rainbow project - click 'add groups' instead of add folder references. Navigate to the 'embedded binaries' section of the rainbow project general information, and add the two frameworks as embedded binaries.
 
-TODO: Install customized version of Lumina framework
+
 
 ###### To develop the server
 
