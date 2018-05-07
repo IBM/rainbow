@@ -17,6 +17,7 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+rainbow.xcodeproj/project.pbxproj
 ## Other
 *.moved-aside
 *.xccheckout
