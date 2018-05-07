@@ -14,8 +14,8 @@ public let projectPath = ConfigurationManager.BasePath.project.path
 public let health = Health()
 
 enum ServiceInitializationError: Error {
-    case CloudantError(String)
-    case PushNotificationError(String)
+    case cloudantError(String)
+    case pushNotificationError(String)
 }
 
 public class ApplicationServices {
@@ -27,10 +27,10 @@ public class ApplicationServices {
         // Run service initializers
         do {
             couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
-        } catch ServiceInitializationError.CloudantError(let reason) {
+        } catch ServiceInitializationError.cloudantError(let reason) {
             Log.error("Error setting up Cloudant: \(reason)")
             couchDBService = nil
-        } catch ServiceInitializationError.PushNotificationError(let reason) {
+        } catch ServiceInitializationError.pushNotificationError(let reason) {
             Log.error("Error setting up Push Notifications: \(reason)")
         } catch {
             couchDBService = nil

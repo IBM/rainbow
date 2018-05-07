@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+import LoggerAPI
 
 class Formatter {
     private static var internalJsonDateTimeFormatter: DateFormatter?
@@ -46,11 +47,14 @@ extension Date {
 // MARK: - JSON dateTime
 extension JSON {
     public var dateTime: Date? {
+        Log.debug("Converting JSON to datetime object")
         switch type {
         case .string:
-            return Formatter.jsonDateTimeFormatter.date(from: object as! String)
+            Log.debug("Detected string: \(self.stringValue)")
+            return Formatter.jsonDateTimeFormatter.date(from: self.stringValue)
         case .number:
-            return Date(timeIntervalSinceReferenceDate: object as! TimeInterval)
+            Log.debug("Detected number: \(String(describing: self.doubleValue))")
+            return Date(timeIntervalSinceReferenceDate: self.doubleValue)
         default:
             return nil
         }

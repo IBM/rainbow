@@ -29,7 +29,7 @@ extension ScoreEntry {
         }
         objects = objectEntries
     }
-    
+
     mutating func toJSONDocument() -> JSON? {
         guard let avatarImage = self.avatarImage else {
             // we need to discuss how to proceed if there is no avatar - my guess is to bail
@@ -37,7 +37,11 @@ extension ScoreEntry {
         }
         self.avatarURL = AvatarObjectStorage.save(image: avatarImage, to: nil)
         self.avatarImage = nil
-        let encoded = try! JSONEncoder().encode(self)
-        return JSON(data: encoded)
+        do {
+            let encoded = try JSONEncoder().encode(self)
+            return JSON(data: encoded)
+        } catch {
+            return nil
+        }
     }
 }
