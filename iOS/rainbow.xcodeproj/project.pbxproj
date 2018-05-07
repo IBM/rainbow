@@ -16,16 +16,16 @@
 		5338191A209757BB00DE66CB /* rainbowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381919209757BB00DE66CB /* rainbowTests.swift */; };
 		53381925209757BB00DE66CB /* rainbowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381924209757BB00DE66CB /* rainbowUITests.swift */; };
 		5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F39E209B5D0600AD37EF /* CameraController.swift */; };
-		5341F3A8209B5EF900AD37EF /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5341F3A7209B5EF900AD37EF /* Lumina.framework */; };
-		5341F3A9209B5F0000AD37EF /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5341F3A7209B5EF900AD37EF /* Lumina.framework */; };
-		5341F3AA209B5F0000AD37EF /* Lumina.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5341F3A7209B5EF900AD37EF /* Lumina.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5341F3AC209B69F600AD37EF /* RainbowModel_1820023450.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5341F3AB209B69F600AD37EF /* RainbowModel_1820023450.mlmodel */; };
 		5341F4C4209BE4DE00AD37EF /* DefaultCustomModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4C3209BE4DE00AD37EF /* DefaultCustomModel_1753554316.mlmodel */; };
 		5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */; };
 		5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
-		B4780AA52098BB5C002CA211 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */; };
-		B4780AA62098BB5C002CA211 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A259438B20A0A06C000B5935 /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A259438920A0A06C000B5935 /* Lumina.framework */; };
+		A259438C20A0A06C000B5935 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A259438A20A0A06C000B5935 /* VisualRecognitionV3.framework */; };
+		A259438D20A0A08A000B5935 /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A259438920A0A06C000B5935 /* Lumina.framework */; };
+		A259438E20A0A08A000B5935 /* Lumina.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A259438920A0A06C000B5935 /* Lumina.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A259438F20A0A08A000B5935 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A259438A20A0A06C000B5935 /* VisualRecognitionV3.framework */; };
+		A259439020A0A08A000B5935 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A259438A20A0A06C000B5935 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5341F3AA209B5F0000AD37EF /* Lumina.framework in Embed Frameworks */,
-				B4780AA62098BB5C002CA211 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				A259438E20A0A08A000B5935 /* Lumina.framework in Embed Frameworks */,
+				A259439020A0A08A000B5935 /* VisualRecognitionV3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,13 +76,12 @@
 		53381924209757BB00DE66CB /* rainbowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rainbowUITests.swift; sourceTree = "<group>"; };
 		53381926209757BB00DE66CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5341F39E209B5D0600AD37EF /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
-		5341F3A7209B5EF900AD37EF /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lumina.framework; sourceTree = "<group>"; };
-		5341F3AB209B69F600AD37EF /* RainbowModel_1820023450.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RainbowModel_1820023450.mlmodel; sourceTree = "<group>"; };
 		5341F4C3209BE4DE00AD37EF /* DefaultCustomModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DefaultCustomModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
-		B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VisualRecognitionV3.framework; sourceTree = "<group>"; };
+		A259438920A0A06C000B5935 /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lumina.framework; sourceTree = "<group>"; };
+		A259438A20A0A06C000B5935 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VisualRecognitionV3.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5341F3A8209B5EF900AD37EF /* Lumina.framework in Frameworks */,
-				B4780AA52098BB5C002CA211 /* VisualRecognitionV3.framework in Frameworks */,
-				5341F3A9209B5F0000AD37EF /* Lumina.framework in Frameworks */,
+				A259438B20A0A06C000B5935 /* Lumina.framework in Frameworks */,
+				A259438C20A0A06C000B5935 /* VisualRecognitionV3.framework in Frameworks */,
+				A259438D20A0A08A000B5935 /* Lumina.framework in Frameworks */,
+				A259438F20A0A08A000B5935 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 		533818F5209757B900DE66CB = {
 			isa = PBXGroup;
 			children = (
-				5338193320975AB800DE66CB /* Frameworks */,
+				A259438820A0A06C000B5935 /* Frameworks */,
 				53381900209757B900DE66CB /* rainbow */,
 				53381918209757BB00DE66CB /* rainbowTests */,
 				53381923209757BB00DE66CB /* rainbowUITests */,
@@ -163,15 +163,6 @@
 			path = rainbowUITests;
 			sourceTree = "<group>";
 		};
-		5338193320975AB800DE66CB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5341F3A7209B5EF900AD37EF /* Lumina.framework */,
-				B4780AA32098BB25002CA211 /* VisualRecognitionV3.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		5341F3AD209B6DBE00AD37EF /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				5341F4C3209BE4DE00AD37EF /* DefaultCustomModel_1753554316.mlmodel */,
-				5341F3AB209B69F600AD37EF /* RainbowModel_1820023450.mlmodel */,
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 			);
@@ -243,6 +233,15 @@
 				53381910209757BB00DE66CB /* Info.plist */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		A259438820A0A06C000B5935 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A259438920A0A06C000B5935 /* Lumina.framework */,
+				A259438A20A0A06C000B5935 /* VisualRecognitionV3.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,7 +400,6 @@
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */,
 				5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */,
-				5341F3AC209B69F600AD37EF /* RainbowModel_1820023450.mlmodel in Sources */,
 				5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,11 +573,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RQ632LL2X3;
+				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = rainbow/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -587,10 +587,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.rainbow;
+				PRODUCT_BUNDLE_IDENTIFIER = org.anton.rainbow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -598,11 +598,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RQ632LL2X3;
+				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = rainbow/Config/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -610,10 +612,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.rainbow;
+				PRODUCT_BUNDLE_IDENTIFIER = org.anton.rainbow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
