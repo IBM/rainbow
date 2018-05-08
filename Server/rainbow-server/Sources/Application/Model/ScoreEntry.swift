@@ -20,5 +20,5 @@ struct ScoreEntry: Codable {
     var anonymousIdentifier: String?
     var avatarImage: Data?
     var avatarURL: String?
-    var objects: [ObjectEntry]?
+    var objects: [ObjectEntry]?    
 }

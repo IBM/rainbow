@@ -19,6 +19,7 @@ func initializeScoreRoutes(app: App) {
     app.router.get("/entries", handler: getOneEntry)
     app.router.post("/entries", handler: addNewEntry)
     app.router.put("/entries", handler: updateEntry)
+    app.router.get("/leaderboard", handler: getLeaderBoard)
 }
 
 func getAllEntries(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
@@ -58,6 +59,9 @@ func updateEntry(anonymousIdentifier: String,newEntry: ScoreEntry, completion: @
     guard let client = client else {
         return completion(nil, .failedDependency)
     }
+    // logic for push notification. If the update is for game completion
+    // check to see if notification has to be sent.
+    
     ScoreEntry.Persistence.update(id: anonymousIdentifier, entry: newEntry, to: client) { revID, error in
         guard let revID = revID else {
             return completion(nil, .noContent)
@@ -66,5 +70,15 @@ func updateEntry(anonymousIdentifier: String,newEntry: ScoreEntry, completion: @
         ScoreEntry.Persistence.get(from: client, with: anonymousIdentifier, completion: { entry, error in
             return completion(entry, error as? RequestError)
         })
+    }
+}
+
+func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
+    Log.info("Getting leaderboard data")
+    guard let client = client else {
+        return completion(nil, .failedDependency)
+    }
+    ScoreEntry.Persistence.getLeaderBoardData(from: client) { entries, error in
+        return completion(entries, error as? RequestError)
     }
 }

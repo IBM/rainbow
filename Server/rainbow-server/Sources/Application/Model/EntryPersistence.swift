@@ -98,5 +98,28 @@ extension ScoreEntry {
                 })
             }
         }
+        
+        static func getLeaderBoardData(from client: CouchDBClient, completion: @escaping (_ entries: [ScoreEntry]?, _ error: Error?) -> Void) {
+            getDatabase(from: client) { database, error in
+                guard let database = database else {
+                    return completion(nil, error)
+                }
+                
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [], callback: { (documents, error) in
+                    guard let documents = documents else {
+                        return completion(nil, error)
+                    }
+                    var entries = [ScoreEntry]()
+                    for document in documents["rows"].arrayValue {
+                        if let newEntry = ScoreEntry(document: document["value"], id: document["id"].stringValue) {
+                            entries.append(newEntry)
+                        }
+                    }
+                    completion(entries, nil)
+                })
+                
+            }
+        }
+    
     }
 }
