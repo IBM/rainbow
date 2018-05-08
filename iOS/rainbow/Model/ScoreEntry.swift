@@ -14,10 +14,11 @@ struct ObjectEntry: Codable {
 }
 
 struct ScoreEntry: Codable {
+    var id: String?
     var username: String
-    var startDate: Date
+    var startDate: Date?
     var finishDate: Date?
-    var anonymousIdentifier: String
+    var deviceIdentifier: String?
     var avatarImage: Data?
     var avatarURL: String?
     var objects: [ObjectEntry]?

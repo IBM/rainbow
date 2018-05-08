@@ -74,7 +74,7 @@ extension ScoreEntry {
                     guard let document = document else {
                         return completion(nil, error)
                     }
-                    return completion(ScoreEntry(document: document, id: document["_id"].stringValue), nil)
+                    return completion(ScoreEntry(document: document, _id: document["_id"].stringValue), nil)
                 })
             }
         }
@@ -90,7 +90,7 @@ extension ScoreEntry {
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document["doc"], id: document["_id"].stringValue) {
+                        if let newEntry = ScoreEntry(document: document["doc"], _id: document["doc"]["_id"].stringValue) {
                             entries.append(newEntry)
                         }
                     }
@@ -111,7 +111,7 @@ extension ScoreEntry {
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document["value"], id: document["id"].stringValue) {
+                        if let newEntry = ScoreEntry(document: document["value"], _id: document["id"].stringValue) {
                             entries.append(newEntry)
                         }
                     }
