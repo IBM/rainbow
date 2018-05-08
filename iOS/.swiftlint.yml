@@ -6,6 +6,7 @@ file_length:
 included: # paths to include during linting. `--path` is ignored if present.
   - ./rainbow/
 excluded:
+  - ./rainbow/Model/KituraKit/
   # put paths for excluded swiftlint files here
 type_body_length:
   - 300 # warning
