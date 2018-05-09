@@ -9,8 +9,9 @@ import Foundation
 import SwiftyJSON
 
 extension ScoreEntry {
-    init?(document: JSON, id: String) {
-        anonymousIdentifier = id
+    init?(document: JSON, _id: String) {
+        id = _id
+        deviceIdentifier = document["deviceIdentifier"].stringValue
         username = document["username"].stringValue
         avatarURL = document["avatarURL"].stringValue
         guard let potentialStartDate = document["startDate"].dateTime else {

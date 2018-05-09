@@ -21,19 +21,22 @@ enum ServiceInitializationError: Error {
 public class ApplicationServices {
     // Initialize services
     public var couchDBService: CouchDBClient?
-    //public let pushNotificationService: PushNotifications?
+    public var pushNotificationService: PushNotifications?
 
     public init(cloudEnv: CloudEnv) throws {
         // Run service initializers
         do {
             couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
+            pushNotificationService = try initializeServicePush(cloudEnv: cloudEnv)
         } catch ServiceInitializationError.cloudantError(let reason) {
             Log.error("Error setting up Cloudant: \(reason)")
             couchDBService = nil
         } catch ServiceInitializationError.pushNotificationError(let reason) {
             Log.error("Error setting up Push Notifications: \(reason)")
+            pushNotificationService = nil
         } catch {
             couchDBService = nil
+            pushNotificationService = nil
             Log.error("Unhandled exception during service init.")
         }
     }
