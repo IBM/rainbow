@@ -10,7 +10,7 @@ func initializeServiceCloudant(cloudEnv: CloudEnv) throws -> CouchDBClient {
     #elseif os(Linux)
     // Load credentials for Cloudant/CouchDB using CloudEnvironment
     guard let cloudantCredentials = cloudEnv.getCloudantCredentials(name: "cloudant") else {
-        throw ServiceInitializationError.CloudantError("Could not load credentials for Cloudant.")
+        throw ServiceInitializationError.cloudantError("Could not load credentials for Cloudant.")
     }
     let connectionProperties = ConnectionProperties(
         host: cloudantCredentials.host,
