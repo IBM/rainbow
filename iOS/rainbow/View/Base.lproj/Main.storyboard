@@ -8,6 +8,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="IBMPlexSans-Medium.ttf">
+            <string>IBMPlexSans-Medium</string>
+        </array>
+        <array key="IBMPlexSans-Regular.ttf">
+            <string>IBMPlexSans</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Camera-->
         <scene sceneID="bB8-x1-Eiu">
@@ -25,21 +33,119 @@
             </objects>
             <point key="canvasLocation" x="-1026" y="-517"/>
         </scene>
-        <!--Booklet View-->
+        <!--Guidebook-->
         <scene sceneID="vCC-i1-m2u">
             <objects>
-                <viewController id="fv6-zY-d2b" customClass="BookletViewController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jIE-0k-ZHK">
+                <viewController storyboardIdentifier="ItemController" id="fv6-zY-d2b" customClass="BookletItemController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ERM-66-BBf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="6d4-xq-EqS"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qiT-Rm-gHx">
+                                <rect key="frame" x="37.5" y="163.5" width="300" height="340"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUq-Oi-ytx">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainbow ML" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvH-UO-dun">
+                                                <rect key="frame" x="61" y="5" width="178" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="vDh-g9-evi"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="32"/>
+                                                <color key="textColor" red="0.88627450980392153" green="0.2196078431372549" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="rvH-UO-dun" firstAttribute="centerX" secondItem="gUq-Oi-ytx" secondAttribute="centerX" id="MIC-Dz-fqa"/>
+                                            <constraint firstItem="rvH-UO-dun" firstAttribute="centerY" secondItem="gUq-Oi-ytx" secondAttribute="centerY" id="TT6-qW-hKk"/>
+                                            <constraint firstAttribute="height" constant="50" id="pxP-tO-fVD"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="gsx-AQ-CXm">
+                                        <rect key="frame" x="0.0" y="50" width="300" height="240"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="project-rainbow-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-eP-eAB">
+                                                <rect key="frame" x="30" y="0.0" width="240" height="240"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="240" id="Kob-Sh-fvd"/>
+                                                    <constraint firstAttribute="height" constant="240" id="u08-Vb-ff4"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="wc8-eP-eAB" firstAttribute="centerY" secondItem="gsx-AQ-CXm" secondAttribute="centerY" id="lvS-aX-Tmi"/>
+                                            <constraint firstItem="wc8-eP-eAB" firstAttribute="centerX" secondItem="gsx-AQ-CXm" secondAttribute="centerX" id="r8F-XA-ZpQ"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-VN-B83">
+                                        <rect key="frame" x="0.0" y="290" width="300" height="50"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="An IBM Code Experiment" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KA-YJ-p8x">
+                                                <rect key="frame" x="50" y="0.0" width="200" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="IwJ-oT-Wtg"/>
+                                                    <constraint firstAttribute="height" constant="50" id="rMx-HS-1Rw"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.23529411759999999" green="0.32156862749999998" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="6KA-YJ-p8x" firstAttribute="centerY" secondItem="T3G-VN-B83" secondAttribute="centerY" id="Ith-hr-xs0"/>
+                                            <constraint firstItem="6KA-YJ-p8x" firstAttribute="centerX" secondItem="T3G-VN-B83" secondAttribute="centerX" id="S4w-5H-LGd"/>
+                                            <constraint firstAttribute="height" constant="50" id="u09-U3-wQR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="CaE-lD-2Ec"/>
+                                    <constraint firstAttribute="height" constant="340" id="a6b-ZV-6GR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qiT-Rm-gHx" firstAttribute="centerY" secondItem="ERM-66-BBf" secondAttribute="centerY" id="Lbx-vl-60D"/>
+                            <constraint firstItem="qiT-Rm-gHx" firstAttribute="centerX" secondItem="ERM-66-BBf" secondAttribute="centerX" id="dID-81-Xbe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="00y-s2-Cbz"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Booklet View" id="3ut-oJ-veM"/>
+                    <navigationItem key="navigationItem" title="Guidebook" id="3ut-oJ-veM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obu-32-Foy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1908" y="-1316"/>
+            <point key="canvasLocation" x="-855" y="-1316"/>
+        </scene>
+        <!--Guide-->
+        <scene sceneID="4lZ-hK-U3S">
+            <objects>
+                <viewController id="82p-u7-s0U" customClass="BookletViewController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2BD-bX-HlQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zYL-Cv-qgX"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Guide" id="g0y-SL-FvK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X5S-DM-5Ib" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2193" y="-1316"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Sjn-wg-GiQ">
+            <objects>
+                <pageViewController storyboardIdentifier="booklet" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="H6u-5k-38I" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ql-g1-G3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1532" y="-1316"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="crZ-pI-Ubc">
@@ -112,8 +218,9 @@
         <!--Booklet-->
         <scene sceneID="FP9-Ka-rla">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GoZ-h8-Hev" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="Booklet" automaticallyAdjustsScrollViewInsets="NO" id="y3q-Cj-LzA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Booklet" image="info.png" id="bqD-fF-QGs"/>
+                    <tabBarItem key="tabBarItem" title="Guide" image="info.png" id="bqD-fF-QGs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rar-ld-0Bu">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -121,10 +228,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="fv6-zY-d2b" kind="relationship" relationship="rootViewController" id="ToF-6C-QaG"/>
+                        <segue destination="82p-u7-s0U" kind="relationship" relationship="rootViewController" id="1iz-9L-2XZ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GoZ-h8-Hev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2940" y="-1316"/>
         </scene>
@@ -180,7 +286,7 @@
         <scene sceneID="PaB-YA-x9x">
             <objects>
                 <navigationController title="Leaders" automaticallyAdjustsScrollViewInsets="NO" id="nQB-Vj-Sab" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Participant" image="person.png" id="txo-dD-kk8"/>
+                    <tabBarItem key="tabBarItem" title="Player" image="person.png" id="txo-dD-kk8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FxW-2G-9xw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -201,5 +307,6 @@
         <image name="info.png" width="30" height="30"/>
         <image name="list.png" width="30" height="30"/>
         <image name="person.png" width="30" height="30"/>
+        <image name="project-rainbow-logo.png" width="400" height="400"/>
     </resources>
 </document>

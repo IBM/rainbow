@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor(red:0.90, green:0.96, blue:0.98, alpha:1.0)
         UITabBar.appearance().tintColor = UIColor(red:0.24, green:0.32, blue:0.44, alpha:1.0)
         
+        UITabBar.appearance().layer.borderWidth = 0.0
+        UITabBar.appearance().clipsToBounds = true
+
+        
         return true
     }
 
