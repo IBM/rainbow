@@ -29,6 +29,7 @@ extension ScoreEntry {
             objectEntries.append(ObjectEntry(name: name, timestamp: timestamp))
         }
         objects = objectEntries
+        totalTime = nil
     }
 
     mutating func toJSONDocument() -> JSON? {

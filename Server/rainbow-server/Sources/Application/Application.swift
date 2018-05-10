@@ -21,13 +21,13 @@ enum ServiceInitializationError: Error {
 public class ApplicationServices {
     // Initialize services
     public var couchDBService: CouchDBClient?
-    public var pushNotificationService: PushNotifications?
+    var pushNotificationService: PushNotification?
 
     public init(cloudEnv: CloudEnv) throws {
         // Run service initializers
         do {
             couchDBService = try initializeServiceCloudant(cloudEnv: cloudEnv)
-            pushNotificationService = try initializeServicePush(cloudEnv: cloudEnv)
+            pushNotificationService = try PushNotification.init(cloudEnv: cloudEnv, couchDBClient: couchDBService!)
         } catch ServiceInitializationError.cloudantError(let reason) {
             Log.error("Error setting up Cloudant: \(reason)")
             couchDBService = nil

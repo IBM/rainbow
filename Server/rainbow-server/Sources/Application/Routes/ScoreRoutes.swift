@@ -11,9 +11,11 @@ import LoggerAPI
 import KituraContracts
 
 private var client: CouchDBClient?
+private var pushNotification: PushNotification?
 
 func initializeScoreRoutes(app: App) {
     client = app.services.couchDBService
+    pushNotification = app.services.pushNotificationService
     
     app.router.get("/entries", handler: getAllEntries)
     app.router.get("/entries", handler: getOneEntry)
@@ -73,6 +75,7 @@ func updateEntry(id: String,newEntry: ScoreEntry, completion: @escaping (ScoreEn
     }
 }
 
+/// returns sorted list of scores by time taken
 func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
     Log.info("Getting leaderboard data")
     guard let client = client else {
