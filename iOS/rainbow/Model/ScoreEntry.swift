@@ -14,6 +14,7 @@ struct ObjectEntry: Codable {
 }
 
 struct ScoreEntry: Codable {
+    //swiftlint:disable identifier_name
     var id: String?
     var username: String
     var startDate: Date?
