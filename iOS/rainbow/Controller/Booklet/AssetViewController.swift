@@ -9,33 +9,29 @@
 import Foundation
 import UIKit
 
-class AssetViewController:UIViewController{
+class AssetViewController: UIViewController {
     
-    @IBOutlet weak var webView:UIWebView!
+    @IBOutlet weak var webView: UIWebView!
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    var link:String = ""
+    var link: String = ""
     
-    override func viewDidLoad(){
+    override func viewDidLoad() {
         super.viewDidLoad()
-        
         UIApplication.shared.statusBarStyle = .lightContent
-        
-        
         let url = URL(string: self.link)
-        if let unwrappedURL = url{
+        if let unwrappedURL = url {
             let request = URLRequest(url: unwrappedURL)
             let session = URLSession.shared
             
-            let task = session.dataTask(with: request){ (data, response, error) in
-                
-                if error == nil{
+            let task = session.dataTask(with: request) { (_, _, error) in
+                if error == nil {
                     self.webView.loadRequest(request)
-                }else{
-                    print(error)
+                } else {
+                    print(String(describing: error))
                 }
             }
             
@@ -43,4 +39,3 @@ class AssetViewController:UIViewController{
         }
     }
 }
-

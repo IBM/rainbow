@@ -14,8 +14,8 @@ struct Article: Codable {
     let page: Int
     let title: String
     let subtitle: String
-    let imageEncoded:String
-    let subtext:String
+    let imageEncoded: String
+    let subtext: String
     let description: String
     let link: String
 }
@@ -24,7 +24,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     private var pageViewController: UIPageViewController?
     
-    private var pages:[Article]?
+    private var pages: [Article]?
     private var pageCount = 0
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 print("No internet")
@@ -84,37 +84,45 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
             }
         }
     }
-    
+
     private func createPageViewController() {
-        
-        let pageController = self.storyboard!.instantiateViewController(withIdentifier: "booklet") as! UIPageViewController
+        guard let pageController = self.storyboard?.instantiateViewController(withIdentifier: "booklet") as? UIPageViewController else {
+            return
+        }
         pageController.dataSource = self
         if self.pageCount > 0 {
             let firstController = getItemController(itemIndex: 0)!
             let startingViewControllers = [firstController]
             pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
-        
+
         pageViewController = pageController
-        pageViewController?.view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.size.height)
+        pageViewController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
         addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
         pageViewController!.didMove(toParentViewController: self)
     }
     
     private func setupPageControl() {
-        let pageControl = pageViewController?.view.subviews.filter{ $0 is UIPageControl }.first! as! UIPageControl
+        guard let subviews = pageViewController?.view.subviews else {
+            return
+        }
+        let pageControls = subviews.filter { $0 is UIPageControl }
+        guard let pageControl = pageControls.first as? UIPageControl else {
+            return
+        }
         pageControl.backgroundColor = UIColor.white
-        pageControl.pageIndicatorTintColor = UIColor(red:0.97, green:0.84, blue:0.88, alpha:1.0)
-        pageControl.currentPageIndicatorTintColor = UIColor(red:0.87, green:0.21, blue:0.44, alpha:1.0)
+        pageControl.pageIndicatorTintColor = UIColor(red: 0.97, green: 0.84, blue: 0.88, alpha: 1.0)
+        pageControl.currentPageIndicatorTintColor = UIColor(red: 0.87, green: 0.21, blue: 0.44, alpha: 1.0)
         self.view.addSubview(pageControl)
     }
     
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        let itemController = viewController as! BookletItemController
+        guard let itemController = viewController as? BookletItemController else {
+            return nil
+        }
         
         if itemController.itemIndex > 0 {
             return getItemController(itemIndex: itemController.itemIndex-1)
@@ -125,7 +133,9 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        let itemController = viewController as! BookletItemController
+        guard let itemController = viewController as? BookletItemController else {
+            return nil
+        }
         
         if itemController.itemIndex+1 < self.pageCount {
             return getItemController(itemIndex: itemController.itemIndex+1)
@@ -137,7 +147,10 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     private func getItemController(itemIndex: Int) -> BookletItemController? {
         
         if itemIndex < self.pages!.count {
-            let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "ItemController") as! BookletItemController
+            guard let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "ItemController") as? BookletItemController else {
+                return nil
+            }
+//            let pageItemController = self.storyboard!.instantiateViewController(withIdentifier: "ItemController") as! BookletItemController
             pageItemController.itemIndex = itemIndex
             pageItemController.titleString = self.pages![itemIndex].title
             pageItemController.subTitleString = self.pages![itemIndex].subtitle
@@ -153,8 +166,8 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     func base64ToImage(base64: String) -> UIImage {
         var img: UIImage = UIImage()
-        if (!base64.isEmpty) {
-            let decodedData = NSData(base64Encoded: base64 , options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+        if !base64.isEmpty {
+            let decodedData = NSData(base64Encoded: base64, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
             let decodedimage = UIImage(data: decodedData! as Data)
             img = (decodedimage as UIImage?)!
         }
@@ -183,16 +196,14 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         
         return -1
     }
-    
-   
+
     func currentController() -> UIViewController? {
-        
-        let count:Int = (self.pageViewController?.viewControllers?.count)!;
-        
-        if count > 0 {
-            return self.pageViewController?.viewControllers![0]
+        guard let count = self.pageViewController?.viewControllers?.count else {
+            return nil
         }
-        
+        if count > 0 {
+            return self.pageViewController?.viewControllers?.first
+        }
         return nil
     }
 }

@@ -8,34 +8,34 @@
 import UIKit
 
 class BookletItemController: UIViewController {
-    
+
     @IBOutlet var contentImageView: UIImageView?
     @IBOutlet var pageTitleView: UILabel?
     @IBOutlet var subtitleView: UILabel?
     @IBOutlet var statement: UITextView?
     @IBOutlet var subtextView: UILabel?
-    @IBOutlet var button:UIButton?
-    
+    @IBOutlet var button: UIButton?
+
     @IBAction func openLink(_ sender: UIButton) {
         performSegue(withIdentifier: "webkitSegue", sender: self)
     }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "webkitSegue"
-        {
-            if let navController = segue.destination as? UINavigationController {
-                let webview = navController.topViewController as! AssetViewController
-                webview.link = self.link
+        if segue.identifier == "webkitSegue" {
+            guard let navController = segue.destination as? UINavigationController else {
+                return
             }
+            guard let webview = navController.topViewController as? AssetViewController else {
+                return
+            }
+            webview.link = self.link
         }
     }
-    
+
     // MARK: - Variables
     var itemIndex: Int = 0
-    
-    var link:String = ""
-    
+
+    var link: String = ""
+
     var image: UIImage = UIImage() {
         didSet {
             if let imageView = contentImageView {
