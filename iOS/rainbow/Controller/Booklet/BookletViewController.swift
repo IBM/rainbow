@@ -14,8 +14,8 @@ struct Article: Codable {
     let page: Int
     let title: String
     let subtitle: String
-    let imageEncoded:String
-    let subtext:String
+    let imageEncoded: String
+    let subtext: String
     let description: String
     let link: String
 }
@@ -24,7 +24,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     private var pageViewController: UIPageViewController?
     
-    private var pages:[Article]?
+    private var pages: [Article]?
     private var pageCount = 0
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 print("No internet")
@@ -176,8 +176,8 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     func base64ToImage(base64: String) -> UIImage {
         var img: UIImage = UIImage()
-        if (!base64.isEmpty) {
-            let decodedData = NSData(base64Encoded: base64 , options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+        if !base64.isEmpty {
+            let decodedData = NSData(base64Encoded: base64, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
             let decodedimage = UIImage(data: decodedData! as Data)
             img = (decodedimage as UIImage?)!
         }
@@ -206,16 +206,14 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         
         return -1
     }
-    
-   
+
     func currentController() -> UIViewController? {
-        
-        let count:Int = (self.pageViewController?.viewControllers?.count)!;
-        
-        if count > 0 {
-            return self.pageViewController?.viewControllers![0]
+        guard let count = self.pageViewController?.viewControllers?.count else {
+            return nil
         }
-        
+        if count > 0 {
+            return self.pageViewController?.viewControllers?.first
+        }
         return nil
     }
 }

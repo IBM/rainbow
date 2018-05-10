@@ -14,7 +14,7 @@ class BookletItemController: UIViewController {
     @IBOutlet var subtitleView: UILabel?
     @IBOutlet var statement: UITextView?
     @IBOutlet var subtextView: UILabel?
-    @IBOutlet var button:UIButton?
+    @IBOutlet var button: UIButton?
 
     @IBAction func openLink(_ sender: UIButton) {
         performSegue(withIdentifier: "webkitSegue", sender: self)
