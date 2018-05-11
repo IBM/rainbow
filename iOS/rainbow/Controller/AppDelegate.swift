@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import BMSCore
+import BMSPush
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,7 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
-
+        
+        BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
+        // MARK: remove the hardcoding in future
+        BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "dce59c6a-411a-414f-93c2-7cf439cbf763")
         return true
     }
 
@@ -78,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
+            print("Store Description: \(storeDescription)")
         })
         return container
     }()
