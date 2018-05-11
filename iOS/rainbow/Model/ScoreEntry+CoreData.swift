@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import Dispatch
 
 enum ClientPersistenceError: Error {
     case couldNotFindAppDelegate
@@ -34,7 +35,7 @@ fileprivate extension ObjectEntry {
         self.name = name
         self.timestamp = timestamp
     }
-    
+
     func toManagedObject(description: NSEntityDescription, context: NSManagedObjectContext, entryID: String) -> NSManagedObject {
         let managedEntry = NSManagedObject(entity: description, insertInto: context)
         managedEntry.setValue(self.name, forKey: "name")
@@ -70,7 +71,7 @@ extension ScoreEntry {
             throw error
         }
     }
-    
+
     fileprivate static func getAllObjects(for entryID: String) throws -> [ObjectEntry] {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             throw ClientPersistenceError.couldNotFindAppDelegate
@@ -94,7 +95,7 @@ extension ScoreEntry {
             throw ClientPersistenceError.couldNotFetchResult
         }
     }
-    
+
     fileprivate static func saveObjects(entries: [ObjectEntry], entryID: String) throws {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             throw ClientPersistenceError.couldNotFindAppDelegate
@@ -112,8 +113,8 @@ extension ScoreEntry {
             }
         }
     }
-    
-    init?(managedObject: NSManagedObject) {
+
+    fileprivate init?(managedObject: NSManagedObject) {
         //swiftlint:disable identifier_name
         guard let id = managedObject.value(forKey: "id") as? String else {
             return nil
@@ -142,8 +143,8 @@ extension ScoreEntry {
             return nil
         }
     }
-    
-    func toManagedObject(description: NSEntityDescription, context: NSManagedObjectContext) -> NSManagedObject {
+
+    fileprivate func toManagedObject(description: NSEntityDescription, context: NSManagedObjectContext) -> NSManagedObject {
         let managedEntry = NSManagedObject(entity: description, insertInto: context)
         managedEntry.setValue(self.id, forKey: "id")
         managedEntry.setValue(self.username, forKey: "username")
@@ -154,7 +155,7 @@ extension ScoreEntry {
         managedEntry.setValue(self.finishDate, forKey: "finishDate")
         return managedEntry
     }
-    
+
     class ClientPersistence {
         private static func entryExists(for id: String?) throws -> NSManagedObject? {
             guard let id = id else {
@@ -168,7 +169,7 @@ extension ScoreEntry {
             request.returnsObjectsAsFaults = false
             do {
                 guard let result = try context.fetch(request) as? [NSManagedObject] else {
-                    throw ClientPersistenceError.couldNotCastResult                }
+                    throw ClientPersistenceError.couldNotCastResult }
                 for data in result {
                     guard let queryEntry = ScoreEntry(managedObject: data), let queryID = queryEntry.id else {
                         continue
@@ -182,7 +183,7 @@ extension ScoreEntry {
                 throw ClientPersistenceError.couldNotFetchResult
             }
         }
-        
+
         private static func delete(scoreEntryObject: NSManagedObject, from context: NSManagedObjectContext) throws -> Bool {
             guard let id = scoreEntryObject.value(forKey: "id") as? String else {
                 return false
@@ -200,47 +201,59 @@ extension ScoreEntry {
             }
         }
         
+        /// this function will give you back all instances of `ScoreEntry` by unique id
         static func getAll() throws -> [ScoreEntry] {
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                throw ClientPersistenceError.couldNotFindAppDelegate
-            }
-            let context = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DataScoreEntry")
-            request.returnsObjectsAsFaults = false
             do {
-                guard let result = try context.fetch(request) as? [NSManagedObject] else {
-                    throw ClientPersistenceError.couldNotCastResult                }
-                var newEntries = [ScoreEntry]()
-                for data in result {
-                    guard let newEntry = ScoreEntry(managedObject: data) else {
-                        continue
+                let entries: [ScoreEntry] = try DispatchQueue(label: "core-data-rainbow-queue", qos: .userInitiated).sync {
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                        throw ClientPersistenceError.couldNotFindAppDelegate
                     }
-                    newEntries.append(newEntry)
+                    let context = appDelegate.persistentContainer.viewContext
+                    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DataScoreEntry")
+                    request.returnsObjectsAsFaults = false
+                    do {
+                        guard let result = try context.fetch(request) as? [NSManagedObject] else {
+                            throw ClientPersistenceError.couldNotCastResult }
+                        var newEntries = [ScoreEntry]()
+                        for data in result {
+                            guard let newEntry = ScoreEntry(managedObject: data) else {
+                                continue
+                            }
+                            newEntries.append(newEntry)
+                        }
+                        return newEntries
+                    } catch {
+                        throw ClientPersistenceError.couldNotFetchResult
+                    }
                 }
-                return newEntries
-            } catch {
-                throw ClientPersistenceError.couldNotFetchResult
+                return entries
+            } catch let error {
+                throw error
             }
         }
-        
+
+        /// this function will let you save an object of type ScoreEntry
+        /// Note: this will overwrite any ScoreEntry object that exists in the datastore with the same ID.
         static func save(entry: ScoreEntry) throws {
             do {
-                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                    throw ClientPersistenceError.couldNotFindAppDelegate
-                }
-                let context = appDelegate.persistentContainer.viewContext
-                guard let entity = NSEntityDescription.entity(forEntityName: "DataScoreEntry", in: context) else {
-                    throw ClientPersistenceError.couldNotCreateEntity
-                }
-                if let existingObject = try entryExists(for: entry.id) {
-                    if try ScoreEntry.ClientPersistence.delete(scoreEntryObject: existingObject, from: context) == false {
-                        throw ClientPersistenceError.entryAlreadyExists
+                try DispatchQueue(label: "core-data-rainbow-queue", qos: .userInitiated).sync {
+                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                        throw ClientPersistenceError.couldNotFindAppDelegate
                     }
-                }
-                _ = entry.toManagedObject(description: entity, context: context)
-                try context.save()
-                if let objects = entry.objects, let entryID = entry.id {
-                    try ScoreEntry.saveObjects(entries: objects, entryID: entryID)
+                    let context = appDelegate.persistentContainer.viewContext
+                    guard let entity = NSEntityDescription.entity(forEntityName: "DataScoreEntry", in: context) else {
+                        throw ClientPersistenceError.couldNotCreateEntity
+                    }
+                    if let existingObject = try entryExists(for: entry.id) {
+                        if try ScoreEntry.ClientPersistence.delete(scoreEntryObject: existingObject, from: context) == false {
+                            throw ClientPersistenceError.entryAlreadyExists
+                        }
+                    }
+                    _ = entry.toManagedObject(description: entity, context: context)
+                    try context.save()
+                    if let objects = entry.objects, let entryID = entry.id {
+                        try ScoreEntry.saveObjects(entries: objects, entryID: entryID)
+                    }
                 }
             } catch let error {
                 throw error
