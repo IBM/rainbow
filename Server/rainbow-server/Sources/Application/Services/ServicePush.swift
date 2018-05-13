@@ -16,7 +16,7 @@ class PushNotification {
             throw ServiceInitializationError.pushNotificationError("Could not load credentials for Push Notifications.")
         }
         let pushNotifications = PushNotifications(
-            pushRegion: pushNotificationsCredentials.region,
+            pushRegion: PushNotifications.Region.US_SOUTH,
             pushAppGuid: pushNotificationsCredentials.appGuid,
             pushAppSecret: pushNotificationsCredentials.appSecret
         )
@@ -39,28 +39,28 @@ class PushNotification {
     /// send push notification in two cases:
     /// 1- knocked from top spot of leaderboard
     /// 2- knocked from top 10
-    public func sendNotification(scoreEntry: ScoreEntry) -> Bool {
+    public func sendNotification(scoreEntry: ScoreEntry) -> Void {
         if(scoresOrderedByTotalTime.count <= 5){
-          return true;
+          return;
         }
+        let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
         
         //find position of the score in the array
         let index = self.scoresOrderedByTotalTime.index(where: { (score) -> Bool in
             scoreEntry.id == score.id
         })
-        
+
         //check if the user has been dropped from top 1 and top 10
         ScoreEntry.Persistence.getScores(from: couchDBClient!, completion: { scoreEntryArray, error in
             guard let scoreEntryArray = scoreEntryArray else {
                 Log.error("Error while rertieving score entries")
                 return
             }
-            
+
             let indexFromDb = scoreEntryArray.index(where: { (score) -> Bool in
                 scoreEntry.id == score.id
             })
-            
-            let target = Notification.Target.init(deviceIds: [scoreEntry.deviceIdentifier!], platforms: [TargetPlatform.Apple])
+
             if(index! == 1 && indexFromDb! != 1){
                 //send notification
                 let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP, url: nil)
@@ -69,10 +69,10 @@ class PushNotification {
                     if error != nil {
                         print("Failed to send push notification. Error: \(error!)")
                     }
-                }                
+                }
             }else if(index! <= 10 && indexFromDb! > 10){
                 //send notification
-                let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP_TEN, url: nil)                
+                let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP_TEN, url: nil)
                 let notification = Notification.init(message: message, target: target)
                 self.pushNotifications?.send(notification: notification) { (data, status, error) in
                     if error != nil {
@@ -80,12 +80,9 @@ class PushNotification {
                     }
                 }
             }
-            
             //sort scoreEntryArray by time taken
             self.scoresOrderedByTotalTime = scoreEntryArray
         })
-
-        return true
     }
 
 }

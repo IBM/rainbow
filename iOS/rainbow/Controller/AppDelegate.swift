@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
         
+        /// MARK: push notificaiton settings
         BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
         // MARK: remove the hardcoding in future
         BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
@@ -124,17 +125,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         push.registerWithDeviceToken(deviceToken: deviceToken) { (response, statusCode, error) -> Void in
             if error.isEmpty {
                 print( "Response during device registration : \(String(describing: response))")
-                print( "status code during device registration : \(String(describing: statusCode))")
-                let responseJson = self.convertStringToDictionary(text: response!)! as NSDictionary
-                let userId = responseJson.value(forKey: "userId")
-                print("UserID: \(String(describing: userId))")
-                //self.sendNotifToDisplayResponse(responseValue: "Device Registered Successfully with User ID \(String(describing: userId!))", responseBool: true)
+                print( "status code during device registration : \(String(describing: statusCode))")                
             } else {
                 print( "Error during device registration \(error) ")
-                //self.sendNotifToDisplayResponse( responseValue: "Error during device registration \n  - status code: \(String(describing: statusCode)) \n Error :\(error) \n", responseBool: false)
             }
         }
     }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         let message: String = "Error registering for push notifications: \(error.localizedDescription)"
         self.showAlert(title: "Registering for notifications", message: message)
@@ -156,8 +153,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
             print("Error while casting body")
             return
         }
-        
-        self.showAlert(title: "Recieved Push notifications", message: bodyString)
+        print(bodyString)
     }
     
     func showAlert (title: String, message: String) {
