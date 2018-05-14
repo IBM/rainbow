@@ -11,9 +11,11 @@ import LoggerAPI
 import KituraContracts
 
 private var client: CouchDBClient?
+private var pushNotification: PushNotification?
 
 func initializeScoreRoutes(app: App) {
     client = app.services.couchDBService
+    pushNotification = app.services.pushNotificationService
     
     app.router.get("/entries", handler: getAllEntries)
     app.router.get("/entries", handler: getOneEntry)
@@ -59,20 +61,30 @@ func updateEntry(id: String,newEntry: ScoreEntry, completion: @escaping (ScoreEn
     guard let client = client else {
         return completion(nil, .failedDependency)
     }
-    // logic for push notification. If the update is for game completion
-    // check to see if notification has to be sent.
-    
+
+    // update database with new entry
     ScoreEntry.Persistence.update(id: id, entry: newEntry, to: client) { revID, error in
         guard let revID = revID else {
             return completion(nil, .noContent)
         }
         Log.info("Document updated with new revision: ", functionName: revID)
         ScoreEntry.Persistence.get(from: client, with: id, completion: { entry, error in
+            // logic for push notification. If the update is for game completion
+            // check to see if notification has to be sent.
+            
+            if entry?.finishDate != nil {
+                /// the user finished a game
+                /// call push notification service
+                Log.info("Sending push notification")
+                pushNotification?.sendNotification(scoreEntry: entry!)
+            }
             return completion(entry, error as? RequestError)
         })
     }
+    
 }
 
+/// returns sorted list of scores by time taken
 func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
     Log.info("Getting leaderboard data")
     guard let client = client else {

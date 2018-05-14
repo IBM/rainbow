@@ -4,9 +4,8 @@ applications:
   timeout: 180
   name: rainbow-scavenger-viz-rec
   buildpack: swift_buildpack
-  command: "'rainbow-server'"
   memory: 256M
   random-route: true
   services:
-    - cloudantNoSQLDB
-    - rainbow-server-PushNotifications-r6m1
+    - Cloudant NoSQL DB-kl
+    - Push Notifications-dh-rainbow-testing
