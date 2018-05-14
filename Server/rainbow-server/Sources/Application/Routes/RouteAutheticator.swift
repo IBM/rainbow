@@ -18,7 +18,7 @@ func setupBasicAuth(app: App) {
     /// MARK: this could be fetched from the database. keeping it here for now
     var userDB: [String: EncodedPassword]?  {
         do {
-            let dbUser =  [ "rainbowml" : try EncodedPassword(withName: "rainbowml", password: "(C0r3MLiPh0neGam3!)", encoding: .PBKDF2)]
+            let dbUser =  [ "watsonml" : try EncodedPassword(withName: "rainbowml", password: "(C0r3MLiPh0neGam3!)", encoding: .PBKDF2)]
             return dbUser
         } catch {
             Log.error("Error while encoding")
