@@ -13,7 +13,6 @@ class CameraController: LuminaViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
-        //self.streamingModelTypes = [DefaultCustomModel_1753554316()]
         self.setShutterButton(visible: false)
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)

@@ -105,14 +105,18 @@ extension ScoreEntry {
                     return completion(nil, error)
                 }                                
                 
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(true)], callback: { (documents, error) in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(false)], callback: { (documents, error) in
                     guard let documents = documents else {
                         return completion(nil, error)
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
                         if let newEntry = ScoreEntry(document: document["value"]["doc"], _id: document["id"].stringValue) {
-                            entries.append(newEntry)
+                            var newEntryCopy = newEntry
+                            newEntryCopy.deviceIdentifier = nil
+                            newEntryCopy.objects = nil
+                            newEntryCopy.id = nil
+                            entries.append(newEntryCopy)
                         }
                     }
                     completion(entries, nil)

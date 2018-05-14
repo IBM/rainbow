@@ -45,8 +45,12 @@ class PushNotification {
             scoreEntry.id == score.id
         })
 
+        guard let couchDBClient = couchDBClient else {
+            return
+        }
+        
         //check if the user has been dropped from top 1 and top 10
-        ScoreEntry.Persistence.getScores(from: couchDBClient!, completion: { scoreEntryArray, error in
+        ScoreEntry.Persistence.getScores(from: couchDBClient, completion: { scoreEntryArray, error in
             guard let scoreEntryArray = scoreEntryArray else {
                 Log.error("Error while rertieving score entries")
                 return
