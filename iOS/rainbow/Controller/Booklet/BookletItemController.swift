@@ -19,6 +19,7 @@ class BookletItemController: UIViewController {
     @IBAction func openLink(_ sender: UIButton) {
         performSegue(withIdentifier: "webkitSegue", sender: self)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "webkitSegue" {
             guard let navController = segue.destination as? UINavigationController else {
