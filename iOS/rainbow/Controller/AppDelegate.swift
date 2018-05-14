@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         UIApplication.shared.statusBarStyle = .lightContent
         UINavigationBar.appearance().barTintColor = UIColor.RainbowColors.blue
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.RainbowFonts.bold(size: 20)]
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().barTintColor = UIColor.RainbowColors.pale
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy

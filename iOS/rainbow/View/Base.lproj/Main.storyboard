@@ -24,14 +24,14 @@
                     <view key="view" contentMode="scaleToFill" id="fX5-wB-pNA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wl7-7S-oHG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="neS-VX-XST"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfp-dX-ufy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026" y="-517"/>
+            <point key="canvasLocation" x="-1026.4000000000001" y="-517.6911544227886"/>
         </scene>
         <!--Guidebook-->
         <scene sceneID="vCC-i1-m2u">
@@ -218,7 +218,6 @@
         <!--Booklet-->
         <scene sceneID="FP9-Ka-rla">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GoZ-h8-Hev" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="Booklet" automaticallyAdjustsScrollViewInsets="NO" id="y3q-Cj-LzA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Guide" image="info.png" id="bqD-fF-QGs"/>
                     <toolbarItems/>
@@ -231,6 +230,7 @@
                         <segue destination="82p-u7-s0U" kind="relationship" relationship="rootViewController" id="1iz-9L-2XZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GoZ-h8-Hev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2940" y="-1316"/>
         </scene>
