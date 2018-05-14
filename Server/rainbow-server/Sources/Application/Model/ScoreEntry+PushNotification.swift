@@ -8,12 +8,12 @@ import Foundation
 import SwiftyJSON
 
 extension ScoreEntry {
-    init?(document: JSON) {
+    init?(timeTaken: Double, document: JSON) {
         let doc: JSON = document["doc"]
         id = doc["_id"].stringValue
         deviceIdentifier = doc["deviceIdentifier"].stringValue
         username = doc["username"].stringValue
-        totalTime = document["totalTime"].doubleValue
+        totalTime = timeTaken
         avatarURL = nil
         avatarImage = nil
         startDate = nil

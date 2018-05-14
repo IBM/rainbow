@@ -40,11 +40,6 @@ class PushNotification {
     /// 1- knocked from top spot of leaderboard
     /// 2- knocked from top 10
     public func sendNotification(scoreEntry: ScoreEntry) -> Void {
-        if(scoresOrderedByTotalTime.count <= 5){
-          return;
-        }
-        let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
-        
         //find position of the score in the array
         let index = self.scoresOrderedByTotalTime.index(where: { (score) -> Bool in
             scoreEntry.id == score.id
@@ -60,8 +55,8 @@ class PushNotification {
             let indexFromDb = scoreEntryArray.index(where: { (score) -> Bool in
                 scoreEntry.id == score.id
             })
-
-            if(index! == 1 && indexFromDb! != 1){
+            let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
+            if(index! == 0 && indexFromDb! > 0){
                 //send notification
                 let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP, url: nil)
                 let notification = Notification.init(message: message, target: target)
@@ -70,7 +65,7 @@ class PushNotification {
                         print("Failed to send push notification. Error: \(error!)")
                     }
                 }
-            }else if(index! <= 10 && indexFromDb! > 10){
+            }else if(index! <= 9 && indexFromDb! > 9){
                 //send notification
                 let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP_TEN, url: nil)
                 let notification = Notification.init(message: message, target: target)
