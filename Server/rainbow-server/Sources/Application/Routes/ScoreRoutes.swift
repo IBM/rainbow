@@ -17,11 +17,11 @@ func initializeScoreRoutes(app: App) {
     client = app.services.couchDBService
     pushNotification = app.services.pushNotificationService
     
-    app.router.get("/entries", handler: getAllEntries)
-    app.router.get("/entries", handler: getOneEntry)
-    app.router.post("/entries", handler: addNewEntry)
-    app.router.put("/entries", handler: updateEntry)
-    app.router.get("/leaderboard", handler: getLeaderBoard)
+    app.router.get("/watsonml/entries", handler: getAllEntries)
+    app.router.get("/watsonml/entries", handler: getOneEntry)
+    app.router.post("watsonml/entries", handler: addNewEntry)
+    app.router.put("/watsonml/entries", handler: updateEntry)
+    app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
 }
 
 func getAllEntries(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
