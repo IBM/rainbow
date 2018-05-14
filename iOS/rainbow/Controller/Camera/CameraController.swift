@@ -8,17 +8,22 @@
 
 import Foundation
 import Lumina
+import SpriteKit
+import AudioToolbox
 
 enum GameCameraState {
-    case shouldStartNewGame
-    case nothingDetected
+    case shouldStartNewGame // when the game should be started, or has finished and could be restarted
+    case nothingDetected // normal camera state, hunting for objects
     case detectionInProgress // it's fair to assume they should detect three consecutive frames since this happens fast
-    case objectDetected
+    case objectDetected // this should last one second when the fireworks are going off
 }
 
 class CameraController: LuminaViewController {
     var cachedScoreEntry: ScoreEntry?
     var checkTimer: Timer?
+    var gameState = GameCameraState.shouldStartNewGame
+    var consecutiveDetectionCount = 0
+    
     @IBOutlet weak var appleImageView: UIImageView?
     @IBOutlet weak var appleCheckImageView: UIImageView?
     @IBOutlet weak var beeImageView: UIImageView?
@@ -47,7 +52,7 @@ class CameraController: LuminaViewController {
         do {
             let savedGames = try ScoreEntry.ClientPersistence.getAll()
             if savedGames.count == 0 {
-                //showStartView()
+                //showStartView()// something is up with this method for now
                 startnewGame()
             } else {
                 let userGames = savedGames.filter { $0.username == "dokun1" }
@@ -70,8 +75,8 @@ class CameraController: LuminaViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        pauseCamera()
         checkTimer?.invalidate()
+        pauseCamera()
     }
     
     func startnewGame() {
@@ -88,6 +93,7 @@ class CameraController: LuminaViewController {
     }
     
     func continueGame() {
+        gameState = .nothingDetected
         checkTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         checkTimer?.fire()
         bringAllIconsToFront()
@@ -137,8 +143,9 @@ class CameraController: LuminaViewController {
     }
     
     @objc func updateTimeLabel() {
-        print("firing timer: \(Date())")
-        self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
+        if gameState == .nothingDetected {
+            self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
+        }
     }
 }
 
@@ -229,9 +236,60 @@ extension CameraController: LuminaDelegate {
             return
         }
         if bestConfidence >= 0.9 {
+            gameState = .detectionInProgress
             self.textPrompt = "Detecting: \(bestName)"
+            consecutiveDetectionCount += 1
+            if consecutiveDetectionCount > 4 {
+                objectDetected(label: bestName)
+            }
         } else {
-            //updateTimeLabel()
+            self.consecutiveDetectionCount = 0
+            gameState = .nothingDetected
         }
+    }
+}
+
+extension CameraController {
+    func objectDetected(label: String) {
+        self.consecutiveDetectionCount = 0
+        gameState = .objectDetected
+        updateObjectUI(for: label)
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+    }
+    
+    func updateObjectUI(for label: String) {
+        textPrompt = "You found the \(label)!"
+        switch label {
+        case "Apple":
+            animateCheckImage(appleCheckImageView)
+        case "Bee":
+            animateCheckImage(beeCheckImageView)
+        case "Jeans":
+            animateCheckImage(jeansCheckImageView)
+        case "Notebook":
+            animateCheckImage(notebookCheckImageView)
+        case "Plant":
+            animateCheckImage(plantCheckImageView)
+        case "Shirt":
+            animateCheckImage(shirtCheckImageView)
+        default:
+            print("unknown object detected")
+        }
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
+    }
+    
+    // write function to actually save object to current game
+    
+    private func animateCheckImage(_ view: UIImageView?) {
+        guard let view = view else {
+            return
+        }
+        UIView.animate(withDuration: 0.3) {
+            view.alpha = 1.0
+        }
+    }
+    
+    @objc private func updateGameState() {
+        gameState = .nothingDetected
     }
 }
