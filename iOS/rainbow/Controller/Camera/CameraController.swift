@@ -18,6 +18,15 @@ enum GameCameraState {
     case objectDetected // this should last one second when the fireworks are going off
 }
 
+enum RainbowDetectedObject: String {
+    case apple = "Apple"
+    case bee = "Bee"
+    case jeans = "Jeans"
+    case notebook = "Notebook"
+    case plant = "Plant"
+    case shirt = "Shirt"
+}
+
 class CameraController: LuminaViewController {
     var cachedScoreEntry: ScoreEntry?
     var checkTimer: Timer?
@@ -49,6 +58,16 @@ class CameraController: LuminaViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        determineGameState()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        checkTimer?.invalidate()
+        pauseCamera()
+    }
+    
+    func determineGameState() {
         do {
             let savedGames = try ScoreEntry.ClientPersistence.getAll()
             if savedGames.count == 0 {
@@ -61,6 +80,11 @@ class CameraController: LuminaViewController {
                 } else {
                     if let firstGame = userGames.first {
                         self.cachedScoreEntry = firstGame
+                        if let objects = firstGame.objects {
+                            for object in objects {
+                                updateObjectUI(for: object.name)
+                            }
+                        }
                         continueGame()
                     } else {
                         showStartView()
@@ -71,12 +95,6 @@ class CameraController: LuminaViewController {
             print("caught error: \(error) - starting new game")
             startnewGame()
         }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        checkTimer?.invalidate()
-        pauseCamera()
     }
     
     func startnewGame() {
@@ -154,14 +172,15 @@ class CameraController: LuminaViewController {
 extension CameraController {
     fileprivate func gameCurrentlyInProgress() -> Bool {
         return true
-        guard let cachedScoreEntry = cachedScoreEntry else {
-            return false
-        }
-        if cachedScoreEntry.startDate != nil {
-            return cachedScoreEntry.finishDate == nil
-        } else {
-            return false
-        }
+        // leaving this commented for now because something is up with showing the what is supposed to be overly simple "start game button"
+//        guard let cachedScoreEntry = cachedScoreEntry else {
+//            return false
+//        }
+//        if cachedScoreEntry.startDate != nil {
+//            return cachedScoreEntry.finishDate == nil
+//        } else {
+//            return false
+//        }
     }
     
     fileprivate func hideStartView(passedView: UIView) {
@@ -191,44 +210,11 @@ extension CameraController: GameStartViewDelegate {
     }
 }
 
-class GameStartView: UIView {
-    //swiftlint:disable weak_delegate
-    weak var delegate: GameStartViewDelegate?
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    var gameStartButton: UIButton {
-        let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.midX - 100, y: UIScreen.main.bounds.midY - 100, width: 200, height: 200))
-        button.layer.cornerRadius = self.frame.size.height / 2
-        button.setTitle("Start Searching", for: .normal)
-        button.setTitleColor(UIColor.RainbowColors.orange, for: .normal)
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 2.0
-        button.titleLabel?.font = UIFont.RainbowFonts.bold(size: 30)
-        button.titleLabel?.numberOfLines = 2
-        button.titleLabel?.textAlignment = .center
-        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        return button
-    }
-    
-    @objc func buttonTapped() {
-        delegate?.gameStartViewButtonTapped(passedView: self)
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    override func layoutSubviews() {
-        self.backgroundColor = UIColor.white
-        self.addSubview(gameStartButton)
-        //self.gameStartButton.backgroundColor = UIColor.RainbowColors.orange
-    }
-}
-
 extension CameraController: LuminaDelegate {
     func streamed(videoFrame: UIImage, with predictions: [LuminaRecognitionResult]?, from controller: LuminaViewController) {
+        if gameState == .objectDetected {
+            return
+        }
         guard let bestName = predictions?.first?.predictions?.first?.name else {
             return
         }
@@ -236,6 +222,15 @@ extension CameraController: LuminaDelegate {
             return
         }
         if bestConfidence >= 0.9 {
+            var objects = [ObjectEntry]()
+            if let cachedObjects = cachedScoreEntry?.objects {
+                objects = cachedObjects
+            }
+            let filteredObjects = objects.filter { $0.name == bestName }
+            if filteredObjects.count > 0 {
+                continueScanning()
+                return
+            }
             gameState = .detectionInProgress
             self.textPrompt = "Detecting: \(bestName)"
             consecutiveDetectionCount += 1
@@ -243,9 +238,13 @@ extension CameraController: LuminaDelegate {
                 objectDetected(label: bestName)
             }
         } else {
-            self.consecutiveDetectionCount = 0
-            gameState = .nothingDetected
+            continueScanning()
         }
+    }
+    
+    private func continueScanning() {
+        self.consecutiveDetectionCount = 0
+        gameState = .nothingDetected
     }
 }
 
@@ -262,30 +261,52 @@ extension CameraController {
         switch label {
         case "Apple":
             animateCheckImage(appleCheckImageView)
+            updateEntry(for: .apple)
         case "Bee":
             animateCheckImage(beeCheckImageView)
+            updateEntry(for: .bee)
         case "Jeans":
             animateCheckImage(jeansCheckImageView)
+            updateEntry(for: .jeans)
         case "Notebook":
             animateCheckImage(notebookCheckImageView)
+            updateEntry(for: .notebook)
         case "Plant":
             animateCheckImage(plantCheckImageView)
+            updateEntry(for: .plant)
         case "Shirt":
             animateCheckImage(shirtCheckImageView)
+            updateEntry(for: .shirt)
         default:
             print("unknown object detected")
         }
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
     }
     
-    // write function to actually save object to current game
+    private func updateEntry(for object: RainbowDetectedObject) {
+        guard var currentGame = cachedScoreEntry else {
+            return
+        }
+        var objects = [ObjectEntry]()
+        if let cachedObjects = currentGame.objects {
+            objects = cachedObjects
+        }
+        objects.append(ObjectEntry(name: object.rawValue, timestamp: Date()))
+        currentGame.objects = objects
+        do {
+            try ScoreEntry.ClientPersistence.save(entry: currentGame)
+            cachedScoreEntry = currentGame
+        } catch let error {
+            print("Received error trying to save game: \(error.localizedDescription)")
+        }
+    }
     
     private func animateCheckImage(_ view: UIImageView?) {
         guard let view = view else {
             return
         }
         UIView.animate(withDuration: 0.3) {
-            view.alpha = 1.0
+            view.alpha = 0.7
         }
     }
     

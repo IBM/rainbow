@@ -79,6 +79,7 @@
 		53AC587620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC586620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf */; };
 		53AC588520A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588420A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel */; };
 		53AC588720A914880031EDC9 /* ScoreEntry+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */; };
+		53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588820A9382B0031EDC9 /* GameStartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +190,7 @@
 		53AC586620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
 		53AC588420A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ProjectRainbowModel_1753554316.mlmodel; path = ../../../../Downloads/ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScoreEntry+CoreData.swift"; sourceTree = "<group>"; };
+		53AC588820A9382B0031EDC9 /* GameStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 			children = (
 				5341F39E209B5D0600AD37EF /* CameraController.swift */,
 				53AC585420A8D4E00031EDC9 /* GameTimer.swift */,
+				53AC588820A9382B0031EDC9 /* GameStartView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				5305A1C320A219DA0040A9A9 /* ScoreEntry+Client.swift in Sources */,
 				5305A1A420A219380040A9A9 /* Contracts.swift in Sources */,
 				5305A1BB20A219380040A9A9 /* Client.swift in Sources */,
+				53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */,
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
