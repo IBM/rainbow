@@ -46,6 +46,27 @@ class CameraController: LuminaViewController {
     @IBOutlet weak var shirtImageView: UIImageView?
     @IBOutlet weak var shirtCheckImageView: UIImageView?
     
+    @IBAction func bigUglyDemoRestartButtonTapped() {
+        self.appleCheckImageView?.alpha = 0.0
+        self.beeCheckImageView?.alpha = 0.0
+        self.jeansCheckImageView?.alpha = 0.0
+        self.plantCheckImageView?.alpha = 0.0
+        self.notebookCheckImageView?.alpha = 0.0
+        self.shirtCheckImageView?.alpha = 0.0
+        guard var currentGame = cachedScoreEntry else {
+            return
+        }
+        currentGame.objects = nil
+        currentGame.startDate = Date()
+        do {
+            try ScoreEntry.ClientPersistence.save(entry: currentGame)
+            cachedScoreEntry = currentGame
+            determineGameState()
+        } catch let error {
+            print("David's very temporary restart button failed - what a dweeb: \(error.localizedDescription).")
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
@@ -74,7 +95,7 @@ class CameraController: LuminaViewController {
                 //showStartView()// something is up with this method for now
                 startnewGame()
             } else {
-                let userGames = savedGames.filter { $0.username == "dokun1" }
+                let userGames = savedGames.filter { $0.username == "dokun1" } // this is just for now
                 if userGames.count == 0 {
                     showStartView()
                 } else {

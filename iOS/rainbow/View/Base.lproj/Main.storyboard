@@ -139,7 +139,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wl7-7S-oHG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="neS-VX-XST"/>
+                    <navigationItem key="navigationItem" title="Camera" id="neS-VX-XST">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="sO9-p1-uyz">
+                            <connections>
+                                <action selector="bigUglyDemoRestartButtonTapped" destination="iME-hB-Q7I" id="QAn-Xb-o29"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="appleCheckImageView" destination="pv6-l2-jZG" id="7Kl-ad-PRn"/>
                         <outlet property="appleImageView" destination="Y8s-Ge-Vck" id="C86-cF-g6W"/>
