@@ -18,54 +18,21 @@ enum GameCameraState {
     case objectDetected // this should last one second when the fireworks are going off
 }
 
-enum RainbowDetectedObject: String {
-    case apple = "Apple"
-    case bee = "Bee"
-    case jeans = "Jeans"
-    case notebook = "Notebook"
-    case plant = "Plant"
-    case shirt = "Shirt"
-}
-
 class CameraController: LuminaViewController {
     var cachedScoreEntry: ScoreEntry?
     var checkTimer: Timer?
     var gameState = GameCameraState.shouldStartNewGame
     var consecutiveDetectionCount = 0
-    
-    @IBOutlet weak var appleImageView: UIImageView?
-    @IBOutlet weak var appleCheckImageView: UIImageView?
-    @IBOutlet weak var beeImageView: UIImageView?
-    @IBOutlet weak var beeCheckImageView: UIImageView?
-    @IBOutlet weak var jeansImageView: UIImageView?
-    @IBOutlet weak var jeansCheckImageView: UIImageView?
-    @IBOutlet weak var notebookImageView: UIImageView?
-    @IBOutlet weak var notebookCheckImageView: UIImageView?
-    @IBOutlet weak var plantImageView: UIImageView?
-    @IBOutlet weak var plantCheckImageView: UIImageView?
-    @IBOutlet weak var shirtImageView: UIImageView?
-    @IBOutlet weak var shirtCheckImageView: UIImageView?
-    
-    @IBAction func bigUglyDemoRestartButtonTapped() {
-        self.appleCheckImageView?.alpha = 0.0
-        self.beeCheckImageView?.alpha = 0.0
-        self.jeansCheckImageView?.alpha = 0.0
-        self.plantCheckImageView?.alpha = 0.0
-        self.notebookCheckImageView?.alpha = 0.0
-        self.shirtCheckImageView?.alpha = 0.0
-        guard var currentGame = cachedScoreEntry else {
-            return
-        }
-        currentGame.objects = nil
-        currentGame.startDate = Date()
+    var gameConfigObjects: [ObjectConfig]? {
         do {
-            try ScoreEntry.ClientPersistence.save(entry: currentGame)
-            cachedScoreEntry = currentGame
-            determineGameState()
-        } catch let error {
-            print("David's very temporary restart button failed - what a dweeb: \(error.localizedDescription).")
+            let objects = try GameConfig.load()
+            return objects.sorted { $0.name < $1.name }
+        } catch {
+            return nil
         }
     }
+    var iconImageViews = [String: UIImageView]()
+    var iconCheckImageViews = [String: UIImageView]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -75,6 +42,35 @@ class CameraController: LuminaViewController {
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
         self.setSwitchButton(visible: false)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        drawInitialUI()
+    }
+    
+    private func drawInitialUI() {
+        guard let gameConfigObjects = gameConfigObjects else {
+            return
+        }
+        var topY = UIScreen.main.bounds.minY + self.navigationController!.navigationBar.frame.height + 110
+        let iconX = UIScreen.main.bounds.maxX - 50
+        let checkX = UIScreen.main.bounds.maxX - 80
+        for object in gameConfigObjects {
+            let imageView = UIImageView(frame: CGRect(x: iconX, y: topY, width: 40, height: 40))
+            imageView.contentMode = .scaleAspectFill
+            imageView.image = object.getWhiteImage()
+            imageView.alpha = 0.7
+            self.view.addSubview(imageView)
+            iconImageViews[object.name] = imageView
+            let imageCheckView = UIImageView(frame: CGRect(x: checkX, y: topY + 12, width: 20, height: 20))
+            imageCheckView.contentMode = .scaleAspectFill
+            imageCheckView.image = #imageLiteral(resourceName: "checkmark")
+            imageCheckView.alpha = 0.0
+            self.view.addSubview(imageCheckView)
+            iconCheckImageViews[object.name] = imageCheckView
+            topY += 60
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -141,46 +137,6 @@ class CameraController: LuminaViewController {
         }
     }
     
-    //swiftlint:disable cyclomatic_complexity
-    func bringAllIconsToFront() {
-        if let appleImageView = appleImageView {
-            self.view.bringSubview(toFront: appleImageView)
-        }
-        if let appleCheckImageView = appleCheckImageView {
-            self.view.bringSubview(toFront: appleCheckImageView)
-        }
-        if let beeImageView = beeImageView {
-            self.view.bringSubview(toFront: beeImageView)
-        }
-        if let beeCheckImageView = beeCheckImageView {
-            self.view.bringSubview(toFront: beeCheckImageView)
-        }
-        if let jeansImageView = jeansImageView {
-            self.view.bringSubview(toFront: jeansImageView)
-        }
-        if let jeansCheckImageView = jeansCheckImageView {
-            self.view.bringSubview(toFront: jeansCheckImageView)
-        }
-        if let notebookImageView = notebookImageView {
-            self.view.bringSubview(toFront: notebookImageView)
-        }
-        if let notebookCheckImageView = notebookCheckImageView {
-            self.view.bringSubview(toFront: notebookCheckImageView)
-        }
-        if let plantImageView = plantImageView {
-            self.view.bringSubview(toFront: plantImageView)
-        }
-        if let plantCheckImageView = plantCheckImageView {
-            self.view.bringSubview(toFront: plantCheckImageView)
-        }
-        if let shirtImageView = shirtImageView {
-            self.view.bringSubview(toFront: shirtImageView)
-        }
-        if let shirtCheckImageView = shirtCheckImageView {
-            self.view.bringSubview(toFront: shirtCheckImageView)
-        }
-    }
-    
     @objc func updateTimeLabel() {
         if gameState == .nothingDetected {
             self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
@@ -191,6 +147,15 @@ class CameraController: LuminaViewController {
 // MARK: State Check On Load
 
 extension CameraController {
+    fileprivate func bringAllIconsToFront() {
+        for pair in iconImageViews {
+            view.bringSubview(toFront: pair.value)
+        }
+        for pair in iconCheckImageViews {
+            view.bringSubview(toFront: pair.value)
+        }
+    }
+    
     fileprivate func gameCurrentlyInProgress() -> Bool {
         return true
         // leaving this commented for now because something is up with showing the what is supposed to be overly simple "start game button"
@@ -252,6 +217,15 @@ extension CameraController: LuminaDelegate {
                 continueScanning()
                 return
             }
+            guard let gameConfigObjects = gameConfigObjects else {
+                continueScanning()
+                return
+            }
+            let filteredConfigObjects = gameConfigObjects.filter { $0.name == bestName }
+            if filteredConfigObjects.count == 0 || filteredConfigObjects.count > 1 {
+                continueScanning()
+                return
+            }
             gameState = .detectionInProgress
             self.textPrompt = "Detecting: \(bestName)"
             consecutiveDetectionCount += 1
@@ -279,32 +253,12 @@ extension CameraController {
     
     func updateObjectUI(for label: String) {
         textPrompt = "You found the \(label)!"
-        switch label {
-        case "Apple":
-            animateCheckImage(appleCheckImageView)
-            updateEntry(for: .apple)
-        case "Bee":
-            animateCheckImage(beeCheckImageView)
-            updateEntry(for: .bee)
-        case "Jeans":
-            animateCheckImage(jeansCheckImageView)
-            updateEntry(for: .jeans)
-        case "Notebook":
-            animateCheckImage(notebookCheckImageView)
-            updateEntry(for: .notebook)
-        case "Plant":
-            animateCheckImage(plantCheckImageView)
-            updateEntry(for: .plant)
-        case "Shirt":
-            animateCheckImage(shirtCheckImageView)
-            updateEntry(for: .shirt)
-        default:
-            print("unknown object detected")
-        }
+        animateCheckImage(iconCheckImageViews[label])
+        updateEntry(for: label)
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
     }
     
-    private func updateEntry(for object: RainbowDetectedObject) {
+    private func updateEntry(for object: String) {
         guard var currentGame = cachedScoreEntry else {
             return
         }
@@ -312,7 +266,7 @@ extension CameraController {
         if let cachedObjects = currentGame.objects {
             objects = cachedObjects
         }
-        objects.append(ObjectEntry(name: object.rawValue, timestamp: Date()))
+        objects.append(ObjectEntry(name: object, timestamp: Date()))
         currentGame.objects = objects
         do {
             try ScoreEntry.ClientPersistence.save(entry: currentGame)
