@@ -8,10 +8,14 @@
 
 import UIKit
 import CoreData
+import BMSCore
+import BMSPush
+import UserNotifications
+import UserNotificationsUI
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -26,7 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
-
+        
+        /// MARK: push notificaiton settings
+        BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
+        // MARK: remove the hardcoding in future
+        BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
+        BMSPushClient.sharedInstance.delegate = self
         return true
     }
 
@@ -63,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // very weak error handling, but not sure what else we can do for something this simple
                 print("Error while loading persistent store container: \(error), \(error.userInfo)")
             }
+            print("Store Description: \(storeDescription)")
         })
         return container
     }()
@@ -81,5 +91,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // MARK: - push notification
+    func onChangePermission(status: Bool) {
+        print("Push Notification is enabled:  \(status)" as NSString)
+    }
+    
+    func application (_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+        let token = tokenParts.joined()
+        // 2. Print device token to use for PNs payloads
+        print("Device Token: \(token)")
+        
+        let push =  BMSPushClient.sharedInstance
+        push.registerWithDeviceToken(deviceToken: deviceToken) { (response, statusCode, error) -> Void in
+            if error.isEmpty {
+                print( "Response during device registration : \(String(describing: response))")
+                print( "status code during device registration : \(String(describing: statusCode))")                
+            } else {
+                print( "Error during device registration \(error) ")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        let message: String = "Error registering for push notifications: \(error.localizedDescription)"
+        self.showAlert(title: "Registering for notifications", message: message)
+    }
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        guard let apsDict = (userInfo as NSDictionary).value(forKey: "aps") as? NSDictionary else {
+            print("Error while casting aps")
+            return
+        }
+        
+        guard let alertDict = apsDict.value(forKey: "alert") as? NSDictionary else {
+            print("Error while casting alert")
+            return
+        }
+        
+        guard let bodyString = alertDict.value(forKey: "body") as? String else {
+            print("Error while casting body")
+            return
+        }
+        print(bodyString)
+    }
+    
+    func showAlert (title: String, message: String) {
+        // create the alert
+        let alert = UIAlertController.init(title: title as String, message: message as String, preferredStyle: UIAlertControllerStyle.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        // show the alert
+        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            
+            guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject] else {
+                return [:]
+            }
+            return result
+        }
+        return [:]
+    }
 }

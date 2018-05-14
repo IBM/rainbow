@@ -103,15 +103,41 @@ extension ScoreEntry {
             getDatabase(from: client) { database, error in
                 guard let database = database else {
                     return completion(nil, error)
-                }
+                }                                
                 
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [], callback: { (documents, error) in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(false)], callback: { (documents, error) in
                     guard let documents = documents else {
                         return completion(nil, error)
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document["value"], _id: document["id"].stringValue) {
+                        if let newEntry = ScoreEntry(document: document["value"]["doc"], _id: document["id"].stringValue) {
+                            var newEntryCopy = newEntry
+                            newEntryCopy.deviceIdentifier = nil
+                            newEntryCopy.objects = nil
+                            newEntryCopy.id = nil
+                            entries.append(newEntryCopy)
+                        }
+                    }
+                    completion(entries, nil)
+                })
+                
+            }
+        }
+        
+        static func getScores(from client: CouchDBClient, completion: @escaping (_ entries: [ScoreEntry]?, _ error: Error?) -> Void) {
+            getDatabase(from: client) { database, error in
+                guard let database = database else {
+                    return completion(nil, error)
+                }
+                
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(true)], callback: { (documents, error) in
+                    guard let documents = documents else {
+                        return completion(nil, error)
+                    }
+                    var entries = [ScoreEntry]()
+                    for document in documents["rows"].arrayValue {
+                        if let newEntry = ScoreEntry(timeTaken: document["key"].doubleValue, document: document["value"]) {
                             entries.append(newEntry)
                         }
                     }
