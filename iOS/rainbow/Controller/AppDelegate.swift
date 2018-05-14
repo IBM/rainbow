@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "rainbow")
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores(completionHandler: { storeDescription, error in
             if let error = error as NSError? {
                 // very weak error handling, but not sure what else we can do for something this simple
                 print("Error while loading persistent store container: \(error), \(error.userInfo)")
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         self.showAlert(title: "Registering for notifications", message: message)
     }
 
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         guard let apsDict = (userInfo as NSDictionary).value(forKey: "aps") as? NSDictionary else {
             print("Error while casting aps")
@@ -151,10 +151,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         self.window!.rootViewController!.present(alert, animated: true, completion: nil)
     }
     
-    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    func convertStringToDictionary(text: String) -> [String: AnyObject]? {
         if let data = text.data(using: String.Encoding.utf8) {
             
-            guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject] else {
+            guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else {
                 return [:]
             }
             return result
