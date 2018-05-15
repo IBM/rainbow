@@ -34,12 +34,15 @@ class GameTimer {
         let minutesDiv: div_t = div(hoursDiv.rem, 60)
         let minutes: Int = Int(minutesDiv.quot)
         let seconds = Int(minutesDiv.rem)
+        let secondsString = seconds == 1 ? "\(seconds) second" : "\(seconds) seconds"
+        let minutesString = minutes == 1 ? "\(minutes) minute" : "\(minutes) minutes"
+        let hoursString = hours == 1 ? "\(hours) hour" : "\(hours) hours"
         if minutes < 1 {
-            return "\(seconds) seconds"
+            return secondsString
         } else if hours < 1 {
-            return "\(minutes) minutes"
+            return "\(minutesString), \(secondsString)"
         } else {
-            return "\(hours) hours, \(minutes) minutes"
+            return "\(hoursString), \(minutesString)"
         }
     }
 }

@@ -207,7 +207,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sar-R0-byq">
-                                            <rect key="frame" x="30" y="24" width="70" height="70"/>
+                                            <rect key="frame" x="15" y="24" width="70" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="0Iv-km-dwk"/>
                                                 <constraint firstAttribute="height" constant="70" id="Yr4-eD-SBM"/>
@@ -222,7 +222,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUl-xG-pu6">
-                                            <rect key="frame" x="108" y="24" width="203" height="30"/>
+                                            <rect key="frame" x="93" y="24" width="218" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="3mj-fW-Qi9"/>
                                             </constraints>
@@ -231,7 +231,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdf-v8-QGl">
-                                            <rect key="frame" x="108" y="62" width="203" height="30"/>
+                                            <rect key="frame" x="93" y="62" width="218" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="qya-wu-MzA"/>
                                             </constraints>
@@ -250,7 +250,7 @@
                                         <constraint firstItem="nSn-Gb-NlY" firstAttribute="leading" secondItem="fdf-v8-QGl" secondAttribute="trailing" constant="8" id="dzn-UE-C5h"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="fdf-v8-QGl" secondAttribute="bottom" constant="17" id="eFZ-rJ-qMU"/>
                                         <constraint firstItem="sar-R0-byq" firstAttribute="top" secondItem="CWE-dQ-RzZ" secondAttribute="topMargin" constant="13" id="jCG-4u-HaU"/>
-                                        <constraint firstItem="sar-R0-byq" firstAttribute="leading" secondItem="CWE-dQ-RzZ" secondAttribute="leadingMargin" constant="14" id="jfN-s1-bol"/>
+                                        <constraint firstItem="sar-R0-byq" firstAttribute="leading" secondItem="CWE-dQ-RzZ" secondAttribute="leadingMargin" constant="-1" id="jfN-s1-bol"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

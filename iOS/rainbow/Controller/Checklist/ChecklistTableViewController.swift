@@ -75,7 +75,7 @@ class ChecklistTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as? ChecklistTableViewCell else {
             return defaultCell
         }
-        guard let configObject = gameConfigObjects?[indexPath.row], let objects = currentGame?.objects else {
+        guard let configObject = gameConfigObjects?[indexPath.row] else {
             return defaultCell
         }
         cell.iconView?.image = configObject.getColorImage()
@@ -83,6 +83,9 @@ class ChecklistTableViewController: UITableViewController {
         cell.checkboxView?.layer.borderColor = UIColor.RainbowColors.blue.cgColor
         cell.checkboxView?.layer.borderWidth = 0.3
         cell.minutesFoundLabel?.text = "-"
+        guard let objects = currentGame?.objects else {
+            return cell
+        }
         let filteredObjects = objects.filter { $0.name == configObject.name }
         if let first = filteredObjects.first {
             cell.checkboxView?.image = #imageLiteral(resourceName: "blueCheckmark")
