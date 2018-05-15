@@ -16,14 +16,8 @@ class ChecklistTableViewCell: UITableViewCell {
 }
 
 class ChecklistTableViewController: UITableViewController {
-    var gameConfigObjects: [ObjectConfig]? {
-        do {
-            let objects = try GameConfig.load()
-            return objects.sorted { $0.name < $1.name }
-        } catch {
-            return nil
-        }
-    }
+    var gameConfigObjects: [ObjectConfig]?
+    
     var currentGame: ScoreEntry? {
         do {
             let possibleGames = try ScoreEntry.ClientPersistence.getAll()
@@ -47,19 +41,16 @@ class ChecklistTableViewController: UITableViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("switched to checklist")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        do {
+            let objects = try GameConfig.load()
+            gameConfigObjects = objects.sorted { $0.name < $1.name }
+            tableView.reloadData()
+        } catch {
+            print("error while loading game config")
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -84,13 +75,22 @@ class ChecklistTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistTableViewCell", for: indexPath) as? ChecklistTableViewCell else {
             return defaultCell
         }
-        guard let configObject = gameConfigObjects?[indexPath.row] else {
+        guard let configObject = gameConfigObjects?[indexPath.row], let objects = currentGame?.objects else {
             return defaultCell
         }
         cell.iconView?.image = configObject.getColorImage()
         cell.itemLabel?.text = configObject.name
-        cell.minutesFoundLabel?.text = "69 Minutes"
-        cell.checkboxView?.image = #imageLiteral(resourceName: "checkmark")
+        cell.checkboxView?.layer.borderColor = UIColor.RainbowColors.blue.cgColor
+        cell.checkboxView?.layer.borderWidth = 0.3
+        cell.minutesFoundLabel?.text = "-"
+        let filteredObjects = objects.filter { $0.name == configObject.name }
+        if let first = filteredObjects.first {
+            cell.checkboxView?.image = #imageLiteral(resourceName: "blueCheckmark")
+            guard let currentStartDate = currentGame?.startDate else {
+                return cell
+            }
+            cell.minutesFoundLabel?.text = GameTimer.getTimeFoundString(startDate: currentStartDate, objectTimestamp: first.timestamp)
+        }
         return cell
     }
 }

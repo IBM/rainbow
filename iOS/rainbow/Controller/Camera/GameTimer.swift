@@ -25,4 +25,21 @@ class GameTimer {
         secondsString = seconds < 10 ? "0\(seconds)" : "\(seconds)"
         return "Time Elapsed\n\(hoursString):\(minutesString):\(secondsString)"
     }
+    
+    static func getTimeFoundString(startDate: Date, objectTimestamp: Date) -> String {
+        let interval = startDate.timeIntervalSince(objectTimestamp)
+        let totalInterval = interval * -1
+        let hoursDiv: div_t = div(Int32(totalInterval), 3600)
+        let hours: Int = Int(hoursDiv.quot)
+        let minutesDiv: div_t = div(hoursDiv.rem, 60)
+        let minutes: Int = Int(minutesDiv.quot)
+        let seconds = Int(minutesDiv.rem)
+        if minutes < 1 {
+            return "\(seconds) seconds"
+        } else if hours < 1 {
+            return "\(minutes) minutes"
+        } else {
+            return "\(hours) hours, \(minutes) minutes"
+        }
+    }
 }
