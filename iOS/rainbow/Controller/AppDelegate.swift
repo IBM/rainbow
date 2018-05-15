@@ -64,21 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     }
 
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "rainbow")
-        container.loadPersistentStores(completionHandler: { storeDescription, error in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // very weak error handling, but not sure what else we can do for something this simple
                 print("Error while loading persistent store container: \(error), \(error.userInfo)")
             }
-            print("Store Description: \(storeDescription)")
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
