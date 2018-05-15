@@ -14,15 +14,23 @@ func setupBasicAuth(app: App) {
     // Setup a dictionary of users. In general, these would be read in from a database
     // Encode salted passwords using a one way encoding such as PBKDF2 or bcrypt or etc.
     // For more information, see https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet
-  
-    /// MARK: this could be fetched from the database. keeping it here for now
-    var userDB: [String: EncodedPassword]?  {
+    
+    guard let client = app.services.couchDBService else {
+        Log.error("Client not found")
+        return
+    }
+    
+    var userDB: [String: EncodedPassword] = [:]    
+    Authentication.Persistence.get(from: client) { auth, error in
+        guard let auth = auth else {
+            Log.error("Authentication not loaded from database")
+            return
+        }
         do {
-            let dbUser =  [ "watsonml" : try EncodedPassword(withName: "rainbowml", password: "(C0r3MLiPh0neGam3!)", encoding: .PBKDF2)]
-            return dbUser
+            userDB[auth.username] = try EncodedPassword(withName: auth.username, password: auth.password, encoding: .PBKDF2)
         } catch {
             Log.error("Error while encoding")
-            return nil
+            return
         }
     }
     
@@ -31,10 +39,6 @@ func setupBasicAuth(app: App) {
     // checking the username, password combination.
     // Callback returns a user profile if (username,password) is valid. Else, nil.
     let basicCredentials = CredentialsHTTPBasic( verifyPassword: { userId, password, callback in
-        guard let userDB = userDB else {
-            Log.error("No user found!")
-            return
-        }
         if let user = userDB[userId] {
             do {
                 let result: Bool = try user.verifyPassword(withPassword: password)

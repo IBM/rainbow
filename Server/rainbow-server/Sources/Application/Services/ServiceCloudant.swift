@@ -4,10 +4,10 @@ import CouchDB
 import Configuration
 
 func initializeServiceCloudant(cloudEnv: CloudEnv) throws -> CouchDBClient {
-    #if os(macOS)
+    #if os(Linux)
     Log.info("Running on macOS - defaulting to localhost for Cloudant DB")
     return CouchDBClient(connectionProperties: ConnectionProperties(host: "localhost", port: 5984, secured: false))
-    #elseif os(Linux)
+    #elseif os(macOS)
     // Load credentials for Cloudant/CouchDB using CloudEnvironment
     guard let cloudantCredentials = cloudEnv.getCloudantCredentials(name: "cloudant") else {
         throw ServiceInitializationError.cloudantError("Could not load credentials for Cloudant.")

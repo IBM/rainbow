@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
                 // very weak error handling, but not sure what else we can do for something this simple
                 print("Error while loading persistent store container: \(error), \(error.userInfo)")
             }
-            print("Store Description: \(storeDescription)")
+//            print("Store Description: \(storeDescription)")
         })
         return container
     }()
