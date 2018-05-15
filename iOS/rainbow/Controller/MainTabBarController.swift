@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
             }
             do {
                 let savedEntry = try ScoreEntry.ClientPersistence.get()
-                if savedEntry.deviceIdentifier == nil && savedEntry.username == nil && savedEntry.avatarImage == nil {
+                if savedEntry.deviceIdentifier == nil {
                     AvatarClient.getRandomAvatar { avatar, error in
                         if error != nil {
                             // we have an error

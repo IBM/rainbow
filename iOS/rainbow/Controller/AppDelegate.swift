@@ -40,8 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         // MARK: remove the hardcoding in future
         BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
         BMSPushClient.sharedInstance.delegate = self
-        
-
         return true
     }
 
@@ -124,8 +122,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
                     }
                     let decodedResponse = try JSONDecoder().decode(PushClientResponse.self, from: data)
                     NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: decodedResponse.deviceId)
-                } catch {
-                    print("We got an error")
+                } catch let error {
+                    print("Error during parsing response: \(error.localizedDescription)")
                 }
             } else {
                 print( "Error during device registration \(error) ")
@@ -134,8 +132,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        let message: String = "Error registering for push notifications: \(error.localizedDescription)"
+        var message: String = "Error registering for push notifications: \(error.localizedDescription)"
+        #if targetEnvironment(simulator)
+        message.append(". You can still test the UI")
+        #endif
         self.showAlert(title: "Registering for notifications", message: message)
+        NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: "SimulatorDeviceIdentifier")
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

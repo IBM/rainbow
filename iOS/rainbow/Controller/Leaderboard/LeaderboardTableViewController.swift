@@ -15,29 +15,6 @@ class LeaderboardTableViewController: UITableViewController {
         print("switched to leaderboard")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        ScoreEntry.ServerCalls.getAll { entries, error in
-            if error != nil {
-                print(String(describing: entries))
-            }
-        }
-        //swiftlint:disable force_try
-        let entry = try! ScoreEntry.ClientPersistence.get()
-        print("got entries")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -59,7 +59,12 @@
 		5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F39E209B5D0600AD37EF /* CameraController.swift */; };
 		5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */; };
 		5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */; };
+		5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */; };
+		5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
+		5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
+		5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
+		53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */; };
 		53AC585520A8D4E00031EDC9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC585420A8D4E00031EDC9 /* GameTimer.swift */; };
 		53AC586920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */; };
 		53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */; };
@@ -108,6 +113,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */,
 				53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */,
 				53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
 				531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */,
@@ -175,7 +181,10 @@
 		5341F39E209B5D0600AD37EF /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
+		5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+WatsonML.swift"; sourceTree = "<group>"; };
+		5365924120AB8F0900F76E37 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = SOURCE_ROOT; };
 		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
+		53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
 		53AC585420A8D4E00031EDC9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -199,11 +208,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */,
 				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
 				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */,
 				531AAF9820A4B9C80056B24B /* Lumina.framework in Frameworks */,
 				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
+				5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */,
 				53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */,
 				53AC589220AA2FF50031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				53AC589120AA2FF50031EDC9 /* BMSCore.framework in Frameworks */,
@@ -351,7 +362,9 @@
 		5341F4C9209BEA3A00AD37EF /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
+				53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */,
 				5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */,
+				5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -426,6 +439,7 @@
 		A259438820A0A06C000B5935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5365924120AB8F0900F76E37 /* SVProgressHUD.framework */,
 				53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */,
 				53AC588E20AA2FF50031EDC9 /* BMSCore.framework */,
 				53AC589020AA2FF50031EDC9 /* BMSPush.framework */,
@@ -612,6 +626,7 @@
 				53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */,
 				53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */,
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
+				53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
@@ -632,6 +647,7 @@
 				5305A1B820A219380040A9A9 /* CircuitBreaker.swift in Sources */,
 				5305A1A720A219380040A9A9 /* Extensions.swift in Sources */,
 				5305A1B920A219380040A9A9 /* Collection.swift in Sources */,
+				5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */,
 				5305A1A620A219380040A9A9 /* CodableExtensions.swift in Sources */,
 				5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */,
 				5305A1B620A219380040A9A9 /* StringExtensions.swift in Sources */,
