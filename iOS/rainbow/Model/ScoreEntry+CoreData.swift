@@ -261,4 +261,3 @@ extension ScoreEntry {
         }
     }
 }
-

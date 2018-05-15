@@ -42,6 +42,7 @@ class CameraController: LuminaViewController {
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
         self.setSwitchButton(visible: false)
+        LuminaViewController.loggingLevel = .info
     }
     
     override func viewDidLoad() {
@@ -72,9 +73,9 @@ class CameraController: LuminaViewController {
             topY += 60
         }
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         determineGameState()
     }
 
@@ -99,7 +100,7 @@ class CameraController: LuminaViewController {
                         self.cachedScoreEntry = firstGame
                         if let objects = firstGame.objects {
                             for object in objects {
-                                updateObjectUI(for: object.name)
+                                iconCheckImageViews[object.name]?.alpha = 0.7
                             }
                         }
                         continueGame()
@@ -132,9 +133,6 @@ class CameraController: LuminaViewController {
         checkTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         checkTimer?.fire()
         bringAllIconsToFront()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.startCamera()
-        }
     }
     
     @objc func updateTimeLabel() {
