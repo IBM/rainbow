@@ -14,7 +14,7 @@ extension UIApplication {
         let dictionary = ProcessInfo.processInfo.environment
         return dictionary["DEBUGMODE"] != nil
     }
-
+    
     var rainbowServerBaseURL: String {
         let baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbowserver.mybluemix.net" // need to update when we deploy
         return baseURL
@@ -24,6 +24,7 @@ extension UIApplication {
 enum RainbowClientError: Error {
     case couldNotCreateClient
     case couldNotAddNewEntry
+    case couldNotGetEntries
 }
 
 extension ScoreEntry {
@@ -32,11 +33,24 @@ extension ScoreEntry {
             guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
-            client.post("/entries", data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
+            client.post("/watsonml/entries", data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
                 if error != nil {
                     return completion(nil, RainbowClientError.couldNotAddNewEntry)
                 } else {
                     return completion(savedEntry, nil)
+                }
+            }
+        }
+        
+        static func getAll(completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
+            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+                return completion(nil, RainbowClientError.couldNotCreateClient)
+            }
+            client.get("/watsonml/leaderboard") { (entries: [ScoreEntry]?, error: RequestError?) in
+                if error != nil {
+                    return completion(nil, RainbowClientError.couldNotGetEntries)
+                } else {
+                    return completion(entries, nil)
                 }
             }
         }

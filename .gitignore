@@ -72,3 +72,5 @@ fastlane/test_output
 # The frameworks folder is where they should go, but keep the frameworks themselves out of Xcode
 Frameworks/*
 
+**/WatsonMLClientCredentials.json
+

@@ -18,6 +18,12 @@ class LeaderboardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ScoreEntry.ServerCalls.getAll { entries, error in
+            if(error != nil){
+                    print(entries)
+            }
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
