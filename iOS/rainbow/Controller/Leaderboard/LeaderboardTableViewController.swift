@@ -7,35 +7,75 @@
 //
 
 import UIKit
+import SVProgressHUD
+
+class LeaderboardTableViewCell: UITableViewCell {
+    @IBOutlet weak var positionLabel: UILabel?
+    @IBOutlet weak var avatarImageView: UIImageView?
+    @IBOutlet weak var usernameLabel: UILabel?
+    @IBOutlet weak var timeElapsedLabel: UILabel?
+}
 
 class LeaderboardTableViewController: UITableViewController {
-
+    var leaderboard: [ScoreEntry]?
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("switched to leaderboard")
+        SVProgressHUD.setFont(UIFont.RainbowFonts.medium(size: 16))
+        SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)
+        SVProgressHUD.setForegroundColor(UIColor.white)
+        SVProgressHUD.show(withStatus: "Getting Leaderboard...")
+        getLeaderboard()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+    
+    private func getLeaderboard() {
+        ScoreEntry.ServerCalls.getAll { entries, error in
+            DispatchQueue.main.async {
+                if error != nil {
+                    SVProgressHUD.showError(withStatus: "Could not load leaderboard")
+                } else if entries != nil {
+                    SVProgressHUD.dismiss()
+                    self.leaderboard = entries
+                    self.tableView.reloadData()
+                } else {
+                    print("Something unexpected happened")
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let leaderboard = leaderboard {
+            return leaderboard.count
+        } else {
+            return 0
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let defaultCell = LeaderboardTableViewCell(style: .default, reuseIdentifier: "leaderboardTableViewCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "leaderboardTableViewCell", for: indexPath) as? LeaderboardTableViewCell else {
+            return defaultCell
+        }
+        guard let leaderboard = leaderboard else {
+            return defaultCell
+        }
+        let currentEntry = leaderboard[indexPath.row]
+        cell.usernameLabel?.text = currentEntry.username
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
