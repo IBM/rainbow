@@ -30,6 +30,21 @@ extension ScoreEntry {
         objects = objectEntries
         totalTime = nil
     }
+    
+    init?(document: JSON) {
+        id = document["id"].stringValue
+        deviceIdentifier = nil
+        username = document["username"].stringValue
+        guard let potentialStartDate = document["startDate"].dateTime else {
+            return nil
+        }
+        avatarImage = nil
+        startDate = potentialStartDate
+        finishDate = document["finishDate"].dateTime
+        objects = nil
+        totalTime = nil
+    }
+    
 
     mutating func toJSONDocument() -> JSON? {        
         do {

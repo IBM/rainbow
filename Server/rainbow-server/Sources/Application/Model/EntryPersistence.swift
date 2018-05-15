@@ -111,11 +111,8 @@ extension ScoreEntry {
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document["value"]["doc"], _id: document["id"].stringValue) {
-                            var newEntryCopy = newEntry
-                            newEntryCopy.deviceIdentifier = nil
-                            newEntryCopy.objects = nil                            
-                            entries.append(newEntryCopy)
+                        if let newEntry = ScoreEntry(document: document["value"]) {
+                            entries.append(newEntry)
                         }
                     }
                     completion(entries, nil)
