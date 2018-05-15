@@ -78,6 +78,7 @@
 		53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53AC589820AA30030031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
 		53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53BAF34620AB336500583BE6 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +185,7 @@
 		53AC588E20AA2FF50031EDC9 /* BMSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSCore.framework; path = Carthage/Build/iOS/BMSCore.framework; sourceTree = SOURCE_ROOT; };
 		53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = SOURCE_ROOT; };
 		53AC589020AA2FF50031EDC9 /* BMSPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSPush.framework; path = Carthage/Build/iOS/BMSPush.framework; sourceTree = SOURCE_ROOT; };
+		53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		5305A18520A219120040A9A9 /* KituraKit */ = {
 			isa = PBXGroup;
 			children = (
+				53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */,
 				5305A19020A219370040A9A9 /* BodyFormat.swift */,
 				5305A19E20A219380040A9A9 /* BreakerError.swift */,
 				5305A19F20A219380040A9A9 /* Bulkhead.swift */,
@@ -534,6 +537,7 @@
 				53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */,
 				53AC587620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf in Resources */,
 				53AC586920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf in Resources */,
+				53BAF34620AB336500583BE6 /* WatsonMLClientCredentials.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
