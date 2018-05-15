@@ -55,5 +55,14 @@ extension ScoreEntry {
                 }
             }
         }
+        
+        static func getImage(with identifier: String, completion: @escaping (_ image: UIImage?, _ error: RestError?) -> Void) {
+            let request = RestRequest(method: .post, url: "https://241de9e3-46be-4625-a256-76eab61af5da-bluemix.cloudant.com/rainbow-entries/_design/avatarImage/_search/avatarImageIdx", containsSelfSignedCert: false)
+            guard let config = KituraServerCredentials.loadedCredentials() else {
+                return
+            }
+            request.credentials = Credentials.basicAuthentication(username: config.cloudant.username, password: config.cloudant.password)
+            request.messageBody = Data(base64Encoded: "{\"q\": \"_id:\(identifier)\"}")
+        }
     }
 }

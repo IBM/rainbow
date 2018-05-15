@@ -16,28 +16,10 @@
 
 import Foundation
 
-struct WatsonMLConfig: Codable {
-    var username: String
-    var password: String
-}
+
 
 /// A client side library for using REST requests in a web application.
 public class KituraKit {
-    
-    private var loadedCredentials: WatsonMLConfig? {
-        guard let path = Bundle.main.path(forResource: "WatsonMLClientCredentials", ofType: "json") else {
-            return nil
-        }
-        
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            let decoded = try JSONDecoder().decode(WatsonMLConfig.self, from: data)
-            return decoded
-        }catch{
-            return nil
-        }
-        
-    }
     
     /// Default URL used for setting up the routes when no URL is provided in the initializer.
     public static var defaultBaseURL = URL(string: "http://localhost:8080")!
@@ -91,10 +73,10 @@ public class KituraKit {
     public func get<O: Codable>(_ route: String, respondWith: @escaping CodableResultClosure<O>) {
         let url = baseURL.appendingPathComponent(route)
         let request = RestRequest(url: url.absoluteString)
-        guard let config = loadedCredentials else {
+        guard let config = KituraServerCredentials.loadedCredentials() else {
             return
         }
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        request.credentials = Credentials.basicAuthentication(username: config.routes.username, password: config.routes.password)
         request.handle(respondWith)
     }
     
@@ -118,10 +100,10 @@ public class KituraKit {
     public func get<O: Codable>(_ route: String, identifier: Identifier, respondWith: @escaping CodableResultClosure<O>) {
         let url = baseURL.appendingPathComponent(route).appendingPathComponent(identifier.value)
         let request = RestRequest(method: .get, url: url.absoluteString)
-        guard let config = loadedCredentials else {
+        guard let config = KituraServerCredentials.loadedCredentials() else {
             return
         }
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        request.credentials = Credentials.basicAuthentication(username: config.routes.username, password: config.routes.password)
         request.handle(respondWith)
         
     }
@@ -146,10 +128,10 @@ public class KituraKit {
         let url = baseURL.appendingPathComponent(route)
         let encoded = try? JSONEncoder().encode(data)
         let request = RestRequest(method: .post, url: url.absoluteString)
-        guard let config = loadedCredentials else {
+        guard let config = KituraServerCredentials.loadedCredentials() else {
             return
         }
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        request.credentials = Credentials.basicAuthentication(username: config.routes.username, password: config.routes.password)
         request.messageBody = encoded
         request.handle(respondWith)
     }
@@ -175,10 +157,10 @@ public class KituraKit {
         let encoded = try? JSONEncoder().encode(data)
         let request = RestRequest(method: .post, url: url.absoluteString)
         request.messageBody = encoded
-        guard let config = loadedCredentials else {
+        guard let config = KituraServerCredentials.loadedCredentials() else {
             return
         }
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        request.credentials = Credentials.basicAuthentication(username: config.routes.username, password: config.routes.password)
         request.responseData { response in
             switch response.result {
             case .success(let data):
@@ -230,10 +212,10 @@ public class KituraKit {
         let encoded = try? JSONEncoder().encode(data)
         let request = RestRequest(method: .put, url: url.absoluteString)
         request.messageBody = encoded
-        guard let config = loadedCredentials else {
+        guard let config = KituraServerCredentials.loadedCredentials() else {
             return
         }
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        request.credentials = Credentials.basicAuthentication(username: config.routes.username, password: config.routes.password)
         request.handle(respondWith)
     }
     

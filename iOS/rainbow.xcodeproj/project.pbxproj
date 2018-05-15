@@ -87,6 +87,7 @@
 		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
+		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,7 @@
 		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
+				53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */,
 				53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */,
 				5305A18520A219120040A9A9 /* KituraKit */,
 			);
@@ -657,6 +660,7 @@
 				5305A1B520A219380040A9A9 /* RestUtilities.swift in Sources */,
 				53AC588520A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */,
+				53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */,
 				5305A1AB20A219380040A9A9 /* ClosureAliases.swift in Sources */,
 				5305A1A520A219380040A9A9 /* Snapshot.swift in Sources */,
 				5305A1C020A219380040A9A9 /* JSON.swift in Sources */,

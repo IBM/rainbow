@@ -12,6 +12,7 @@ import BMSCore
 import BMSPush
 import UserNotifications
 import UserNotificationsUI
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
@@ -34,7 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
-        
+        SVProgressHUD.setFont(UIFont.RainbowFonts.medium(size: 15))
+        SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)
+        SVProgressHUD.setForegroundColor(UIColor.white)
         /// MARK: push notificaiton settings
         BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
         // MARK: remove the hardcoding in future

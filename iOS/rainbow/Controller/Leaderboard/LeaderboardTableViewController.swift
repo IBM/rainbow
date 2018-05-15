@@ -21,9 +21,7 @@ class LeaderboardTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("switched to leaderboard")
-        SVProgressHUD.setFont(UIFont.RainbowFonts.medium(size: 16))
-        SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)
-        SVProgressHUD.setForegroundColor(UIColor.white)
+    
         SVProgressHUD.show(withStatus: "Getting Leaderboard...")
         getLeaderboard()
     }
@@ -62,6 +60,10 @@ class LeaderboardTableViewController: UITableViewController {
             return 0
         }
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let defaultCell = LeaderboardTableViewCell(style: .default, reuseIdentifier: "leaderboardTableViewCell")
@@ -73,6 +75,10 @@ class LeaderboardTableViewController: UITableViewController {
         }
         let currentEntry = leaderboard[indexPath.row]
         cell.usernameLabel?.text = currentEntry.username
+        cell.positionLabel?.text = "\(indexPath.row + 1)"
+        if let startDate = currentEntry.startDate, let finishDate = currentEntry.finishDate {
+            cell.timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
+        }
         return cell
     }
     
