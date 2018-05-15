@@ -23,6 +23,9 @@ class LeaderboardTableViewController: UITableViewController {
                 print(String(describing: entries))
             }
         }
+        //swiftlint:disable force_try
+        let entry = try! ScoreEntry.ClientPersistence.get()
+        print("got entries")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

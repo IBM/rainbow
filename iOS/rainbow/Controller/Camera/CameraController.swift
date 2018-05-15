@@ -87,27 +87,18 @@ class CameraController: LuminaViewController {
     
     func determineGameState() {
         do {
-            let savedGames = try ScoreEntry.ClientPersistence.getAll()
-            if savedGames.count == 0 {
+            let savedGame = try ScoreEntry.ClientPersistence.get()
+            if savedGame.startDate == nil {
                 //showStartView()// something is up with this method for now
                 startnewGame()
-            } else {
-                let userGames = savedGames.filter { $0.username == "dokun1" } // this is just for now
-                if userGames.count == 0 {
-                    showStartView()
-                } else {
-                    if let firstGame = userGames.first {
-                        self.cachedScoreEntry = firstGame
-                        if let objects = firstGame.objects {
-                            for object in objects {
-                                iconCheckImageViews[object.name]?.alpha = 0.7
-                            }
-                        }
-                        continueGame()
-                    } else {
-                        showStartView()
+            } else { // the user has started a game because a start date exists
+                self.cachedScoreEntry = savedGame
+                if let objects = savedGame.objects {
+                    for object in objects {
+                        iconCheckImageViews[object.name]?.alpha = 0.7
                     }
                 }
+                continueGame()
             }
         } catch let error {
             print("caught error: \(error) - starting new game")
@@ -116,12 +107,11 @@ class CameraController: LuminaViewController {
     }
     
     func startnewGame() {
-        cachedScoreEntry = ScoreEntry(id: "ksdhfiusegfio", username: "dokun1", startDate: Date(), finishDate: nil, deviceIdentifier: "guhdgsrg", avatarImage: nil, avatarURL: nil, objects: nil)
-        guard let cachedScoreEntry = cachedScoreEntry else {
-            return
-        }
         do {
-            try ScoreEntry.ClientPersistence.save(entry: cachedScoreEntry)
+            var savedScoreEntry = try ScoreEntry.ClientPersistence.get()
+            savedScoreEntry.startDate = Date()
+            try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
+            cachedScoreEntry = savedScoreEntry
             continueGame()
         } catch let error {
             print("there was an error: \(error.localizedDescription)")

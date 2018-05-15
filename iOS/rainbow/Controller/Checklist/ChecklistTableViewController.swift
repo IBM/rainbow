@@ -20,22 +20,8 @@ class ChecklistTableViewController: UITableViewController {
     
     var currentGame: ScoreEntry? {
         do {
-            let possibleGames = try ScoreEntry.ClientPersistence.getAll()
-            let yourGames = possibleGames.filter { $0.username == "dokun1" }
-            let yourSortedGames = yourGames.sorted {
-                if yourGames.count == 1 {
-                    return true
-                } else {
-                    guard let firstStartDate = $0.startDate else {
-                        return false
-                    }
-                    guard let secondStartDate = $1.startDate else {
-                        return false
-                    }
-                    return firstStartDate < secondStartDate
-                }
-            }
-            return yourSortedGames.first
+            let savedGame = try ScoreEntry.ClientPersistence.get()
+            return savedGame
         } catch {
             return nil
         }

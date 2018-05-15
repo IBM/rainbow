@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="-1532" y="-1316"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="crZ-pI-Ubc">
             <objects>
-                <tabBarController id="o5g-Dy-Ubp" sceneMemberID="viewController">
+                <tabBarController id="o5g-Dy-Ubp" customClass="MainTabBarController" customModule="rainbow" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2cp-YX-H5g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

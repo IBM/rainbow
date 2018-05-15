@@ -17,6 +17,10 @@ import UserNotificationsUI
 class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     
     var window: UIWindow?
+    
+    struct PushClientResponse: Codable {
+        var deviceId: String
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -36,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         // MARK: remove the hardcoding in future
         BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
         BMSPushClient.sharedInstance.delegate = self
+        
+
         return true
     }
 
@@ -103,12 +109,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         let token = tokenParts.joined()
         // 2. Print device token to use for PNs payloads
         print("Device Token: \(token)")
-        
+
         let push =  BMSPushClient.sharedInstance
         push.registerWithDeviceToken(deviceToken: deviceToken) { (response, statusCode, error) -> Void in
             if error.isEmpty {
                 print( "Response during device registration : \(String(describing: response))")
-                print( "status code during device registration : \(String(describing: statusCode))")                
+                print( "status code during device registration : \(String(describing: statusCode))")
+                guard let response = response else {
+                    return
+                }
+                do {
+                    guard let data = response.data(using: .utf8) else {
+                        return
+                    }
+                    let decodedResponse = try JSONDecoder().decode(PushClientResponse.self, from: data)
+                    NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: decodedResponse.deviceId)
+                } catch {
+                    print("We got an error")
+                }
             } else {
                 print( "Error during device registration \(error) ")
             }

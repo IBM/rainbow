@@ -79,6 +79,9 @@
 		53AC589820AA30030031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
 		53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53BAF34620AB336500583BE6 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */; };
+		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
+		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
+		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +189,9 @@
 		53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = SOURCE_ROOT; };
 		53AC589020AA2FF50031EDC9 /* BMSPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSPush.framework; path = Carthage/Build/iOS/BMSPush.framework; sourceTree = SOURCE_ROOT; };
 		53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
+		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
+		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
+		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +383,8 @@
 			isa = PBXGroup;
 			children = (
 				53381901209757B900DE66CB /* AppDelegate.swift */,
+				53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */,
+				53BAF34A20AB3E3500583BE6 /* AvatarAPI */,
 				5341F4C5209BE9F200AD37EF /* Booklet */,
 				5341F3AD209B6DBE00AD37EF /* Camera */,
 				5341F4C6209BEA1900AD37EF /* Checklist */,
@@ -404,6 +412,15 @@
 				53AC586620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		53BAF34A20AB3E3500583BE6 /* AvatarAPI */ = {
+			isa = PBXGroup;
+			children = (
+				53BAF34720AB3BB200583BE6 /* AvatarClient.swift */,
+				53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */,
+			);
+			path = AvatarAPI;
 			sourceTree = "<group>";
 		};
 		A259438820A0A06C000B5935 /* Frameworks */ = {
@@ -533,6 +550,7 @@
 				53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */,
 				5338190F209757BB00DE66CB /* LaunchScreen.storyboard in Resources */,
 				5338190C209757BB00DE66CB /* Assets.xcassets in Resources */,
+				53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */,
 				53381907209757B900DE66CB /* Main.storyboard in Resources */,
 				53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */,
 				53AC587620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf in Resources */,
@@ -592,6 +610,7 @@
 				5305A1A420A219380040A9A9 /* Contracts.swift in Sources */,
 				5305A1BB20A219380040A9A9 /* Client.swift in Sources */,
 				53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */,
+				53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */,
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
@@ -604,6 +623,7 @@
 				5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */,
 				5305A1AA20A219380040A9A9 /* MonitorCollection.swift in Sources */,
 				531AAF8820A4B0690056B24B /* AssetViewController.swift in Sources */,
+				53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */,
 				5305A1B420A219380040A9A9 /* Invocation.swift in Sources */,
 				5305A1B720A219380040A9A9 /* QueryDecoder.swift in Sources */,
 				5305A1BE20A219380040A9A9 /* RestRequest.swift in Sources */,

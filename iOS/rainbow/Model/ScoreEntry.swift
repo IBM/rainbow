@@ -14,13 +14,12 @@ struct ObjectEntry: Codable {
 }
 
 struct ScoreEntry: Codable {
-    //swiftlint:disable identifier_name
     var id: String?
     var username: String
     var startDate: Date?
     var finishDate: Date?
     var deviceIdentifier: String?
     var avatarImage: Data?
-    var avatarURL: String?
     var objects: [ObjectEntry]?
+    var totalTime: Double?
 }
