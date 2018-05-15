@@ -13,7 +13,6 @@ extension ScoreEntry {
         id = _id
         deviceIdentifier = document["deviceIdentifier"].stringValue
         username = document["username"].stringValue
-        avatarURL = document["avatarURL"].stringValue
         guard let potentialStartDate = document["startDate"].dateTime else {
             return nil
         }
@@ -32,13 +31,7 @@ extension ScoreEntry {
         totalTime = nil
     }
 
-    mutating func toJSONDocument() -> JSON? {
-        guard let avatarImage = self.avatarImage else {
-            // we need to discuss how to proceed if there is no avatar - my guess is to bail
-            return nil
-        }
-        self.avatarURL = AvatarObjectStorage.save(image: avatarImage, to: nil)
-        self.avatarImage = nil
+    mutating func toJSONDocument() -> JSON? {        
         do {
             let encoded = try JSONEncoder().encode(self)
             return JSON(data: encoded)

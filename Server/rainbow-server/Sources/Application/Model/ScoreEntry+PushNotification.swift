@@ -13,8 +13,7 @@ extension ScoreEntry {
         id = doc["_id"].stringValue
         deviceIdentifier = doc["deviceIdentifier"].stringValue
         username = doc["username"].stringValue
-        totalTime = timeTaken
-        avatarURL = nil
+        totalTime = timeTaken        
         avatarImage = nil
         startDate = nil
         finishDate = nil

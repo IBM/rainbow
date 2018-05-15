@@ -114,8 +114,7 @@ extension ScoreEntry {
                         if let newEntry = ScoreEntry(document: document["value"]["doc"], _id: document["id"].stringValue) {
                             var newEntryCopy = newEntry
                             newEntryCopy.deviceIdentifier = nil
-                            newEntryCopy.objects = nil
-                            newEntryCopy.id = nil
+                            newEntryCopy.objects = nil                            
                             entries.append(newEntryCopy)
                         }
                     }

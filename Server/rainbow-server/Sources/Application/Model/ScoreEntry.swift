@@ -19,8 +19,7 @@ struct ScoreEntry: Codable {
     var startDate: Date?
     var finishDate: Date?
     var deviceIdentifier: String?
-    var avatarImage: Data?
-    var avatarURL: String?
+    var avatarImage: Data?    
     var objects: [ObjectEntry]?
     var totalTime: Double?
 }
