@@ -13,6 +13,7 @@ class ParticipantViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView?
     @IBOutlet weak var startDateLabel: UILabel?
     @IBOutlet weak var timeElapsedLabel: UILabel?
+    @IBOutlet weak var scavagingSinceLabel: UILabel?
     @IBOutlet weak var progressLabel: UILabel?
     @IBOutlet weak var progressSlider: UISlider?
     
@@ -34,7 +35,14 @@ class ParticipantViewController: UIViewController {
                 return
             }
             startDateLabel?.text = startDate.watsonFormatted
-            timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: Date())
+            if let finishDate = savedEntry.finishDate {
+                scavagingSinceLabel?.text = "You finished!"
+                timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
+            } else {
+                scavagingSinceLabel?.text = "Scavaging since"
+                timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: Date())
+            }
+            
             let config = try GameConfig.load()
             var foundObjects = [ObjectEntry]()
             if let savedFoundObjects = savedEntry.objects {

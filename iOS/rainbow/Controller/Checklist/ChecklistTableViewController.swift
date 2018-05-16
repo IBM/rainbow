@@ -69,6 +69,7 @@ class ChecklistTableViewController: UITableViewController {
         cell.itemLabel?.text = configObject.name
         cell.checkboxView?.layer.borderColor = UIColor.RainbowColors.blue.cgColor
         cell.checkboxView?.layer.borderWidth = 0.3
+        cell.checkboxView?.image = nil
         cell.minutesFoundLabel?.text = "-"
         guard let objects = currentGame?.objects else {
             return cell
