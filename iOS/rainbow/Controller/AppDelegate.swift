@@ -12,11 +12,16 @@ import BMSCore
 import BMSPush
 import UserNotifications
 import UserNotificationsUI
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     
     var window: UIWindow?
+    
+    struct PushClientResponse: Codable {
+        var deviceId: String
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,7 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
-        
+        SVProgressHUD.setFont(UIFont.RainbowFonts.medium(size: 15))
+        SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)
+        SVProgressHUD.setForegroundColor(UIColor.white)
         /// MARK: push notificaiton settings
         BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
         // MARK: remove the hardcoding in future
@@ -103,12 +110,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         let token = tokenParts.joined()
         // 2. Print device token to use for PNs payloads
         print("Device Token: \(token)")
-        
+
         let push =  BMSPushClient.sharedInstance
         push.registerWithDeviceToken(deviceToken: deviceToken) { (response, statusCode, error) -> Void in
             if error.isEmpty {
                 print( "Response during device registration : \(String(describing: response))")
-                print( "status code during device registration : \(String(describing: statusCode))")                
+                print( "status code during device registration : \(String(describing: statusCode))")
+                guard let response = response else {
+                    return
+                }
+                do {
+                    guard let data = response.data(using: .utf8) else {
+                        return
+                    }
+                    let decodedResponse = try JSONDecoder().decode(PushClientResponse.self, from: data)
+                    NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: decodedResponse.deviceId)
+                } catch let error {
+                    print("Error during parsing response: \(error.localizedDescription)")
+                }
             } else {
                 print( "Error during device registration \(error) ")
             }
@@ -116,8 +135,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        let message: String = "Error registering for push notifications: \(error.localizedDescription)"
+        var message: String = "Error registering for push notifications: \(error.localizedDescription)"
+        #if targetEnvironment(simulator)
+        message.append(". You can still test the UI")
+        #endif
         self.showAlert(title: "Registering for notifications", message: message)
+        NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: "SimulatorDeviceIdentifier")
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

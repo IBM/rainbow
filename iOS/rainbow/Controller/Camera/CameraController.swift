@@ -8,8 +8,8 @@
 
 import Foundation
 import Lumina
-import SpriteKit
 import AudioToolbox
+import SVProgressHUD
 
 enum GameCameraState {
     case shouldStartNewGame // when the game should be started, or has finished and could be restarted
@@ -82,49 +82,37 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
-        pauseCamera()
     }
     
     func determineGameState() {
         do {
-            let savedGames = try ScoreEntry.ClientPersistence.getAll()
-            if savedGames.count == 0 {
+            let savedGame = try ScoreEntry.ClientPersistence.get()
+            if savedGame.startDate == nil {
                 //showStartView()// something is up with this method for now
                 startnewGame()
-            } else {
-                let userGames = savedGames.filter { $0.username == "dokun1" } // this is just for now
-                if userGames.count == 0 {
-                    showStartView()
-                } else {
-                    if let firstGame = userGames.first {
-                        self.cachedScoreEntry = firstGame
-                        if let objects = firstGame.objects {
-                            for object in objects {
-                                iconCheckImageViews[object.name]?.alpha = 0.7
-                            }
-                        }
-                        continueGame()
-                    } else {
-                        showStartView()
+            } else { // the user has started a game because a start date exists
+                self.cachedScoreEntry = savedGame
+                if let objects = savedGame.objects {
+                    for object in objects {
+                        iconCheckImageViews[object.name]?.alpha = 0.7
                     }
                 }
+                continueGame()
             }
-        } catch let error {
-            print("caught error: \(error) - starting new game")
+        } catch {
             startnewGame()
         }
     }
     
     func startnewGame() {
-        cachedScoreEntry = ScoreEntry(id: "ksdhfiusegfio", username: "dokun1", startDate: Date(), finishDate: nil, deviceIdentifier: "guhdgsrg", avatarImage: nil, avatarURL: nil, objects: nil)
-        guard let cachedScoreEntry = cachedScoreEntry else {
-            return
-        }
         do {
-            try ScoreEntry.ClientPersistence.save(entry: cachedScoreEntry)
+            var savedScoreEntry = try ScoreEntry.ClientPersistence.get()
+            savedScoreEntry.startDate = Date()
+            try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
+            cachedScoreEntry = savedScoreEntry
             continueGame()
-        } catch let error {
-            print("there was an error: \(error.localizedDescription)")
+        } catch {
+            SVProgressHUD.showError(withStatus: "Could not start new game")
         }
     }
     
@@ -270,7 +258,7 @@ extension CameraController {
             try ScoreEntry.ClientPersistence.save(entry: currentGame)
             cachedScoreEntry = currentGame
         } catch let error {
-            print("Received error trying to save game: \(error.localizedDescription)")
+            SVProgressHUD.showError(withStatus: "Received error trying to save game: \(error.localizedDescription)")
         }
     }
     

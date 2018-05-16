@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChecklistTableViewCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView?
@@ -20,22 +21,8 @@ class ChecklistTableViewController: UITableViewController {
     
     var currentGame: ScoreEntry? {
         do {
-            let possibleGames = try ScoreEntry.ClientPersistence.getAll()
-            let yourGames = possibleGames.filter { $0.username == "dokun1" }
-            let yourSortedGames = yourGames.sorted {
-                if yourGames.count == 1 {
-                    return true
-                } else {
-                    guard let firstStartDate = $0.startDate else {
-                        return false
-                    }
-                    guard let secondStartDate = $1.startDate else {
-                        return false
-                    }
-                    return firstStartDate < secondStartDate
-                }
-            }
-            return yourSortedGames.first
+            let savedGame = try ScoreEntry.ClientPersistence.get()
+            return savedGame
         } catch {
             return nil
         }
@@ -48,7 +35,7 @@ class ChecklistTableViewController: UITableViewController {
             gameConfigObjects = objects.sorted { $0.name < $1.name }
             tableView.reloadData()
         } catch {
-            print("error while loading game config")
+            SVProgressHUD.showError(withStatus: "Could not load game configuration")
         }
         
     }
@@ -95,5 +82,9 @@ class ChecklistTableViewController: UITableViewController {
             cell.minutesFoundLabel?.text = GameTimer.getTimeFoundString(startDate: currentStartDate, objectTimestamp: first.timestamp)
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -59,7 +59,12 @@
 		5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F39E209B5D0600AD37EF /* CameraController.swift */; };
 		5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */; };
 		5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */; };
+		5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */; };
+		5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
+		5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
+		5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
+		53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */; };
 		53AC585520A8D4E00031EDC9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC585420A8D4E00031EDC9 /* GameTimer.swift */; };
 		53AC586920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */; };
 		53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */; };
@@ -79,6 +84,10 @@
 		53AC589820AA30030031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
 		53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53BAF34620AB336500583BE6 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */; };
+		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
+		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
+		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
+		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +114,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */,
 				53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */,
 				53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
 				531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */,
@@ -172,7 +182,10 @@
 		5341F39E209B5D0600AD37EF /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
+		5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+WatsonML.swift"; sourceTree = "<group>"; };
+		5365924120AB8F0900F76E37 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = SOURCE_ROOT; };
 		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
+		53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
 		53AC585420A8D4E00031EDC9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -186,6 +199,10 @@
 		53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = SOURCE_ROOT; };
 		53AC589020AA2FF50031EDC9 /* BMSPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSPush.framework; path = Carthage/Build/iOS/BMSPush.framework; sourceTree = SOURCE_ROOT; };
 		53BAF34520AB336500583BE6 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
+		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
+		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
+		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,11 +210,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */,
 				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
 				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */,
 				531AAF9820A4B9C80056B24B /* Lumina.framework in Frameworks */,
 				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
+				5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */,
 				53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */,
 				53AC589220AA2FF50031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				53AC589120AA2FF50031EDC9 /* BMSCore.framework in Frameworks */,
@@ -345,7 +364,9 @@
 		5341F4C9209BEA3A00AD37EF /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
+				53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */,
 				5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */,
+				5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -357,6 +378,7 @@
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
+				53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */,
 				53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */,
 				5305A18520A219120040A9A9 /* KituraKit */,
 			);
@@ -377,6 +399,8 @@
 			isa = PBXGroup;
 			children = (
 				53381901209757B900DE66CB /* AppDelegate.swift */,
+				53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */,
+				53BAF34A20AB3E3500583BE6 /* AvatarAPI */,
 				5341F4C5209BE9F200AD37EF /* Booklet */,
 				5341F3AD209B6DBE00AD37EF /* Camera */,
 				5341F4C6209BEA1900AD37EF /* Checklist */,
@@ -406,9 +430,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		53BAF34A20AB3E3500583BE6 /* AvatarAPI */ = {
+			isa = PBXGroup;
+			children = (
+				53BAF34720AB3BB200583BE6 /* AvatarClient.swift */,
+				53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */,
+			);
+			path = AvatarAPI;
+			sourceTree = "<group>";
+		};
 		A259438820A0A06C000B5935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5365924120AB8F0900F76E37 /* SVProgressHUD.framework */,
 				53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */,
 				53AC588E20AA2FF50031EDC9 /* BMSCore.framework */,
 				53AC589020AA2FF50031EDC9 /* BMSPush.framework */,
@@ -533,6 +567,7 @@
 				53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */,
 				5338190F209757BB00DE66CB /* LaunchScreen.storyboard in Resources */,
 				5338190C209757BB00DE66CB /* Assets.xcassets in Resources */,
+				53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */,
 				53381907209757B900DE66CB /* Main.storyboard in Resources */,
 				53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */,
 				53AC587620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf in Resources */,
@@ -592,7 +627,9 @@
 				5305A1A420A219380040A9A9 /* Contracts.swift in Sources */,
 				5305A1BB20A219380040A9A9 /* Client.swift in Sources */,
 				53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */,
+				53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */,
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
+				53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
@@ -604,6 +641,7 @@
 				5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */,
 				5305A1AA20A219380040A9A9 /* MonitorCollection.swift in Sources */,
 				531AAF8820A4B0690056B24B /* AssetViewController.swift in Sources */,
+				53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */,
 				5305A1B420A219380040A9A9 /* Invocation.swift in Sources */,
 				5305A1B720A219380040A9A9 /* QueryDecoder.swift in Sources */,
 				5305A1BE20A219380040A9A9 /* RestRequest.swift in Sources */,
@@ -612,6 +650,7 @@
 				5305A1B820A219380040A9A9 /* CircuitBreaker.swift in Sources */,
 				5305A1A720A219380040A9A9 /* Extensions.swift in Sources */,
 				5305A1B920A219380040A9A9 /* Collection.swift in Sources */,
+				5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */,
 				5305A1A620A219380040A9A9 /* CodableExtensions.swift in Sources */,
 				5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */,
 				5305A1B620A219380040A9A9 /* StringExtensions.swift in Sources */,
@@ -621,6 +660,7 @@
 				5305A1B520A219380040A9A9 /* RestUtilities.swift in Sources */,
 				53AC588520A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */,
+				53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */,
 				5305A1AB20A219380040A9A9 /* ClosureAliases.swift in Sources */,
 				5305A1A520A219380040A9A9 /* Snapshot.swift in Sources */,
 				5305A1C020A219380040A9A9 /* JSON.swift in Sources */,
