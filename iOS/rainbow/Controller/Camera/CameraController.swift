@@ -82,14 +82,16 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
+        //self.pauseCamera()
     }
     
     func determineGameState() {
         do {
             let savedGame = try ScoreEntry.ClientPersistence.get()
-            if savedGame.startDate == nil {
-                //showStartView()// something is up with this method for now
-                startnewGame()
+            if savedGame.startDate == nil { // first game has not started
+                showStartView()
+            } else if savedGame.startDate != nil, savedGame.finishDate != nil { // game completed, should prompt for restart
+                showStartView()
             } else { // the user has started a game because a start date exists
                 self.cachedScoreEntry = savedGame
                 if let objects = savedGame.objects {
@@ -100,14 +102,19 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-            startnewGame()
+            startNewGame()
         }
     }
     
-    func startnewGame() {
+    func startNewGame() {
         do {
+            for view in iconCheckImageViews {
+                view.1.alpha = 0.0
+            }
             var savedScoreEntry = try ScoreEntry.ClientPersistence.get()
             savedScoreEntry.startDate = Date()
+            savedScoreEntry.finishDate = nil
+            savedScoreEntry.objects = nil
             try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
             cachedScoreEntry = savedScoreEntry
             continueGame()
@@ -121,6 +128,7 @@ class CameraController: LuminaViewController {
         checkTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         checkTimer?.fire()
         bringAllIconsToFront()
+        self.startCamera()
     }
     
     @objc func updateTimeLabel() {
@@ -142,29 +150,18 @@ extension CameraController {
         }
     }
     
-    fileprivate func gameCurrentlyInProgress() -> Bool {
-        return true
-        // leaving this commented for now because something is up with showing the what is supposed to be overly simple "start game button"
-//        guard let cachedScoreEntry = cachedScoreEntry else {
-//            return false
-//        }
-//        if cachedScoreEntry.startDate != nil {
-//            return cachedScoreEntry.finishDate == nil
-//        } else {
-//            return false
-//        }
-    }
-    
     fileprivate func hideStartView(passedView: UIView) {
         UIView.animate(withDuration: 0.2, animations: {
             passedView.alpha = 0.0
         }, completion: { _ in
             passedView.removeFromSuperview()
             self.startCamera()
+            self.startNewGame()
         })
     }
     
     fileprivate func showStartView() {
+        self.pauseCamera()
         let startView = GameStartView(frame: self.view.frame)
         startView.delegate = self
         startView.gameStartButton.backgroundColor = UIColor.RainbowColors.orange
@@ -178,7 +175,7 @@ protocol GameStartViewDelegate: class {
 
 extension CameraController: GameStartViewDelegate {
     func gameStartViewButtonTapped(passedView: UIView) {
-        hideStartView(passedView: view)
+        hideStartView(passedView: passedView)
     }
 }
 
@@ -241,7 +238,31 @@ extension CameraController {
         textPrompt = "You found the \(label)!"
         animateCheckImage(iconCheckImageViews[label])
         updateEntry(for: label)
+        checkGameComplete()
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
+    }
+    
+    func checkGameComplete() {
+        do {
+            let config = try GameConfig.load()
+            guard let objects = cachedScoreEntry?.objects else {
+                return
+            }
+            if config.count == objects.count {
+                guard var finishedGame = cachedScoreEntry else {
+                    return
+                }
+                finishedGame.finishDate = Date()
+                try ScoreEntry.ClientPersistence.save(entry: finishedGame)
+                let savedGame = try ScoreEntry.ClientPersistence.get()
+                if savedGame.finishDate != nil, savedGame.startDate != nil {
+                    pauseCamera()
+                    showStartView()
+                }
+            }
+        } catch {
+            return
+        }
     }
     
     private func updateEntry(for object: String) {

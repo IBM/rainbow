@@ -429,6 +429,7 @@
                         <outlet property="nameTextField" destination="QH0-nn-Skq" id="CgK-dR-xax"/>
                         <outlet property="progressLabel" destination="UEf-HW-pqO" id="ph5-o6-jFb"/>
                         <outlet property="progressSlider" destination="64Y-c9-9yw" id="U1F-y8-dMd"/>
+                        <outlet property="scavagingSinceLabel" destination="6gp-6H-gtM" id="Otw-Tu-w12"/>
                         <outlet property="startDateLabel" destination="Awk-lk-4Pb" id="L8l-bP-Lxp"/>
                         <outlet property="timeElapsedLabel" destination="4lp-35-6Jx" id="wDF-i7-AAh"/>
                     </connections>
