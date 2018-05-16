@@ -1,4 +1,14 @@
 //
+//  GuideViewController.swift
+//  rainbow
+//
+//  Created by Anton McConville on 2018-05-11.
+//  Copyright © 2018 IBM. All rights reserved.
+//
+
+import Foundation
+
+//
 //  BookletItemController.swift
 //
 //  Created by Anton McConville on 2018-05-08.
@@ -7,15 +17,15 @@
 
 import UIKit
 
-class BookletItemController: UIViewController {
-
+class BookletGuideController: BookletBaseController {
+    
     @IBOutlet var contentImageView: UIImageView?
     @IBOutlet var pageTitleView: UILabel?
     @IBOutlet var subtitleView: UILabel?
     @IBOutlet var statement: UITextView?
     @IBOutlet var subtextView: UILabel?
     @IBOutlet var button: UIButton?
-
+    
     @IBAction func openLink(_ sender: UIButton) {
         performSegue(withIdentifier: "webkitSegue", sender: self)
     }
@@ -31,12 +41,11 @@ class BookletItemController: UIViewController {
             webview.link = self.link
         }
     }
-
+    
     // MARK: - Variables
-    var itemIndex: Int = 0
-
+    
     var link: String = ""
-
+    
     var image: UIImage = UIImage() {
         didSet {
             if let imageView = contentImageView {
@@ -78,13 +87,15 @@ class BookletItemController: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        contentImageView!.image = image
-//        pageTitleView!.text = titleString
-//        subtitleView!.text = subTitleString
-//        statement?.text = statementString
-//        link = linkString
-//        
-//        button?.layer.cornerRadius = 20
-//        button?.clipsToBounds = true
+        
+
+                contentImageView!.image = image
+                pageTitleView!.text = titleString
+        //        subtitleView!.text = subTitleString
+                statement?.text = statementString
+        //        link = linkString
+        //
+        //        button?.layer.cornerRadius = 20
+        //        button?.clipsToBounds = true
     }
 }
