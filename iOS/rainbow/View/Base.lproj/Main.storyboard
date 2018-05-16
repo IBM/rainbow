@@ -351,7 +351,7 @@
                                 <color key="textColor" red="0.0" green="0.61176470589999998" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLZ-42-0rm">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Progress:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QLZ-42-0rm">
                                 <rect key="frame" x="16" y="304" width="119" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="PVu-jv-o3F"/>
@@ -387,7 +387,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="viewLeaderboardTapped" destination="oP6-Af-YJH" eventType="touchUpInside" id="zUY-Gx-kuZ"/>
                                     <segue destination="e7U-Sg-naZ" kind="show" id="blZ-Nt-urM"/>
                                 </connections>
                             </button>

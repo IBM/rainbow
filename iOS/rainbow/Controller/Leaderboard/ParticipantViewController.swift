@@ -47,8 +47,4 @@ class ParticipantViewController: UIViewController {
             print("")
         }
     }
-    
-    @IBAction func viewLeaderboardTapped() {
-        print("should go to leaderboard")
-    }
 }

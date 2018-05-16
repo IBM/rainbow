@@ -43,7 +43,6 @@ class GameConfig {
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             let decoded = try JSONDecoder().decode([ObjectConfig].self, from: data)
-            print("something")
             return decoded
         } catch {
             throw GameConfigError.incorrectlyFormattedFile

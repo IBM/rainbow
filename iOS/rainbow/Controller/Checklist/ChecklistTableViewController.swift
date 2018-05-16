@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChecklistTableViewCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView?
@@ -34,7 +35,7 @@ class ChecklistTableViewController: UITableViewController {
             gameConfigObjects = objects.sorted { $0.name < $1.name }
             tableView.reloadData()
         } catch {
-            print("error while loading game config")
+            SVProgressHUD.showError(withStatus: "Could not load game configuration")
         }
         
     }

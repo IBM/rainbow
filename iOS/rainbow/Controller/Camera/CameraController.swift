@@ -8,8 +8,8 @@
 
 import Foundation
 import Lumina
-import SpriteKit
 import AudioToolbox
+import SVProgressHUD
 
 enum GameCameraState {
     case shouldStartNewGame // when the game should be started, or has finished and could be restarted
@@ -82,7 +82,6 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
-        pauseCamera()
     }
     
     func determineGameState() {
@@ -100,8 +99,7 @@ class CameraController: LuminaViewController {
                 }
                 continueGame()
             }
-        } catch let error {
-            print("caught error: \(error) - starting new game")
+        } catch {
             startnewGame()
         }
     }
@@ -113,8 +111,8 @@ class CameraController: LuminaViewController {
             try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
             cachedScoreEntry = savedScoreEntry
             continueGame()
-        } catch let error {
-            print("there was an error: \(error.localizedDescription)")
+        } catch {
+            SVProgressHUD.showError(withStatus: "Could not start new game")
         }
     }
     
@@ -260,7 +258,7 @@ extension CameraController {
             try ScoreEntry.ClientPersistence.save(entry: currentGame)
             cachedScoreEntry = currentGame
         } catch let error {
-            print("Received error trying to save game: \(error.localizedDescription)")
+            SVProgressHUD.showError(withStatus: "Received error trying to save game: \(error.localizedDescription)")
         }
     }
     
