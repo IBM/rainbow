@@ -63,6 +63,7 @@
 		5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
 		5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
+		538D191420ACB03100742E17 /* Fireworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D191320ACB03100742E17 /* Fireworks.swift */; };
 		53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */; };
 		53AC585520A8D4E00031EDC9 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC585420A8D4E00031EDC9 /* GameTimer.swift */; };
 		53AC586920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */; };
@@ -187,6 +188,7 @@
 		5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+WatsonML.swift"; sourceTree = "<group>"; };
 		5365924120AB8F0900F76E37 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = SOURCE_ROOT; };
 		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
+		538D191320ACB03100742E17 /* Fireworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireworks.swift; sourceTree = "<group>"; };
 		53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
 		53AC585420A8D4E00031EDC9 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				5341F39E209B5D0600AD37EF /* CameraController.swift */,
 				53AC585420A8D4E00031EDC9 /* GameTimer.swift */,
 				53AC588820A9382B0031EDC9 /* GameStartView.swift */,
+				538D191320ACB03100742E17 /* Fireworks.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
+				538D191420ACB03100742E17 /* Fireworks.swift in Sources */,
 				5305A1B120A219380040A9A9 /* Monitor.swift in Sources */,
 				5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */,
 				5305A1AA20A219380040A9A9 /* MonitorCollection.swift in Sources */,

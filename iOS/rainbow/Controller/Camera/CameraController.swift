@@ -82,7 +82,6 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
-        //self.pauseCamera()
     }
     
     func determineGameState() {
@@ -237,6 +236,9 @@ extension CameraController {
     func updateObjectUI(for label: String) {
         textPrompt = "You found the \(label)!"
         animateCheckImage(iconCheckImageViews[label])
+        if let point = iconCheckImageViews[label]?.center {
+            Fireworks.show(for: self.view, at: point, with: UIColor.RainbowColors.red)
+        }
         updateEntry(for: label)
         checkGameComplete()
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
@@ -255,9 +257,11 @@ extension CameraController {
                 finishedGame.finishDate = Date()
                 try ScoreEntry.ClientPersistence.save(entry: finishedGame)
                 let savedGame = try ScoreEntry.ClientPersistence.get()
-                if savedGame.finishDate != nil, savedGame.startDate != nil {
+                if let startDate = savedGame.startDate, let finishDate = savedGame.finishDate {
                     pauseCamera()
                     showStartView()
+                    Fireworks.show(for: self.view, at: self.view.center, with: UIColor.RainbowColors.blue)
+                    SVProgressHUD.showSuccess(withStatus: "Congratulations! You finished the game in \(GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate))")
                 }
             }
         } catch {
