@@ -40,14 +40,14 @@ class PushNotification {
     /// 1- knocked from top spot of leaderboard
     /// 2- knocked from top 10
     public func sendNotification(scoreEntry: ScoreEntry) -> Void {
+        guard let couchDBClient = couchDBClient else {
+            return
+        }
+ 
         //find position of the score in the array
         let index = self.scoresOrderedByTotalTime.index(where: { (score) -> Bool in
             scoreEntry.id == score.id
         })
-
-        guard let couchDBClient = couchDBClient else {
-            return
-        }
         
         //check if the user has been dropped from top 1 and top 10
         ScoreEntry.Persistence.getScores(from: couchDBClient, completion: { scoreEntryArray, error in
@@ -59,6 +59,14 @@ class PushNotification {
             let indexFromDb = scoreEntryArray.index(where: { (score) -> Bool in
                 scoreEntry.id == score.id
             })
+            
+            if indexFromDb  == nil {
+                return
+            }else if index == nil {
+                self.scoresOrderedByTotalTime = scoreEntryArray
+                return
+            }
+            
             let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
             if(index! == 0 && indexFromDb! > 0){
                 //send notification

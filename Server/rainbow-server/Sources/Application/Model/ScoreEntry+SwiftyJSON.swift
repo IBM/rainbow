@@ -13,11 +13,8 @@ extension ScoreEntry {
         id = _id
         deviceIdentifier = document["deviceIdentifier"].stringValue
         username = document["username"].stringValue
-        guard let potentialStartDate = document["startDate"].dateTime else {
-            return nil
-        }
-        avatarImage = nil
-        startDate = potentialStartDate
+        startDate = document["startDate"].dateTime
+        avatarImage = nil        
         finishDate = document["finishDate"].dateTime
         var objectEntries = [ObjectEntry]()
         for object in document["objects"].arrayValue {

@@ -17,7 +17,9 @@ extension UIApplication {
     
     var rainbowServerBaseURL: String {
         var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        baseURL = "https://rainbow-scavenger-viz-rec.mybluemix.net"
+        //baseURL = "https://rainbow-scavenger-viz-rec.mybluemix.net"
+        //baseURL = "http://localhost:8080"
+        baseURL = "http://cd99fc79.ngrok.io"
         return baseURL
     }
 }
@@ -27,6 +29,7 @@ enum RainbowClientError: Error {
     case couldNotAddNewEntry
     case couldNotGetEntries
     case couldNotLoadImage
+    case couldNotUpdateEntry
 }
 
 struct ImageResponseField: Codable {
@@ -50,6 +53,22 @@ extension ScoreEntry {
             client.post("/watsonml/entries", data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
                 if error != nil {
                     return completion(nil, RainbowClientError.couldNotAddNewEntry)
+                } else {
+                    return completion(savedEntry, nil)
+                }
+            }
+        }
+        
+        static func update(entry: ScoreEntry, completion: @escaping (_ entry: ScoreEntry?, _ error: RainbowClientError?) -> Void) {
+            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+                return completion(nil, RainbowClientError.couldNotCreateClient)
+            }            
+            guard let identifier = entry.id else {
+                return completion(nil, RainbowClientError.couldNotUpdateEntry)
+            }
+            client.put("/watsonml/entries", identifier: identifier, data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
+                if error != nil {
+                    return completion(nil, RainbowClientError.couldNotUpdateEntry)
                 } else {
                     return completion(savedEntry, nil)
                 }

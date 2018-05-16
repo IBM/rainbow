@@ -76,7 +76,10 @@ func updateEntry(id: String,newEntry: ScoreEntry, completion: @escaping (ScoreEn
                 /// the user finished a game
                 /// call push notification service
                 Log.info("Sending push notification")
-                pushNotification?.sendNotification(scoreEntry: entry!)
+                DispatchQueue.main.async {
+                    pushNotification?.sendNotification(scoreEntry: entry!)
+                }
+                
             }
             return completion(entry, error as? RequestError)
         })

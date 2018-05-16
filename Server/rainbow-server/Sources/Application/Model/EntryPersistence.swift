@@ -48,14 +48,17 @@ extension ScoreEntry {
                 guard let database = database else {
                     return completion(nil, error)
                 }
-                var entryCopy = entry
-                guard let updatedCopy = entryCopy.toJSONDocument() else {
-                    return completion(nil, RainbowPersistenceError.noAvatar)
-                }
                 
                 database.retrieve(id, callback: { document, error in
                     guard let document = document else {
                         return completion(nil, error)
+                    }
+                    
+                    var entryCopy = entry
+                    entryCopy.avatarImage = Data(base64Encoded: document["avatarImage"].stringValue, options: .ignoreUnknownCharacters)
+                    
+                    guard let updatedCopy = entryCopy.toJSONDocument() else {
+                        return completion(nil, RainbowPersistenceError.noAvatar)
                     }
                     
                     database.update(id, rev: document["_rev"].stringValue, document: updatedCopy, callback: { rev, _, error in
