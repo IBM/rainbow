@@ -42,7 +42,7 @@ class CameraController: LuminaViewController {
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
         self.setSwitchButton(visible: false)
-        LuminaViewController.loggingLevel = .info
+        LuminaViewController.loggingLevel = .verbose
     }
     
     override func viewDidLoad() {

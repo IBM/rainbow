@@ -69,7 +69,6 @@
 		53AC586920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */; };
 		53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */; };
 		53AC587620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53AC586620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf */; };
-		53AC588520A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588420A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel */; };
 		53AC588720A914880031EDC9 /* ScoreEntry+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */; };
 		53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588820A9382B0031EDC9 /* GameStartView.swift */; };
 		53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 53AC588A20A9E9160031EDC9 /* GameObjects.json */; };
@@ -88,6 +87,7 @@
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
+		B4E34ABF20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B4E34ABE20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,7 +190,6 @@
 		53AC585920A8D5EC0031EDC9 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
 		53AC586420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.ttf"; sourceTree = "<group>"; };
 		53AC586620A8D5EC0031EDC9 /* IBMPlexSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Bold.ttf"; sourceTree = "<group>"; };
-		53AC588420A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = ProjectRainbowModel_1753554316.mlmodel; path = ../../../../Downloads/ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScoreEntry+CoreData.swift"; sourceTree = "<group>"; };
 		53AC588820A9382B0031EDC9 /* GameStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartView.swift; sourceTree = "<group>"; };
 		53AC588A20A9E9160031EDC9 /* GameObjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameObjects.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
@@ -203,6 +202,7 @@
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
+		B4E34ABE20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,7 +374,7 @@
 		53864ACE2098DD19006B8264 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				53AC588420A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel */,
+				B4E34ABE20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel */,
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
@@ -634,6 +634,7 @@
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
+				B4E34ABF20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				531AAF8720A4B0690056B24B /* BookletItemController.swift in Sources */,
@@ -658,7 +659,6 @@
 				5305A1C120A219380040A9A9 /* QueryEncoder.swift in Sources */,
 				5305A1BF20A219380040A9A9 /* Coder.swift in Sources */,
 				5305A1B520A219380040A9A9 /* RestUtilities.swift in Sources */,
-				53AC588520A912C50031EDC9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */,
 				53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */,
 				5305A1AB20A219380040A9A9 /* ClosureAliases.swift in Sources */,
