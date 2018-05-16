@@ -28,9 +28,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>We need camera</string>
+	<string>Watson ML can&apos;t see very well without a camera!</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>We need microphone</string>
+	<string>Watson ML requires the use of a microphone for using the camera.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>IBMPlexSans-Bold.ttf</string>
