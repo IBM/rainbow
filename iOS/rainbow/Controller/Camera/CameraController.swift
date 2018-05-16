@@ -82,7 +82,6 @@ class CameraController: LuminaViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         checkTimer?.invalidate()
-        //self.pauseCamera()
     }
     
     func determineGameState() {
@@ -237,6 +236,9 @@ extension CameraController {
     func updateObjectUI(for label: String) {
         textPrompt = "You found the \(label)!"
         animateCheckImage(iconCheckImageViews[label])
+        if let point = iconCheckImageViews[label]?.center {
+            Fireworks.show(for: self.view, at: point)
+        }
         updateEntry(for: label)
         checkGameComplete()
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateGameState), userInfo: nil, repeats: false)
