@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Fireworks {
-    static func show(for view: UIView, at point: CGPoint) {
+    static func show(for view: UIView, at point: CGPoint, with color: UIColor) {
         let emitter = CAEmitterLayer()
         emitter.frame = view.bounds
         emitter.renderMode = kCAEmitterLayerAdditive
@@ -21,7 +21,7 @@ class Fireworks {
         cell.contents = UIImage(named: "particle")?.cgImage
         cell.birthRate = 750
         cell.lifetime = 5.0
-        cell.color = UIColor.RainbowColors.red.cgColor
+        cell.color = color.cgColor
         cell.alphaSpeed = -0.4
         cell.velocity = 50
         cell.velocityRange = 250
