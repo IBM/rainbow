@@ -7,14 +7,6 @@
 //
 
 import Foundation
-
-//
-//  BookletItemController.swift
-//
-//  Created by Anton McConville on 2018-05-08.
-//  Copyright © 2018 Anton McConville. All rights reserved.
-//
-
 import UIKit
 
 class BookletGuideController: BookletBaseController {

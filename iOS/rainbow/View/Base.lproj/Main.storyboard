@@ -123,7 +123,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Guidebook" id="3ut-oJ-veM"/>
                     <connections>
-                        <outlet property="contentImageView" destination="wc8-eP-eAB" id="JQt-gz-FDk"/>
+                        <outlet property="contentImageView" destination="wc8-eP-eAB" id="aud-Nd-PMo"/>
                         <outlet property="pageTitleView" destination="rvH-UO-dun" id="qt1-wW-Mph"/>
                     </connections>
                 </viewController>
