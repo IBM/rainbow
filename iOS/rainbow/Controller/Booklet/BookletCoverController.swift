@@ -58,7 +58,6 @@ class BookletCoverController: BookletBaseController {
         }
     }
     
-    
     var linkString: String = "" {
         didSet {
             link = linkString
@@ -68,13 +67,5 @@ class BookletCoverController: BookletBaseController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        contentImageView!.image = image
-                pageTitleView!.text = titleString
-        //        subtitleView!.text = subTitleString
-        //        statement?.text = statementString
-        //        link = linkString
-        //
-        //        button?.layer.cornerRadius = 20
-        //        button?.clipsToBounds = true
     }
 }

@@ -32,6 +32,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         useDefaultPages()
         
         //        let urlString = "https://anthony-blockchain.us-south.containers.mybluemix.net/pages"
@@ -239,5 +240,15 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
             return self.pageViewController?.viewControllers?.first as? BookletBaseController
         }
         return nil
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
 }

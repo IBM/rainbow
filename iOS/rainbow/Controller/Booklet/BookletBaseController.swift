@@ -11,4 +11,10 @@ import UIKit
 
 class BookletBaseController: UIViewController {
     var itemIndex:Int = 0 // index in page view controller
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+    }
+
 }
