@@ -116,6 +116,24 @@ class CameraController: LuminaViewController {
             savedScoreEntry.objects = nil
             try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
             cachedScoreEntry = savedScoreEntry
+            
+            //we don't want to send base64 string
+            savedScoreEntry.avatarImage = nil
+            
+            //update the startDate to the cloud.            
+            ScoreEntry.ServerCalls.update(entry: savedScoreEntry, completion: { entry, error in
+                if error != nil {
+                    SVProgressHUD.showError(withStatus: "Could not start new game")
+                    print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                } else {
+                    guard let entry = entry else {
+                        SVProgressHUD.showError(withStatus: "Could not start new game")
+                        print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                        return
+                    }
+                    print("Successfully updated cloud database with startDate \(String(describing: entry.startDate))")
+                }
+            })
             continueGame()
         } catch {
             SVProgressHUD.showError(withStatus: "Could not start new game")
@@ -258,6 +276,22 @@ extension CameraController {
                 try ScoreEntry.ClientPersistence.save(entry: finishedGame)
                 let savedGame = try ScoreEntry.ClientPersistence.get()
                 if let startDate = savedGame.startDate, let finishDate = savedGame.finishDate {
+                    //update the startDate to the cloud.
+                    var savedGameCopy = savedGame
+                    savedGameCopy.avatarImage = nil
+                    ScoreEntry.ServerCalls.update(entry: savedGameCopy, completion: { entry, error in
+                        if error != nil {
+                            SVProgressHUD.showError(withStatus: "Could not finish game")
+                            print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                        } else {
+                            guard let entry = entry else {
+                                SVProgressHUD.showError(withStatus: "Could not finish game")
+                                print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                                return
+                            }
+                            print("Successfully updated cloud database with finished game \(String(describing: entry.finishDate))")
+                        }
+                    })
                     pauseCamera()
                     showStartView()
                     Fireworks.show(for: self.view, at: self.view.center, with: UIColor.RainbowColors.blue)

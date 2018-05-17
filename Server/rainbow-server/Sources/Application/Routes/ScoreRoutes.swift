@@ -72,11 +72,22 @@ func updateEntry(id: String,newEntry: ScoreEntry, completion: @escaping (ScoreEn
             // logic for push notification. If the update is for game completion
             // check to see if notification has to be sent.
             
-            if entry?.finishDate != nil {
+            guard let entry = entry else {
+                return completion(nil, error)
+            }
+            
+            if entry.finishDate != nil {
                 /// the user finished a game
+                guard let pushNotification = pushNotification else {
+                    Log.error("Push Notification not initialized.")
+                    return completion(entry, error as? RequestError)
+                }
+                
                 /// call push notification service
                 Log.info("Sending push notification")
-                pushNotification?.sendNotification(scoreEntry: entry!)
+                DispatchQueue.global(qos: .background).async {
+                    pushNotification?.sendNotification(scoreEntry: entry)
+                }
             }
             return completion(entry, error as? RequestError)
         })

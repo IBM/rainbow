@@ -53,9 +53,32 @@ class MainTabBarController: UITabBarController {
     }
     
     private func saveNewUser(deviceID: String?, avatar: UserAvatar) {
-        let newEntry = ScoreEntry(id: nil, username: avatar.name, startDate: nil, finishDate: nil, deviceIdentifier: deviceID, avatarImage: avatar.image, objects: nil, totalTime: nil)
+        var newEntry = ScoreEntry(id: nil, username: avatar.name, startDate: nil, finishDate: nil, deviceIdentifier: deviceID, avatarImage: avatar.image, objects: nil, totalTime: nil)
         do {
             try ScoreEntry.ClientPersistence.save(entry: newEntry)
+            //save the data to the cloud database
+            //ScoreEntry.ServerCalls.getImage(with: currentEntry.id, completion: { image, error in
+            
+            ScoreEntry.ServerCalls.save(entry: newEntry, completion: { entry, error in
+                if error != nil {
+                    SVProgressHUD.showError(withStatus: "Could not save user")
+                    print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                } else {
+                    guard let entry = entry else {
+                        SVProgressHUD.showError(withStatus: "Could not save user")
+                        print("error during initial user save: \(String(describing: error?.localizedDescription))")
+                        return
+                    }
+                    newEntry.id = entry.id
+                    do {
+                        try ScoreEntry.ClientPersistence.save(entry: newEntry)
+                    } catch let saveError {
+                        SVProgressHUD.showError(withStatus: "Could not save user")
+                        print("error during initial user save: \(String(describing: saveError.localizedDescription))")
+                    }
+                }
+                
+            })            
             SVProgressHUD.showSuccess(withStatus: "Your username is \(newEntry.username)")
         } catch let error {
             SVProgressHUD.showError(withStatus: "Could not save user")

@@ -648,6 +648,7 @@
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
+				B4E34ABF20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
