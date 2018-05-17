@@ -275,7 +275,7 @@ extension CameraController {
                 finishedGame.finishDate = Date()
                 try ScoreEntry.ClientPersistence.save(entry: finishedGame)
                 let savedGame = try ScoreEntry.ClientPersistence.get()
-                if savedGame.finishDate != nil, savedGame.startDate != nil {
+                if let startDate = savedGame.startDate, let finishDate = savedGame.finishDate {
                     //update the startDate to the cloud.
                     var savedGameCopy = savedGame
                     savedGameCopy.avatarImage = nil
