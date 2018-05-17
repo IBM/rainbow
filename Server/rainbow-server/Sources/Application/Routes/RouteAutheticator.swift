@@ -41,13 +41,12 @@ func setupBasicAuth(app: App) {
     let basicCredentials = CredentialsHTTPBasic( verifyPassword: { userId, password, callback in
         if let user = userDB[userId] {
             do {
-                let result: Bool = try user.verifyPassword(withPassword: password)
-                if ( result ) {
+                let result = try user.verifyPassword(withPassword: password)
+                if result {
                     Log.debug("Successfully authenticated!")
                     callback(UserProfile(id: userId, displayName: userId, provider: "HTTPBasic-Kitura"))
                 }
-            }
-            catch {
+            } catch {
                 Log.error("VerifyPassword internal error")
             }
         }
@@ -67,19 +66,17 @@ func setupBasicAuth(app: App) {
         response.headers["Content-Type"] = "application/json; charset=utf-8"
         do {
             // if userProfile exists, it means user logged in
-            if let userProfile = request.userProfile  {
+            if let userProfile = request.userProfile {
                 Log.debug("User Successfully Authenticated \(userProfile.id)")
                 next()
                 return
             }
-            
             // if 401 returned
             Log.debug("User Authentication failed")
-            try response.status(.unauthorized).send(
-                "You are not authorized to use this API"
-                ).end()
+            try response.status(.unauthorized).send("You are not authorized to use this API").end()
+        } catch {
+            Log.error("Could not send unauthorized status.")
         }
-        catch {}
         next()
     })
 }

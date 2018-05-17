@@ -35,7 +35,6 @@ public class EncodedPassword {
     /// hashed password
     private let encodedPassword: [UInt8]
     
-    
     ///
     /// Initialize an EncodedPassword object
     ///
@@ -49,7 +48,7 @@ public class EncodedPassword {
                 usingSalt saltFromUser: [UInt8]? = nil, encoding: SecureEncoding) throws {
         
         // Define our constants
-        let mySaltLength:UInt = 32
+        let mySaltLength: UInt = 32
         let myRoundsOfPBKDF: UInt32 = 2
         
         let mySalt: [UInt8] = try saltFromUser ?? Random.generate(byteCount: Int(mySaltLength))
@@ -60,7 +59,7 @@ public class EncodedPassword {
         userName = name
         encodingType = encoding
         
-        switch (encoding) {
+        switch encoding {
         case .PBKDF2:
             encodedPassword = try PBKDF.deriveKey(fromPassword: password, salt: mySalt,
                                               prf: .sha512, rounds: roundsOfPBKDF,
@@ -76,16 +75,14 @@ public class EncodedPassword {
     /// Verify the password passed with the input password
     /// this is done by encoding the input password and comparing the two encoded passwords.
     ///
-    public func verifyPassword(withPassword testPassword: String) throws -> Bool{
-        let testPassword_encoded: [UInt8]
-        switch (encodingType) {
+    public func verifyPassword(withPassword testPassword: String) throws -> Bool {
+        let testPasswordEncoded: [UInt8]
+        switch encodingType {
         case .PBKDF2:
-            testPassword_encoded = try PBKDF.deriveKey(fromPassword: testPassword, salt: salt,
-                                                   prf: .sha512, rounds: roundsOfPBKDF,
-                                                   derivedKeyLength: saltLength)
+            testPasswordEncoded = try PBKDF.deriveKey(fromPassword: testPassword, salt: salt, prf: .sha512, rounds: roundsOfPBKDF, derivedKeyLength: saltLength)
         default:
             throw EncodedPasswordError.invalidEncoding
         }
-        return ( encodedPassword == testPassword_encoded)
+        return encodedPassword == testPasswordEncoded
     }    
 }

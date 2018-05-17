@@ -13,7 +13,7 @@ class Formatter {
     private static var internalJsonDateTimeFormatter: DateFormatter?
     
     static var jsonDateTimeFormatter: DateFormatter {
-        if (internalJsonDateTimeFormatter == nil) {
+        if internalJsonDateTimeFormatter == nil {
             internalJsonDateTimeFormatter = DateFormatter()
             internalJsonDateTimeFormatter!.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSS'Z'"
         }

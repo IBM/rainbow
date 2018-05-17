@@ -13,7 +13,7 @@ struct Authentication: Codable {
     var password: String
 }
 
-extension Authentication{
+extension Authentication {
     init(document: JSON) {
         username = document["username"].stringValue
         password = document["password"].stringValue
