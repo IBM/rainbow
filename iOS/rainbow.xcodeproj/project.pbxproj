@@ -92,6 +92,7 @@
 		A22DB42020ACBF4900FA0419 /* BookletInstructionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */; };
 		A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */; };
 		A22DB42420ACBF5800FA0419 /* BookletGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */; };
+		A2B2CB2620ADDA5700A6F585 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B2CB2520ADDA5700A6F585 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +212,7 @@
 		A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletInstructionController.swift; sourceTree = "<group>"; };
 		A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletCoverController.swift; sourceTree = "<group>"; };
 		A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletGuideController.swift; sourceTree = "<group>"; };
+		A2B2CB2520ADDA5700A6F585 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B2CB2620ADDA5700A6F585 /* WebKit.framework in Frameworks */,
 				5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */,
 				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
 				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
@@ -295,6 +298,7 @@
 				53381918209757BB00DE66CB /* rainbowTests */,
 				53381923209757BB00DE66CB /* rainbowUITests */,
 				533818FF209757B900DE66CB /* Products */,
+				A2B2CB2420ADDA5600A6F585 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -462,6 +466,14 @@
 				531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2B2CB2420ADDA5600A6F585 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2B2CB2520ADDA5700A6F585 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

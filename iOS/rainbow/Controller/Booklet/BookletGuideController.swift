@@ -21,9 +21,7 @@ class BookletGuideController: BookletBaseController {
     
     @IBOutlet var contentImageView: UIImageView?
     @IBOutlet var pageTitleView: UILabel?
-    @IBOutlet var subtitleView: UILabel?
     @IBOutlet var statement: UITextView?
-    @IBOutlet var subtextView: UILabel?
     @IBOutlet var button: UIButton?
     
     @IBAction func openLink(_ sender: UIButton) {
@@ -31,14 +29,14 @@ class BookletGuideController: BookletBaseController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "webkitSegue" {
-            guard let navController = segue.destination as? UINavigationController else {
-                return
+        if segue.identifier == "webkitSegue"
+        {if let navController = segue.destination as? UINavigationController
+            {
+                // swiftlint:disable force_cast
+                let webview = navController.topViewController as! AssetViewController
+                // swiftlint:enable force_cast
+                webview.link = self.link
             }
-            guard let webview = navController.topViewController as? AssetViewController else {
-                return
-            }
-            webview.link = self.link
         }
     }
     
@@ -62,14 +60,6 @@ class BookletGuideController: BookletBaseController {
         }
     }
     
-    var subTitleString: String = "" {
-        didSet {
-            if let subtitleView = subtitleView {
-                subtitleView.text = titleString
-            }
-        }
-    }
-    
     var statementString: String = "" {
         didSet {
             if let statement = statement {
@@ -86,11 +76,18 @@ class BookletGuideController: BookletBaseController {
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
+        
+        button?.backgroundColor = .clear
+        button?.tintColor = UIColor.RainbowColors.red
+        button?.layer.cornerRadius = 15
+        button?.layer.borderWidth = 0.5
+        button?.layer.borderColor = UIColor.RainbowColors.red.cgColor
+        
         super.viewDidLoad()
                 contentImageView!.image = image
                 pageTitleView!.text = titleString
-
                 statement?.text = statementString
+                link = linkString
       
     }
 }
