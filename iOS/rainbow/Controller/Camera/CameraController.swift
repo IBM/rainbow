@@ -42,7 +42,7 @@ class CameraController: LuminaViewController {
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
         self.setSwitchButton(visible: false)
-        LuminaViewController.loggingLevel = .verbose
+        LuminaViewController.loggingLevel = .info
     }
     
     override func viewDidLoad() {
@@ -283,7 +283,7 @@ extension CameraController {
                             print("error during initial user save: \(String(describing: error?.localizedDescription))")
                         } else {
                             guard let entry = entry else {
-                                SVProgressHUD.showError(withStatus: "Could not finsih game")
+                                SVProgressHUD.showError(withStatus: "Could not finish game")
                                 print("error during initial user save: \(String(describing: error?.localizedDescription))")
                                 return
                             }
