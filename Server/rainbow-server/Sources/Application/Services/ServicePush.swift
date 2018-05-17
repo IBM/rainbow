@@ -9,9 +9,9 @@ class PushNotification {
     var pushNotifications: PushNotifications?
     var couchDBClient: CouchDBClient?
     //Score Entry order by time taken
-    var scoresOrderedByTotalTime : [ScoreEntry] = []
+    var scoresOrderedByTotalTime = [ScoreEntry]()
     
-    public init(cloudEnv: CloudEnv, couchDBClient:  CouchDBClient) throws {
+    public init(cloudEnv: CloudEnv, couchDBClient: CouchDBClient) throws {
         guard let pushNotificationsCredentials = cloudEnv.getPushSDKCredentials(name: "push") else {
             throw ServiceInitializationError.pushNotificationError("Could not load credentials for Push Notifications.")
         }
@@ -34,12 +34,11 @@ class PushNotification {
             self.scoresOrderedByTotalTime = scoreEntryArray
         })
     }
-    
-    
+
     /// send push notification in two cases:
     /// 1- knocked from top spot of leaderboard
     /// 2- knocked from top 10
-    public func sendNotification(scoreEntry: ScoreEntry) -> Void {
+    public func sendNotification(scoreEntry: ScoreEntry) {
         guard let couchDBClient = couchDBClient else {
             return
         }
@@ -62,26 +61,26 @@ class PushNotification {
             
             if indexFromDb  == nil {
                 return
-            }else if index == nil {
+            } else if index == nil {
                 self.scoresOrderedByTotalTime = scoreEntryArray
                 return
             }
             
             let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
-            if(index! == 0 && indexFromDb! > 0){
+            if index! == 0, indexFromDb! > 0 {
                 //send notification
-                let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP, url: nil)
+                let message = Notification.Message.init(alert: Constant.knockedFromTop, url: nil)
                 let notification = Notification.init(message: message, target: target)
-                self.pushNotifications?.send(notification: notification) { (data, status, error) in
+                self.pushNotifications?.send(notification: notification) { _, _, error in
                     if error != nil {
                         print("Failed to send push notification. Error: \(error!)")
                     }
                 }
-            }else if(index! <= 9 && indexFromDb! > 9){
+            } else if index! <= 9, indexFromDb! > 9 {
                 //send notification
-                let message = Notification.Message.init(alert: Constant.NOTIFICATION_MESSAGE_KNOCKED_FROM_TOP_TEN, url: nil)
+                let message = Notification.Message.init(alert: Constant.knockedFromTopTen, url: nil)
                 let notification = Notification.init(message: message, target: target)
-                self.pushNotifications?.send(notification: notification) { (data, status, error) in
+                self.pushNotifications?.send(notification: notification) { _, _, error in
                     if error != nil {
                         print("Failed to send push notification. Error: \(error!)")
                     }

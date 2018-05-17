@@ -170,12 +170,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         
         // show the alert
-        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+        if let rootViewController = self.window?.rootViewController {
+            rootViewController.present(alert, animated: true, completion: nil)
+        }
     }
     
     func convertStringToDictionary(text: String) -> [String: AnyObject]? {
-        if let data = text.data(using: String.Encoding.utf8) {
-            
+        if let data = text.data(using: .utf8) {
             guard let result = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else {
                 return [:]
             }

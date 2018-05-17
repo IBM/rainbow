@@ -54,7 +54,10 @@ class CameraController: LuminaViewController {
         guard let gameConfigObjects = gameConfigObjects else {
             return
         }
-        var topY = UIScreen.main.bounds.minY + self.navigationController!.navigationBar.frame.height + 110
+        guard let navigationController = self.navigationController else {
+            return
+        }
+        var topY = UIScreen.main.bounds.minY + navigationController.navigationBar.frame.height + 110
         let iconX = UIScreen.main.bounds.maxX - 50
         let checkX = UIScreen.main.bounds.maxX - 80
         for object in gameConfigObjects {

@@ -9,8 +9,8 @@ import Foundation
 import SwiftyJSON
 
 extension ScoreEntry {
-    init?(document: JSON, _id: String) {
-        id = _id
+    init?(document: JSON, entryId: String) {
+        id = entryId
         deviceIdentifier = document["deviceIdentifier"].stringValue
         username = document["username"].stringValue
         startDate = document["startDate"].dateTime
@@ -42,7 +42,6 @@ extension ScoreEntry {
         totalTime = nil
     }
     
-
     mutating func toJSONDocument() -> JSON? {        
         do {
             let encoded = try JSONEncoder().encode(self)

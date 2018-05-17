@@ -85,13 +85,13 @@
 		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
+		53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
 		A22DB41E20ACBF3E00FA0419 /* BookletBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41D20ACBF3D00FA0419 /* BookletBaseController.swift */; };
 		A22DB42020ACBF4900FA0419 /* BookletInstructionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */; };
 		A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */; };
 		A22DB42420ACBF5800FA0419 /* BookletGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */; };
-		B4B5017920ACE2A800B3BB33 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B4B5017820ACE2A800B3BB33 /* ProjectRainbowModel_1753554316.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,13 +204,13 @@
 		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
 		A22DB41D20ACBF3D00FA0419 /* BookletBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletBaseController.swift; sourceTree = "<group>"; };
 		A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletInstructionController.swift; sourceTree = "<group>"; };
 		A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletCoverController.swift; sourceTree = "<group>"; };
 		A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletGuideController.swift; sourceTree = "<group>"; };
-		B4B5017820ACE2A800B3BB33 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,8 +386,8 @@
 		53864ACE2098DD19006B8264 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4B5017820ACE2A800B3BB33 /* ProjectRainbowModel_1753554316.mlmodel */,
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
+				53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
 				53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */,
@@ -647,14 +647,13 @@
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
-				B4E34ABF20AC80D200E80EF9 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
+				53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
 				538D191420ACB03100742E17 /* Fireworks.swift in Sources */,
 				5305A1B120A219380040A9A9 /* Monitor.swift in Sources */,
 				5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */,
-				B4B5017920ACE2A800B3BB33 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5305A1AA20A219380040A9A9 /* MonitorCollection.swift in Sources */,
 				531AAF8820A4B0690056B24B /* AssetViewController.swift in Sources */,
 				53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */,

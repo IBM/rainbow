@@ -10,7 +10,7 @@ import CouchDB
 import LoggerAPI
 import SwiftyJSON
 
-extension Authentication{
+extension Authentication {
     class Persistence {
         private static func getDatabase(from client: CouchDBClient, completion: @escaping (_ database: Database?, _ error: Error?) -> Void) {
             client.dbExists("routes-users") { exists, error in
@@ -27,7 +27,7 @@ extension Authentication{
                 guard let database = database else {
                     return completion(nil, error)
                 }
-                database.retrieveAll(includeDocuments: true, callback: { documents, retrieveError in
+                database.retrieveAll(includeDocuments: true, callback: { documents, _ in
                     guard let documents = documents else {
                         return completion(nil, error)
                     }

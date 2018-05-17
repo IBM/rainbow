@@ -36,20 +36,20 @@ extension ScoreEntry {
                 guard let updatedCopy = entryCopy.toJSONDocument() else {
                     return completion(nil, RainbowPersistenceError.noAvatar)
                 }
-                database.create(updatedCopy, callback: { id, _, _, error in
-                    completion(id, error)
+                database.create(updatedCopy, callback: { identifier, _, _, error in
+                    completion(identifier, error)
                 })
             }
         }
         
         // Update document        
-        static func update(id: String, entry: ScoreEntry, to client: CouchDBClient, completion: @escaping (_ entryID: String?, _ error: Error?) -> Void) {
+        static func update(identifier: String, entry: ScoreEntry, to client: CouchDBClient, completion: @escaping (_ entryID: String?, _ error: Error?) -> Void) {
             getDatabase(from: client) { database, error in
                 guard let database = database else {
                     return completion(nil, error)
                 }
                 
-                database.retrieve(id, callback: { document, error in
+                database.retrieve(identifier, callback: { document, error in
                     guard let document = document else {
                         return completion(nil, error)
                     }
@@ -61,7 +61,7 @@ extension ScoreEntry {
                         return completion(nil, RainbowPersistenceError.noAvatar)
                     }
                     
-                    database.update(id, rev: document["_rev"].stringValue, document: updatedCopy, callback: { rev, _, error in
+                    database.update(identifier, rev: document["_rev"].stringValue, document: updatedCopy, callback: { rev, _, error in
                         completion(rev, error)
                     })
                })
@@ -77,7 +77,7 @@ extension ScoreEntry {
                     guard let document = document else {
                         return completion(nil, error)
                     }
-                    return completion(ScoreEntry(document: document, _id: document["_id"].stringValue), nil)
+                    return completion(ScoreEntry(document: document, entryId: document["_id"].stringValue), nil)
                 })
             }
         }
@@ -93,7 +93,7 @@ extension ScoreEntry {
                     }
                     var entries = [ScoreEntry]()
                     for document in documents["rows"].arrayValue {
-                        if let newEntry = ScoreEntry(document: document["doc"], _id: document["doc"]["_id"].stringValue) {
+                        if let newEntry = ScoreEntry(document: document["doc"], entryId: document["doc"]["_id"].stringValue) {
                             entries.append(newEntry)
                         }
                     }

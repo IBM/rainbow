@@ -11,7 +11,7 @@ import UIKit
 
 class AssetViewController: UIViewController {
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: UIWebView?
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
@@ -28,13 +28,12 @@ class AssetViewController: UIViewController {
             let session = URLSession.shared
             
             let task = session.dataTask(with: request) { (_, _, error) in
-                if error == nil {
-                    self.webView.loadRequest(request)
+                if error == nil, let webView = self.webView {
+                    webView.loadRequest(request)
                 } else {
                     print(String(describing: error))
                 }
             }
-            
             task.resume()
         }
     }

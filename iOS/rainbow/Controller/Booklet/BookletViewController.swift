@@ -7,9 +7,7 @@
 //
 
 import Foundation
-
 import UIKit
-
 
 struct Page: Codable {
     let type: String
@@ -18,7 +16,7 @@ struct Page: Codable {
     let imageURL: String
     let subtitle: String
     let description: String
-    let order:Int
+    let order: Int
     let link: String
 }
 
@@ -31,45 +29,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         useDefaultPages()
-        
-        //        let urlString = "https://anthony-blockchain.us-south.containers.mybluemix.net/pages"
-        //        guard let url = URL(string: urlString) else {
-        //            print("url error")
-        //            return
-        //        }
-        
-        //        URLSession.shared.dataTask(with: url) { (data, _, error) in
-        //            if error != nil {
-        //                print(error!.localizedDescription)
-        //                print("No internet")
-        //
-        //                // use booklet.json if no internet
-        //                self.useDefaultPages()
-        //            }
-        //
-        //            guard let data = data else { return }
-        //
-        //            do {
-        //                //Decode retrived data with JSONDecoder and assing type of Page object
-        //                let pages = try JSONDecoder().decode([Page].self, from: data)
-        //
-        //                //Get back to the main queue
-        //                DispatchQueue.main.async {
-        //                    self.pages = pages
-        //                    self.pageCount = pages.count
-        //                    self.createPageViewController()
-        ////                    self.setupPageControl()
-        //                }
-        //            } catch let jsonError {
-        //                print(jsonError)
-        //
-        //                // use booklet.json if jsonError
-        //                self.useDefaultPages()
-        //            }
-        //            }.resume()
     }
     
     private func useDefaultPages() {
@@ -97,16 +57,21 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         }
         pageController.dataSource = self
         if self.pageCount > 0 {
-            let firstController = getItemController(itemIndex: 0)!
+            guard let firstController = getItemController(itemIndex: 0) else {
+                return
+            }
             let startingViewControllers = [firstController]
             pageController.setViewControllers(startingViewControllers, direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         }
         
         pageViewController = pageController
-        pageViewController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
-        addChildViewController(pageViewController!)
-        self.view.addSubview(pageViewController!.view)
-        pageViewController!.didMove(toParentViewController: self)
+        guard let pageViewController = pageViewController else {
+            return
+        }
+        pageViewController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
+        addChildViewController(pageViewController)
+        self.view.addSubview(pageViewController.view)
+        pageViewController.didMove(toParentViewController: self)
     }
     
     private func setupPageControl() {
@@ -129,69 +94,62 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         guard let itemController = viewController as? BookletBaseController else {
             return nil
         }
-        
         if itemController.itemIndex > 0 {
             return getItemController(itemIndex: itemController.itemIndex-1)
         }
-        
         return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
         guard let itemController = viewController as? BookletBaseController else {
             return nil
         }
-        
-        if itemController.itemIndex+1 < self.pageCount {
+        if itemController.itemIndex + 1 < self.pageCount {
             return getItemController(itemIndex: itemController.itemIndex+1)
         }
-        
         return nil
     }
     
     private func getItemController(itemIndex: Int) -> BookletBaseController? {
-        
-        if itemIndex < self.pages!.count {
-            
-            switch(self.pages![itemIndex].type){
-                
+        guard let pages = self.pages else {
+            return nil
+        }
+        if itemIndex < pages.count {
+            switch pages[itemIndex].type {
             case "instruction":
                 print("instruction")
-                
                 guard let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "InstructionController") as? BookletInstructionController else {
                     return nil
                 }
-                
                 pageItemController.itemIndex = itemIndex
-                pageItemController.titleString = self.pages![itemIndex].title
-                pageItemController.image = UIImage(named: self.pages![itemIndex].imagePath)!
+                pageItemController.titleString = pages[itemIndex].title
+                guard let image = UIImage(named: pages[itemIndex].imagePath) else {
+                    return pageItemController
+                }
+                pageItemController.image = image
                 return pageItemController
                 
             case "guide":
                 print("guide")
-                
                 guard let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "GuideController") as? BookletGuideController else {
                     return nil
                 }
-                
                 pageItemController.itemIndex = itemIndex
-                pageItemController.titleString = self.pages![itemIndex].title
-                pageItemController.image = UIImage(named: self.pages![itemIndex].imagePath)!
-                pageItemController.statementString = self.pages![itemIndex].description
-                pageItemController.linkString = self.pages![itemIndex].link
+                pageItemController.titleString = pages[itemIndex].title
+                pageItemController.statementString = pages[itemIndex].description
+                pageItemController.linkString = pages[itemIndex].link
+                guard let image = UIImage(named: pages[itemIndex].imagePath) else {
+                    return pageItemController
+                }
+                pageItemController.image = image
                 return pageItemController
-                
             default:
-                print("cover")
-                
                 guard let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "CoverController") as? BookletCoverController else {
                     return nil
                 }
-                
                 pageItemController.itemIndex = itemIndex
-                pageItemController.titleString = self.pages![itemIndex].title
-                pageItemController.subTitleString = self.pages![itemIndex].subtitle
+                pageItemController.titleString = pages[itemIndex].title
+                pageItemController.subTitleString = pages[itemIndex].subtitle
                 return pageItemController
             }
         }
@@ -200,19 +158,22 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     func base64ToImage(base64: String) -> UIImage {
-        var img: UIImage = UIImage()
-        if !base64.isEmpty {
-            let decodedData = NSData(base64Encoded: base64, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
-            let decodedimage = UIImage(data: decodedData! as Data)
-            img = (decodedimage as UIImage?)!
+        guard let data = Data(base64Encoded: base64) else {
+            return #imageLiteral(resourceName: "checkmark")
         }
-        return img
+        guard let image = UIImage(data: data) else {
+            return #imageLiteral(resourceName: "checkmark")
+        }
+        return image
     }
     
     // MARK: - Page Indicator
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return self.pages!.count
+        guard let pages = self.pages else {
+            return 0
+        }
+        return pages.count
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
