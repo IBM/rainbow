@@ -7,16 +7,6 @@
 //
 
 import Foundation
-
-//
-//  CoverViewController.swift
-//  rainbow
-//
-//  Created by Anton McConville on 2018-05-11.
-//  Copyright © 2018 IBM. All rights reserved.
-//
-
-import Foundation
 import UIKit
 
 class BookletInstructionController: BookletBaseController {

@@ -29,7 +29,43 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        useDefaultPages()
+//        useDefaultPages()
+        
+        let urlString = "https://raw.githubusercontent.com/IBM/watsonml-booklet-data/master/booklet.json"
+        guard let url = URL(string: urlString) else {
+            print("url error")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                print("No internet")
+                
+                // use Booklet.json if no internet
+                self.useDefaultPages()
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                //Decode retrived data with JSONDecoder and assing type of Article object
+                let pages = try JSONDecoder().decode([Page].self, from: data)
+                
+                //Get back to the main queue
+                DispatchQueue.main.async {
+                    self.pages = pages
+                    self.pageCount = pages.count
+                    self.createPageViewController()
+                    self.setupPageControl()
+                }
+            } catch let jsonError {
+                print(jsonError)
+                
+                // use booklet.json if jsonError
+                self.useDefaultPages()
+            }
+        }.resume()
     }
     
     private func useDefaultPages() {
@@ -114,6 +150,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         guard let pages = self.pages else {
             return nil
         }
+        
         if itemIndex < pages.count {
             switch pages[itemIndex].type {
             case "instruction":
@@ -123,10 +160,8 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 }
                 pageItemController.itemIndex = itemIndex
                 pageItemController.titleString = pages[itemIndex].title
-                guard let image = UIImage(named: pages[itemIndex].imagePath) else {
-                    return pageItemController
-                }
-                pageItemController.image = image
+                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                
                 return pageItemController
                 
             case "guide":
@@ -138,11 +173,10 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 pageItemController.titleString = pages[itemIndex].title
                 pageItemController.statementString = pages[itemIndex].description
                 pageItemController.linkString = pages[itemIndex].link
-                guard let image = UIImage(named: pages[itemIndex].imagePath) else {
-                    return pageItemController
-                }
-                pageItemController.image = image
+                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                
                 return pageItemController
+                
             default:
                 guard let pageItemController = self.storyboard?.instantiateViewController(withIdentifier: "CoverController") as? BookletCoverController else {
                     return nil
@@ -150,11 +184,31 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 pageItemController.itemIndex = itemIndex
                 pageItemController.titleString = pages[itemIndex].title
                 pageItemController.subTitleString = pages[itemIndex].subtitle
+                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                
                 return pageItemController
             }
         }
         
         return nil
+    }
+    
+    func getBookletImage(page:Page) -> UIImage{
+        
+        if( page.imagePath == "" ){
+            
+            let url = URL(string: page.imageURL )
+            
+            guard let data = try? Data(contentsOf: url!) else {
+                print("There was an error!")
+                return UIImage()
+            }
+            return UIImage(data: data)!
+        }else{ guard UIImage(named: page.imagePath) != nil else {
+            return UIImage()
+            }
+            return UIImage(named: page.imagePath)!
+        }
     }
     
     func base64ToImage(base64: String) -> UIImage {
