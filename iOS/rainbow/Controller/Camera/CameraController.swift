@@ -139,7 +139,7 @@ class CameraController: LuminaViewController {
             })
             continueGame()
         } catch {
-            SVProgressHUD.showError(withStatus: "Could not start new game")
+            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
         }
     }
     
@@ -284,11 +284,11 @@ extension CameraController {
                     savedGameCopy.avatarImage = nil
                     ScoreEntry.ServerCalls.update(entry: savedGameCopy, completion: { entry, error in
                         if error != nil {
-                            SVProgressHUD.showError(withStatus: "Could not finish game")
+                            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
                             print("error during initial user save: \(String(describing: error?.localizedDescription))")
                         } else {
                             guard let entry = entry else {
-                                SVProgressHUD.showError(withStatus: "Could not finish game")
+                                SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
                                 print("error during initial user save: \(String(describing: error?.localizedDescription))")
                                 return
                             }
@@ -298,7 +298,7 @@ extension CameraController {
                     pauseCamera()
                     showStartView()
                     Fireworks.show(for: self.view, at: self.view.center, with: UIColor.RainbowColors.blue)
-                    SVProgressHUD.showSuccess(withStatus: "Congratulations! You finished the game in \(GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate))")
+                    SVProgressHUD.showSuccess(withStatus: "Congratulations! You finished the game in \(GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate))!")
                 }
             }
         } catch {

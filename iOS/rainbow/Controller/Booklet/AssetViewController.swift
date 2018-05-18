@@ -27,10 +27,12 @@ class AssetViewController: UIViewController {
             let session = URLSession.shared
             
             let task = session.dataTask(with: request) { (_, _, error) in
-                if error == nil, let webView = self.webView {
-                    webView.loadRequest(request)
-                } else {
-                    print(String(describing: error))
+                DispatchQueue.main.async {
+                    if error == nil, let webView = self.webView {
+                        webView.loadRequest(request)
+                    } else {
+                        print(String(describing: error))
+                    }
                 }
             }
             task.resume()

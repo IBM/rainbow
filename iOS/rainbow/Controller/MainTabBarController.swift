@@ -60,11 +60,11 @@ class MainTabBarController: UITabBarController {
             
             ScoreEntry.ServerCalls.save(entry: newEntry, completion: { entry, error in
                 if error != nil {
-                    SVProgressHUD.showError(withStatus: "Could not save user")
+                    SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
                     print("error during initial user save: \(String(describing: error?.localizedDescription))")
                 } else {
                     guard let entry = entry else {
-                        SVProgressHUD.showError(withStatus: "Could not save user")
+                        SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
                         print("error during initial user save: \(String(describing: error?.localizedDescription))")
                         return
                     }
@@ -73,7 +73,7 @@ class MainTabBarController: UITabBarController {
                         do {
                             try ScoreEntry.ClientPersistence.save(entry: newEntry)
                         } catch let saveError {
-                            SVProgressHUD.showError(withStatus: "Could not save user")
+                            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
                             print("error during initial user save: \(String(describing: saveError.localizedDescription))")
                         }
                     }
@@ -82,7 +82,7 @@ class MainTabBarController: UITabBarController {
             })            
             SVProgressHUD.showSuccess(withStatus: "Your username is \(newEntry.username)")
         } catch let error {
-            SVProgressHUD.showError(withStatus: "Could not save user")
+            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
             print("error during initial user save: \(error.localizedDescription)")
         }
     }
