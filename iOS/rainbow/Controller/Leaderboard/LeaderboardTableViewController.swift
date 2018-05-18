@@ -22,7 +22,7 @@ class LeaderboardTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        SVProgressHUD.show(withStatus: "Getting Leaderboard...")
+        SVProgressHUD.show(withStatus: "Loading Leaderboard...")
         getLeaderboard()
     }
     
