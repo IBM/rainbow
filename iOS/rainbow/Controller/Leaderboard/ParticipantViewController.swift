@@ -29,6 +29,23 @@ class ParticipantViewController: UIViewController {
                 return
             }
             avatarImageView?.image = image
+            guard let leaderboardButton = leaderboardButton else {
+                return
+            }
+            leaderboardButton.backgroundColor = .clear
+            leaderboardButton.tintColor = UIColor.RainbowColors.orange
+            leaderboardButton.layer.cornerRadius = 20
+            leaderboardButton.layer.borderWidth = 0.5
+            leaderboardButton.layer.borderColor = UIColor.RainbowColors.orange.cgColor
+            leaderboardButton.setTitleColor(UIColor.RainbowColors.orange, for: .normal)
+            
+            let config = try GameConfig.load()
+            var foundObjects = [ObjectEntry]()
+            if let savedFoundObjects = savedEntry.objects {
+                foundObjects = savedFoundObjects
+            }
+            progressLabel?.text = "\(foundObjects.count)/\(config.count)"
+            
             guard let startDate = savedEntry.startDate else {
                 startDateLabel?.text = "----"
                 timeElapsedLabel?.text = "----"
@@ -39,27 +56,9 @@ class ParticipantViewController: UIViewController {
                 scavagingSinceLabel?.text = "You finished!"
                 timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
             } else {
-                scavagingSinceLabel?.text = "Scavaging since"
+                scavagingSinceLabel?.text = "Playing since"
                 timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: Date())
             }
-            
-            let config = try GameConfig.load()
-            var foundObjects = [ObjectEntry]()
-            if let savedFoundObjects = savedEntry.objects {
-                foundObjects = savedFoundObjects
-            }
-            
-            let progress = Float(Double(foundObjects.count) / Double(config.count))
-            progressLabel?.text = "\(Int(progress * 100))%"
-            guard let leaderboardButton = leaderboardButton else {
-                return
-            }
-            leaderboardButton.backgroundColor = .clear
-            leaderboardButton.tintColor = UIColor.RainbowColors.red
-            leaderboardButton.layer.cornerRadius = 20
-            leaderboardButton.layer.borderWidth = 0.5
-            leaderboardButton.layer.borderColor = UIColor.RainbowColors.red.cgColor
-            
         } catch {
             print("")
         }

@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 
 class GameStartView: UIView {
-    
+    //swiftlint:disable weak_delegate
     weak var delegate: GameStartViewDelegate?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -19,7 +20,7 @@ class GameStartView: UIView {
     var gameStartButton: UIButton {
         let button = UIButton(frame: CGRect(x: UIScreen.main.bounds.midX - 100, y: UIScreen.main.bounds.midY - 100, width: 200, height: 200))
         button.layer.cornerRadius = 100
-        button.setTitle("Start Searching", for: .normal)
+        button.setTitle("Play Now", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.borderColor = UIColor.RainbowColors.pale.cgColor
         button.layer.borderWidth = 8.0
