@@ -203,7 +203,10 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 print("There was an error!")
                 return UIImage()
             }
-            return UIImage(data: data)!
+            guard let image = UIImage(data: data) else {
+                return UIImage()
+            }
+            return image
         } else {
             guard let image = UIImage(named: page.imagePath) else {
                 return UIImage()

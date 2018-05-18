@@ -67,7 +67,11 @@ class BookletCoverController: BookletBaseController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentImageView!.image = image
-        pageTitleView!.text = titleString
+        if let contentImageView = contentImageView {
+            contentImageView.image = image
+        }
+        if let pageTitleView = pageTitleView {
+            pageTitleView.text = titleString
+        }
     }
 }

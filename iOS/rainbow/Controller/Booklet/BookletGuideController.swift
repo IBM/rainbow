@@ -68,18 +68,20 @@ class BookletGuideController: BookletBaseController {
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
         button?.backgroundColor = .clear
         button?.tintColor = UIColor.RainbowColors.red
         button?.layer.cornerRadius = 15
         button?.layer.borderWidth = 0.5
         button?.layer.borderColor = UIColor.RainbowColors.red.cgColor
-        
-        super.viewDidLoad()
-                contentImageView!.image = image
-                pageTitleView!.text = titleString
-                statement?.text = statementString
-                link = linkString
-      
+    
+        if let contentImageView = contentImageView {
+            contentImageView.image = image
+        }
+        if let pageTitleView = pageTitleView {
+            pageTitleView.text = titleString
+        }
+        statement?.text = statementString
+        link = linkString
     }
 }

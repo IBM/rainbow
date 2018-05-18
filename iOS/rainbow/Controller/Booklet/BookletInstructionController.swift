@@ -78,6 +78,8 @@ class BookletInstructionController: BookletBaseController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        contentImageView!.image = image
+        if let contentImageView = contentImageView {
+            contentImageView.image = image
+        }
     }
 }
