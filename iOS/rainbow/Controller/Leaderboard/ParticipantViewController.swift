@@ -15,7 +15,7 @@ class ParticipantViewController: UIViewController {
     @IBOutlet weak var timeElapsedLabel: UILabel?
     @IBOutlet weak var scavagingSinceLabel: UILabel?
     @IBOutlet weak var progressLabel: UILabel?
-    @IBOutlet weak var button:UIButton?
+    @IBOutlet weak var leaderboardButton: UIButton?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,12 +48,17 @@ class ParticipantViewController: UIViewController {
             if let savedFoundObjects = savedEntry.objects {
                 foundObjects = savedFoundObjects
             }
-
-            button?.backgroundColor = .clear
-            button?.tintColor = UIColor.RainbowColors.red
-            button?.layer.cornerRadius = 20
-            button?.layer.borderWidth = 0.5
-            button?.layer.borderColor = UIColor.RainbowColors.red.cgColor
+            
+            let progress = Float(Double(foundObjects.count) / Double(config.count))
+            progressLabel?.text = "\(Int(progress * 100))%"
+            guard let leaderboardButton = leaderboardButton else {
+                return
+            }
+            leaderboardButton.backgroundColor = .clear
+            leaderboardButton.tintColor = UIColor.RainbowColors.red
+            leaderboardButton.layer.cornerRadius = 20
+            leaderboardButton.layer.borderWidth = 0.5
+            leaderboardButton.layer.borderColor = UIColor.RainbowColors.red.cgColor
             
         } catch {
             print("")

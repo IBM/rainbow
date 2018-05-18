@@ -345,11 +345,8 @@
                                                     <constraint firstItem="RlH-dx-jc8" firstAttribute="centerY" secondItem="Xv8-tB-2zH" secondAttribute="centerY" id="vYM-dc-W8m"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Hermione Granger" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-nn-Skq">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="drkghdruhgrd" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-nn-Skq">
                                                 <rect key="frame" x="120" y="0.0" width="180" height="120"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="PH4-Ww-1di"/>
-                                                </constraints>
                                                 <color key="textColor" red="0.23529411764705882" green="0.32156862745098036" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="IBMPlexSans-Bold" family="IBM Plex Sans" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -475,7 +472,7 @@
                     <navigationItem key="navigationItem" title="Participant" id="R6U-91-akR"/>
                     <connections>
                         <outlet property="avatarImageView" destination="RlH-dx-jc8" id="cDr-ao-AWt"/>
-                        <outlet property="button" destination="X0Q-em-HSV" id="xIi-xY-zc8"/>
+                        <outlet property="leaderboardButton" destination="X0Q-em-HSV" id="kQT-zv-4lS"/>
                         <outlet property="nameTextField" destination="QH0-nn-Skq" id="CgK-dR-xax"/>
                         <outlet property="progressLabel" destination="UEf-HW-pqO" id="ph5-o6-jFb"/>
                         <outlet property="scavagingSinceLabel" destination="6gp-6H-gtM" id="Otw-Tu-w12"/>
