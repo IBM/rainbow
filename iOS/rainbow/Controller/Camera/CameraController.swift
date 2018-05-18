@@ -139,7 +139,7 @@ class CameraController: LuminaViewController {
             })
             continueGame()
         } catch {
-            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
+            SVProgressHUD.showError(withStatus: "Couldn't connect to the server - keep playing!")
         }
     }
     
@@ -284,11 +284,11 @@ extension CameraController {
                     savedGameCopy.avatarImage = nil
                     ScoreEntry.ServerCalls.update(entry: savedGameCopy, completion: { entry, error in
                         if error != nil {
-                            SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
+                            SVProgressHUD.showError(withStatus: "Couldn't connect to the server - keep playing!")
                             print("error during initial user save: \(String(describing: error?.localizedDescription))")
                         } else {
                             guard let entry = entry else {
-                                SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
+                                SVProgressHUD.showError(withStatus: "Couldn't connect to the server - keep playing!")
                                 print("error during initial user save: \(String(describing: error?.localizedDescription))")
                                 return
                             }
