@@ -80,7 +80,7 @@ class MainTabBarController: UITabBarController {
                 }
                 
             })            
-            SVProgressHUD.showSuccess(withStatus: "Your username is \(newEntry.username)")
+            SVProgressHUD.showSuccess(withStatus: "Welcome! We have identified you as \(newEntry.username).")
         } catch let error {
             SVProgressHUD.showError(withStatus: "You'll need an internet connection to get on the leaderboard!")
             print("error during initial user save: \(error.localizedDescription)")

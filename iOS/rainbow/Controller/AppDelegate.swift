@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         UITabBar.appearance().tintColor = UIColor.RainbowColors.copy
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont.RainbowFonts.regular(size: 10)], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont.RainbowFonts.medium(size: 16)], for: .normal)
         SVProgressHUD.setFont(UIFont.RainbowFonts.medium(size: 15))
         SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)

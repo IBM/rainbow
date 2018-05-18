@@ -297,8 +297,8 @@ extension CameraController {
                     })
                     pauseCamera()
                     showStartView()
-                    Fireworks.show(for: self.view, at: self.view.center, with: UIColor.RainbowColors.blue)
-                    SVProgressHUD.showSuccess(withStatus: "Congratulations! You finished the game in \(GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate))!")
+                    SVProgressHUD.showSuccess(withStatus: "Congratulations! You finished the game in \(GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate))! See how you rank in the leaderboard and try again.")
+                    self.tabBarController?.selectedIndex = 3
                 }
             }
         } catch {
