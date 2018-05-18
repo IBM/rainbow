@@ -93,7 +93,6 @@
 		A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */; };
 		A22DB42420ACBF5800FA0419 /* BookletGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */; };
 		A2B2CB2620ADDA5700A6F585 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B2CB2520ADDA5700A6F585 /* WebKit.framework */; };
-		A2B2CB2820AE117000A6F585 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2CB2720AE117000A6F585 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,7 +213,6 @@
 		A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletCoverController.swift; sourceTree = "<group>"; };
 		A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletGuideController.swift; sourceTree = "<group>"; };
 		A2B2CB2520ADDA5700A6F585 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		A2B2CB2720AE117000A6F585 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,7 +365,6 @@
 				A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */,
 				A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */,
 				A22DB41D20ACBF3D00FA0419 /* BookletBaseController.swift */,
-				A2B2CB2720AE117000A6F585 /* UIImageExtension.swift */,
 			);
 			path = Booklet;
 			sourceTree = "<group>";
@@ -664,7 +661,6 @@
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
 				53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
-				A2B2CB2820AE117000A6F585 /* UIImageExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
 				538D191420ACB03100742E17 /* Fireworks.swift in Sources */,

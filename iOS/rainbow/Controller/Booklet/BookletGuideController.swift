@@ -20,21 +20,21 @@ class BookletGuideController: BookletBaseController {
         performSegue(withIdentifier: "webkitSegue", sender: self)
     }
     
+    var link: String = ""
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "webkitSegue"
-        {if let navController = segue.destination as? UINavigationController
-            {
-                // swiftlint:disable force_cast
-                let webview = navController.topViewController as! AssetViewController
-                // swiftlint:enable force_cast
-                webview.link = self.link
+        if segue.identifier == "webkitSegue" {
+            guard let navController = segue.destination as? UINavigationController else {
+                return
             }
+            guard let webview = navController.topViewController as? AssetViewController else {
+                return
+            }
+            webview.link = self.link
         }
     }
     
     // MARK: - Variables
-    
-    var link: String = ""
     
     var image: UIImage = UIImage() {
         didSet {

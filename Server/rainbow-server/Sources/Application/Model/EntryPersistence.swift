@@ -130,7 +130,7 @@ extension ScoreEntry {
                     return completion(nil, error)
                 }
                 
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(true)], callback: { (documents, error) in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(false)], callback: { (documents, error) in
                     guard let documents = documents else {
                         return completion(nil, error)
                     }
