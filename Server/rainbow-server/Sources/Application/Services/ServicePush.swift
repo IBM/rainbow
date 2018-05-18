@@ -26,12 +26,14 @@ class PushNotification {
         
         // initialize sorted scores list
         ScoreEntry.Persistence.getScores(from: couchDBClient, completion: { scoreEntryArray, error in
-            guard let scoreEntryArray = scoreEntryArray else {
-                Log.error("Error while rertieving score entries")
-                return
+            if let scoreEntryArray = scoreEntryArray {
+                Log.debug("Found score entries in database.")
+                //sort scoreEntryArray by time taken
+                self.scoresOrderedByTotalTime = scoreEntryArray
+            }else{
+                Log.debug("No score entries found in database.")
             }
-            //sort scoreEntryArray by time taken
-            self.scoresOrderedByTotalTime = scoreEntryArray
+            
         })
     }
 
@@ -59,16 +61,23 @@ class PushNotification {
                 scoreEntry.id == score.id
             })
             
-            if indexFromDb  == nil {
+            guard let indexFromDbVal = indexFromDb else {
                 return
-            } else if index == nil {
+            }
+            
+            guard let indexVal = index else {
                 self.scoresOrderedByTotalTime = scoreEntryArray
                 return
             }
             
-            let target = Notification.Target(deviceIds: [scoreEntry.deviceIdentifier!])
-            if index! == 0, indexFromDb! > 0 {
+            //Logic for someone being knocked from the top position
+            if indexVal == 0 && indexFromDbVal > 0 {
                 //send notification
+                guard let deviceId = self.scoresOrderedByTotalTime[indexVal].deviceIdentifier else {
+                    print("Device Id not found so not sending push notification")
+                    return
+                }
+                let target = Notification.Target(deviceIds: [deviceId])
                 let message = Notification.Message.init(alert: Constant.knockedFromTop, url: nil)
                 let notification = Notification.init(message: message, target: target)
                 self.pushNotifications?.send(notification: notification) { _, _, error in
@@ -76,8 +85,17 @@ class PushNotification {
                         print("Failed to send push notification. Error: \(error!)")
                     }
                 }
-            } else if index! <= 9, indexFromDb! > 9 {
+            }
+            
+            
+            //Logic for someone being knocked from top 10
+            if indexVal == 9, indexFromDbVal > 9 {
                 //send notification
+                guard let deviceId = self.scoresOrderedByTotalTime[indexVal].deviceIdentifier else {
+                    print("Device Id not found so not sending push notification")
+                    return
+                }
+                let target = Notification.Target(deviceIds: [deviceId])
                 let message = Notification.Message.init(alert: Constant.knockedFromTopTen, url: nil)
                 let notification = Notification.init(message: message, target: target)
                 self.pushNotifications?.send(notification: notification) { _, _, error in
