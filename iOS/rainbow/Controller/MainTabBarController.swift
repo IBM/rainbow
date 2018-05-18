@@ -57,7 +57,6 @@ class MainTabBarController: UITabBarController {
         do {
             try ScoreEntry.ClientPersistence.save(entry: newEntry)
             //save the data to the cloud database
-            //ScoreEntry.ServerCalls.getImage(with: currentEntry.id, completion: { image, error in
             
             ScoreEntry.ServerCalls.save(entry: newEntry, completion: { entry, error in
                 if error != nil {
@@ -70,11 +69,13 @@ class MainTabBarController: UITabBarController {
                         return
                     }
                     newEntry.id = entry.id
-                    do {
-                        try ScoreEntry.ClientPersistence.save(entry: newEntry)
-                    } catch let saveError {
-                        SVProgressHUD.showError(withStatus: "Could not save user")
-                        print("error during initial user save: \(String(describing: saveError.localizedDescription))")
+                    DispatchQueue.main.async {
+                        do {
+                            try ScoreEntry.ClientPersistence.save(entry: newEntry)
+                        } catch let saveError {
+                            SVProgressHUD.showError(withStatus: "Could not save user")
+                            print("error during initial user save: \(String(describing: saveError.localizedDescription))")
+                        }
                     }
                 }
                 
