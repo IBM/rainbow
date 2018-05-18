@@ -23,7 +23,7 @@ func setupBasicAuth(app: App) {
     var userDB: [String: EncodedPassword] = [:]    
     Authentication.Persistence.get(from: client) { auth, error in
         guard let auth = auth else {
-            Log.error("Authentication not loaded from database")
+            Log.error("Authentication not loaded from database: \(String(describing:error?.localizedDescription))")
             return
         }
         do {

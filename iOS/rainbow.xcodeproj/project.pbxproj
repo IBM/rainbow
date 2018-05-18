@@ -868,10 +868,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.anton.rainbow;
+				PRODUCT_BUNDLE_IDENTIFIER = org.anton.watsonml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66ef5ff0-11fc-4e88-b722-8b78606c6398";
-				PROVISIONING_PROFILE_SPECIFIER = "Rainbow ML Dev Profile 2018";
+				PROVISIONING_PROFILE = "141e0acf-a643-4bdf-be22-174907bc57ff";
+				PROVISIONING_PROFILE_SPECIFIER = "watsonml dev profile 2018";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -896,7 +896,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.anton.rainbow;
+				PRODUCT_BUNDLE_IDENTIFIER = org.anton.watsonml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "66ef5ff0-11fc-4e88-b722-8b78606c6398";
 				PROVISIONING_PROFILE_SPECIFIER = "Rainbow ML Dev Profile 2018";
