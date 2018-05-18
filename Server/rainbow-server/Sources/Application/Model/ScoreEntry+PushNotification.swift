@@ -9,10 +9,9 @@ import SwiftyJSON
 
 extension ScoreEntry {
     init?(timeTaken: Double, document: JSON) {
-        let doc: JSON = document["doc"]
-        id = doc["_id"].stringValue
-        deviceIdentifier = doc["deviceIdentifier"].stringValue
-        username = doc["username"].stringValue
+        id = document["id"].stringValue
+        deviceIdentifier = document["deviceIdentifier"].stringValue
+        username = document["username"].stringValue
         totalTime = timeTaken        
         avatarImage = nil
         startDate = nil

@@ -37,16 +37,17 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
             if error != nil {
-                print(error!.localizedDescription)
+                print(String(describing: error?.localizedDescription))
                 print("No internet")
-                
                 // use Booklet.json if no internet
                 self.useDefaultPages()
             }
             
-            guard let data = data else { return }
+            guard let data = data else {
+                return
+            }
             
             do {
                 //Decode retrived data with JSONDecoder and assing type of Article object
@@ -160,7 +161,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 }
                 pageItemController.itemIndex = itemIndex
                 pageItemController.titleString = pages[itemIndex].title
-                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                pageItemController.image = getBookletImage(page: pages[itemIndex])
                 
                 return pageItemController
                 
@@ -173,7 +174,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 pageItemController.titleString = pages[itemIndex].title
                 pageItemController.statementString = pages[itemIndex].description
                 pageItemController.linkString = pages[itemIndex].link
-                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                pageItemController.image = getBookletImage(page: pages[itemIndex])
                 
                 return pageItemController
                 
@@ -184,7 +185,7 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
                 pageItemController.itemIndex = itemIndex
                 pageItemController.titleString = pages[itemIndex].title
                 pageItemController.subTitleString = pages[itemIndex].subtitle
-                pageItemController.image = getBookletImage(page:pages[itemIndex])
+                pageItemController.image = getBookletImage(page: pages[itemIndex])
                 
                 return pageItemController
             }
@@ -193,21 +194,21 @@ class BookletViewController: UIViewController, UIPageViewControllerDataSource {
         return nil
     }
     
-    func getBookletImage(page:Page) -> UIImage{
-        
-        if( page.imagePath == "" ){
-            
-            let url = URL(string: page.imageURL )
-            
-            guard let data = try? Data(contentsOf: url!) else {
+    func getBookletImage(page: Page) -> UIImage {
+        if page.imagePath.isEmpty {
+            guard let url = URL(string: page.imageURL) else {
+                return UIImage()
+            }
+            guard let data = try? Data(contentsOf: url) else {
                 print("There was an error!")
                 return UIImage()
             }
             return UIImage(data: data)!
-        }else{ guard UIImage(named: page.imagePath) != nil else {
-            return UIImage()
+        } else {
+            guard let image = UIImage(named: page.imagePath) else {
+                return UIImage()
             }
-            return UIImage(named: page.imagePath)!
+            return image
         }
     }
     
