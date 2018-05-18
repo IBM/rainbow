@@ -157,14 +157,10 @@ extension ScoreEntry {
     }
 
     class ClientPersistence {
-        private static func entryExists(for deviceIdentifier: String?) throws -> NSManagedObject? {
+        private static func entryExists(for deviceIdentifier: String?, context: NSManagedObjectContext) throws -> NSManagedObject? {
             guard let deviceIdentifier = deviceIdentifier else {
                 return nil
             }
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                throw ClientPersistenceError.couldNotFindAppDelegate
-            }
-            let context = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DataScoreEntry")
             request.returnsObjectsAsFaults = false
             do {
@@ -205,11 +201,11 @@ extension ScoreEntry {
         /// Note: there should only ever be one sav
         static func get() throws -> ScoreEntry {
             do {
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    throw ClientPersistenceError.couldNotFindAppDelegate
+                }
+                let context = appDelegate.persistentContainer.viewContext
                 let entry: ScoreEntry = try DispatchQueue(label: "core-data-rainbow-queue", qos: .userInitiated).sync {
-                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                        throw ClientPersistenceError.couldNotFindAppDelegate
-                    }
-                    let context = appDelegate.persistentContainer.viewContext
                     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "DataScoreEntry")
                     request.returnsObjectsAsFaults = false
                     do {
@@ -236,15 +232,15 @@ extension ScoreEntry {
         /// Note: this will overwrite any ScoreEntry object that exists in the datastore with the same ID.
         static func save(entry: ScoreEntry) throws {
             do {
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    throw ClientPersistenceError.couldNotFindAppDelegate
+                }
+                let context = appDelegate.persistentContainer.viewContext
                 try DispatchQueue(label: "core-data-rainbow-queue", qos: .userInitiated).sync {
-                    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                        throw ClientPersistenceError.couldNotFindAppDelegate
-                    }
-                    let context = appDelegate.persistentContainer.viewContext
                     guard let entity = NSEntityDescription.entity(forEntityName: "DataScoreEntry", in: context) else {
                         throw ClientPersistenceError.couldNotCreateEntity
                     }
-                    if let existingObject = try entryExists(for: entry.deviceIdentifier) {
+                    if let existingObject = try entryExists(for: entry.deviceIdentifier, context: context) {
                         if try ScoreEntry.ClientPersistence.delete(scoreEntryObject: existingObject, from: context) == false {
                             throw ClientPersistenceError.entryAlreadyExists
                         }
