@@ -10,15 +10,24 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    var isDebugMode: Bool {
-        let dictionary = ProcessInfo.processInfo.environment
-        return dictionary["DEBUGMODE"] != nil
+    public enum WhichServer: String {
+        case localhost = "http://localhost:8080"
+        case proxy = "https://watsonml.mybluemix.net"
+        case production = "https://rainbow-scavenger-viz-rec.mybluemix.net"
     }
     
-    var rainbowServerBaseURL: String {
-        var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        baseURL = "https://rainbow-scavenger-viz-rec.mybluemix.net"                
-        return baseURL
+    var serverURL: String {
+        let dictionary = ProcessInfo.processInfo.environment
+        guard let mode = dictionary["DEBUGMODE"] else {
+            return WhichServer.localhost.rawValue
+        }
+        if Int(mode) == 2 {
+            return WhichServer.proxy.rawValue
+        } else if Int(mode) == 3 {
+            return WhichServer.production.rawValue
+        } else {
+            return WhichServer.localhost.rawValue
+        }
     }
 }
 
@@ -45,7 +54,7 @@ struct ImageResponse: Codable {
 extension ScoreEntry {
     class ServerCalls {
         static func save(entry: ScoreEntry, completion: @escaping (_ entry: ScoreEntry?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
             client.post("/watsonml/entries", data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
@@ -58,7 +67,7 @@ extension ScoreEntry {
         }
         
         static func update(entry: ScoreEntry, completion: @escaping (_ entry: ScoreEntry?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }            
             guard let identifier = entry.id else {
@@ -74,7 +83,7 @@ extension ScoreEntry {
         }
         
         static func getAll(completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
             client.get("/watsonml/leaderboard") { (entries: [ScoreEntry]?, error: RequestError?) in
