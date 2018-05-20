@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    public enum WhichServer: String {
+    private enum WhichServer: String {
         case localhost = "http://localhost:8080"
         case proxy = "https://watsonml.mybluemix.net"
         case production = "https://rainbow-scavenger-viz-rec.mybluemix.net"
     }
     
-    var serverURL: String {
+    var watsonMLServer: String {
         let dictionary = ProcessInfo.processInfo.environment
         guard let mode = dictionary["DEBUGMODE"] else {
             return WhichServer.localhost.rawValue
@@ -54,7 +54,7 @@ struct ImageResponse: Codable {
 extension ScoreEntry {
     class ServerCalls {
         static func save(entry: ScoreEntry, completion: @escaping (_ entry: ScoreEntry?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.watsonMLServer) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
             client.post("/watsonml/entries", data: entry) { (savedEntry: ScoreEntry?, error: RequestError?) in
@@ -67,7 +67,7 @@ extension ScoreEntry {
         }
         
         static func update(entry: ScoreEntry, completion: @escaping (_ entry: ScoreEntry?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.watsonMLServer) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }            
             guard let identifier = entry.id else {
@@ -83,7 +83,7 @@ extension ScoreEntry {
         }
         
         static func getAll(completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
-            guard let client = KituraKit(baseURL: UIApplication.shared.serverURL) else {
+            guard let client = KituraKit(baseURL: UIApplication.shared.watsonMLServer) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
             client.get("/watsonml/leaderboard") { (entries: [ScoreEntry]?, error: RequestError?) in
