@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    var watsonFormatted: String {
+    var vivaFormatted: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium

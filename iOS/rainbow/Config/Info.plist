@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Watson ML</string>
+	<string>Viva ML</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,9 +28,9 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Watson ML can't see very well without a camera!</string>
+	<string>Viva ML can't see very well without a camera!</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Watson ML requires the use of a microphone for using the camera.</string>
+	<string>Viva ML requires the use of a microphone for using the camera.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>IBMPlexSans-Bold.ttf</string>
