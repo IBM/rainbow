@@ -1,0 +1,19 @@
+logging:
+    level:
+        ROOT: DEBUG
+        com.comcast.helloworld: DEBUG
+
+spring:
+    application:
+        name: WatsonML
+    jackson:
+        serialization.indent_output: false
+
+server:
+    port: 8080
+
+application:
+    kituraUrl:
+      save.score: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/entries
+      update.score: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/entries
+      get.leaderboard: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/leaderboard
