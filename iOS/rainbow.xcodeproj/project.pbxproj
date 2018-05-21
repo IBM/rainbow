@@ -884,7 +884,7 @@
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = CT3Y8HLWZY;
+				DEVELOPMENT_TEAM = RQ632LL2X3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -895,10 +895,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.anton.watsonml;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "141e0acf-a643-4bdf-be22-174907bc57ff";
-				PROVISIONING_PROFILE_SPECIFIER = "watsonml dev profile 2018";
+				PROVISIONING_PROFILE = "66e5859b-30cc-40fd-8d6e-285e15fb6cdd";
+				PROVISIONING_PROFILE_SPECIFIER = "Viva ML Dev Profile 2018";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -912,7 +912,7 @@
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = CT3Y8HLWZY;
+				DEVELOPMENT_TEAM = RQ632LL2X3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -923,10 +923,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.anton.watsonml;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66bd1c1b-68ed-443a-a34f-bee60e8dc3c5";
-				PROVISIONING_PROFILE_SPECIFIER = WatsonMLAppStoreProfile;
+				PROVISIONING_PROFILE = "967585c3-97bb-40e5-80bf-cf5f25bca2d4";
+				PROVISIONING_PROFILE_SPECIFIER = "Viva ML App Store Profile 2018";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

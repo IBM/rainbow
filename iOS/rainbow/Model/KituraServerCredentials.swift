@@ -9,11 +9,11 @@
 import Foundation
 
 public struct ServerCredentials: Codable {
-    var routes: WatsonMLConfig
-    var cloudant: WatsonMLConfig
+    var routes: VivaMLConfig
+    var cloudant: VivaMLConfig
 }
 
-public struct WatsonMLConfig: Codable {
+public struct VivaMLConfig: Codable {
     var username: String
     var password: String
 }

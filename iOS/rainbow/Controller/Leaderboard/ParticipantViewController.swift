@@ -51,7 +51,7 @@ class ParticipantViewController: UIViewController {
                 timeElapsedLabel?.text = "----"
                 return
             }
-            startDateLabel?.text = startDate.watsonFormatted
+            startDateLabel?.text = startDate.vivaFormatted
             if let finishDate = savedEntry.finishDate {
                 scavagingSinceLabel?.text = "You finished!"
                 timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)

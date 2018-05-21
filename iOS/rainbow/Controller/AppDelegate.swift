@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
                         return
                     }
                     let decodedResponse = try JSONDecoder().decode(PushClientResponse.self, from: data)
-                    NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: decodedResponse.deviceId)
+                    NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: decodedResponse.deviceId)
                 } catch let error {
                     print("Error during parsing response: \(error.localizedDescription)")
                 }
@@ -142,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         message.append(". You can still test the UI")
         #endif
         self.showAlert(title: "Registering for notifications", message: message)
-        NotificationCenter.default.post(name: Notification.Name("watson-ml-device-token-registered"), object: "SimulatorDeviceIdentifier")
+        NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "SimulatorDeviceIdentifier")
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -162,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
             return
         }
         print(bodyString)
-        showAlert(title: "Watson ML", message: bodyString)
+        showAlert(title: "Viva ML", message: bodyString)
     }
     
     func showAlert (title: String, message: String) {
