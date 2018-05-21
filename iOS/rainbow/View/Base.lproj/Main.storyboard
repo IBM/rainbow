@@ -88,7 +88,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-VN-B83">
                                         <rect key="frame" x="0.0" y="290" width="300" height="50"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="An IBM Code Experiment" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KA-YJ-p8x">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KA-YJ-p8x">
                                                 <rect key="frame" x="50" y="0.0" width="200" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -125,6 +125,7 @@
                     <connections>
                         <outlet property="contentImageView" destination="wc8-eP-eAB" id="aud-Nd-PMo"/>
                         <outlet property="pageTitleView" destination="rvH-UO-dun" id="qt1-wW-Mph"/>
+                        <outlet property="subtitleView" destination="6KA-YJ-p8x" id="kgW-V2-u6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obu-32-Foy" userLabel="First Responder" sceneMemberID="firstResponder"/>
