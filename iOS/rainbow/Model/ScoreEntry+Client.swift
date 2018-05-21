@@ -17,7 +17,7 @@ extension UIApplication {
     
     var rainbowServerBaseURL: String {
         var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        baseURL = "https://rainbow-scavenger-viz-rec.mybluemix.net"                
+        baseURL = "https://watsonml-vivatech.mybluemix.net/"                
         return baseURL
     }
 }
