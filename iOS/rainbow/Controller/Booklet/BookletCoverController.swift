@@ -13,7 +13,7 @@ class BookletCoverController: BookletBaseController {
     
     @IBOutlet var contentImageView: UIImageView?
     @IBOutlet var pageTitleView: UILabel?
-    @IBOutlet var subtitleView: UILabel?
+    @IBOutlet var subtitleView: UITextView?
     
     @IBAction func openLink(_ sender: UIButton) {
         performSegue(withIdentifier: "webkitSegue", sender: self)
@@ -53,7 +53,7 @@ class BookletCoverController: BookletBaseController {
     var subTitleString: String = "" {
         didSet {
             if let subtitleView = subtitleView {
-                subtitleView.text = titleString
+                subtitleView.text = subTitleString
             }
         }
     }
@@ -72,6 +72,9 @@ class BookletCoverController: BookletBaseController {
         }
         if let pageTitleView = pageTitleView {
             pageTitleView.text = titleString
+        }
+        if let subtitleView = subtitleView {
+            subtitleView.text = subTitleString
         }
     }
 }
