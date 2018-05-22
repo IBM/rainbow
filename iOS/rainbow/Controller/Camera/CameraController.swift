@@ -217,7 +217,13 @@ extension CameraController: LuminaDelegate {
             }
             let filteredObjects = objects.filter { $0.name == bestName }
             if filteredObjects.count > 0 {
-                continueScanning()
+                defer {
+                    continueScanning()
+                }
+                guard let foundObject = filteredObjects.first else {
+                    return
+                }
+                self.textPrompt = "You already found the \(foundObject.name)!"
                 return
             }
             guard let gameConfigObjects = gameConfigObjects else {

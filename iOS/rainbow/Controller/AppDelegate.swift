@@ -162,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
             return
         }
         print(bodyString)
-        showAlert(title: "Viva ML", message: bodyString)
+        showAlert(title: "WatsonML", message: bodyString)
     }
     
     func showAlert (title: String, message: String) {

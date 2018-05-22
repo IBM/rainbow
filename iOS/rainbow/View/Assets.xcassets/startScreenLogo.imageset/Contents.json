@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "startScreenLogo.png",
       "scale" : "1x"
     },
     {
