@@ -1,4 +1,4 @@
- [{"type":"cover","title":"Watson ML", "imagePath":"logo", "imageURL":"", "subtitle":"","description":"","order":1, "link":""
+ [{"type":"cover","title":"WatsonML", "imagePath":"logo", "imageURL":"", "subtitle":"","description":"","order":1, "link":""
   },{"type":"instruction","title":"how to play", "imagePath":"how to play", "imageURL":"", "subtitle":"","description":"","order":2, "link":""
   },{"type":"instruction","title":"instructions", "imagePath":"instructions", "imageURL":"", "subtitle":"","description":"","order":3, "link":""
   },{"type":"instruction","title":"completion", "imagePath":"completion", "imageURL":"", "subtitle":"","description":"","order":4, "link":""
