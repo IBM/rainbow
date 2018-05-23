@@ -22,13 +22,6 @@ class ParticipantViewController: UIViewController {
         do {
             let savedEntry = try ScoreEntry.ClientPersistence.get()
             nameTextField?.text = savedEntry.username
-            guard let imageData = savedEntry.avatarImage else {
-                return
-            }
-            guard let image = UIImage(data: imageData) else {
-                return
-            }
-            avatarImageView?.image = image
             guard let leaderboardButton = leaderboardButton else {
                 return
             }
@@ -38,6 +31,13 @@ class ParticipantViewController: UIViewController {
             leaderboardButton.layer.borderWidth = 0.5
             leaderboardButton.layer.borderColor = UIColor.RainbowColors.orange.cgColor
             leaderboardButton.setTitleColor(UIColor.RainbowColors.orange, for: .normal)
+            guard let imageData = savedEntry.avatarImage else {
+                return
+            }
+            guard let image = UIImage(data: imageData) else {
+                return
+            }
+            avatarImageView?.image = image
             
             let config = try GameConfig.load()
             var foundObjects = [ObjectEntry]()

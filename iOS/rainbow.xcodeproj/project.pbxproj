@@ -38,6 +38,7 @@
 		5305A1C020A219380040A9A9 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5305A1A220A219380040A9A9 /* JSON.swift */; };
 		5305A1C120A219380040A9A9 /* QueryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5305A1A320A219380040A9A9 /* QueryEncoder.swift */; };
 		5305A1C320A219DA0040A9A9 /* ScoreEntry+Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */; };
+		530A351D20B56389003D36C5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A351C20B56389003D36C5 /* Reachability.swift */; };
 		531AAF8820A4B0690056B24B /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AAF8520A4B0690056B24B /* AssetViewController.swift */; };
 		531AAF8920A4B0690056B24B /* Booklet.json in Resources */ = {isa = PBXBuildFile; fileRef = 531AAF8620A4B0690056B24B /* Booklet.json */; };
 		531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; };
@@ -163,6 +164,7 @@
 		5305A1A220A219380040A9A9 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		5305A1A320A219380040A9A9 /* QueryEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryEncoder.swift; sourceTree = "<group>"; };
 		5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScoreEntry+Client.swift"; sourceTree = "<group>"; };
+		530A351C20B56389003D36C5 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		531AAF8520A4B0690056B24B /* AssetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		531AAF8620A4B0690056B24B /* Booklet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Booklet.json; sourceTree = "<group>"; };
 		531AAF9420A4B98F0056B24B /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lumina.framework; path = Carthage/Build/iOS/Lumina.framework; sourceTree = SOURCE_ROOT; };
@@ -430,6 +432,7 @@
 			children = (
 				53AC588A20A9E9160031EDC9 /* GameObjects.json */,
 				53AC588C20AA17130031EDC9 /* ObjectConfig.swift */,
+				530A351C20B56389003D36C5 /* Reachability.swift */,
 				531AAF9C20A4BA280056B24B /* StyleGuides.swift */,
 				53381910209757BB00DE66CB /* Info.plist */,
 			);
@@ -667,6 +670,7 @@
 				5305A1A420A219380040A9A9 /* Contracts.swift in Sources */,
 				5305A1BB20A219380040A9A9 /* Client.swift in Sources */,
 				53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */,
+				530A351D20B56389003D36C5 /* Reachability.swift in Sources */,
 				53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */,
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
 				53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */,

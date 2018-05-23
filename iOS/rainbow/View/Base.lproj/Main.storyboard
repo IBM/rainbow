@@ -309,7 +309,7 @@
                                                     <constraint firstItem="RlH-dx-jc8" firstAttribute="centerY" secondItem="Xv8-tB-2zH" secondAttribute="centerY" id="vYM-dc-W8m"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="drkghdruhgrd" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-nn-Skq">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="----" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QH0-nn-Skq">
                                                 <rect key="frame" x="100" y="0.0" width="200" height="100"/>
                                                 <color key="textColor" red="0.23529411764705882" green="0.32156862745098036" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="IBMPlexSans-Bold" family="IBM Plex Sans" pointSize="24"/>
@@ -336,7 +336,7 @@
                                                 <color key="textColor" red="0.23529411764705882" green="0.32156862745098036" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StartDateStartDateStartDate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Awk-lk-4Pb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Awk-lk-4Pb">
                                                 <rect key="frame" x="0.0" y="40" width="300" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="IWD-CE-lEm"/>
@@ -345,7 +345,7 @@
                                                 <color key="textColor" red="0.23529411764705882" green="0.32156862745098036" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="210 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lp-35-6Jx">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lp-35-6Jx">
                                                 <rect key="frame" x="0.0" y="80" width="300" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="e5K-wp-YFw"/>

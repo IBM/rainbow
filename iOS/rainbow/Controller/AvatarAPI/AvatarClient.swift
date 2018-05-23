@@ -29,7 +29,7 @@ class AvatarClient {
     }
 
     static func getRandomAvatar(completion: @escaping (_ avatar: UserAvatar?, _ error: Error?) -> Void) {
-        let request = RestRequest(method: .get, url: "http://avatar-rainbow.mybluemix.net/new", containsSelfSignedCert: false)
+        let request = RestRequest(method: .get, url: "https://avatar-rainbow.mybluemix.net/new", containsSelfSignedCert: false)
         request.responseObject { (response: RestResponse<UserAvatar>) in
             DispatchQueue.main.async {
                 switch response.result {
