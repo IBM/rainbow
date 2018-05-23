@@ -45,6 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         // MARK: remove the hardcoding in future
         BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
         BMSPushClient.sharedInstance.delegate = self
+        do {
+            Network.reachability = try Reachability(hostname: "www.google.com")
+            do {
+                try Network.reachability?.start()
+            } catch let error as Network.Error {
+                print(error)
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
         return true
     }
 
@@ -103,6 +115,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
     // MARK: - push notification
     func onChangePermission(status: Bool) {
         print("Push Notification is enabled:  \(status)" as NSString)
+        guard let networkStatus = Network.reachability?.status else {
+            return
+        }
+        if networkStatus == .unreachable {
+            // no internet connectivity - bail and warn the user
+            SVProgressHUD.showError(withStatus: "Can't connect to the internet right now - play the game anyway!")
+            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
+        } else if status == false && networkStatus != .unreachable {
+            // register the user for a fake ID - they'll never get notifications
+            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
+        }
     }
     
     func application (_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

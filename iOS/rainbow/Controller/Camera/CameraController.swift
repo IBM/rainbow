@@ -104,7 +104,8 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-            startNewGame()
+//            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
+            showStartView()
         }
     }
     
@@ -126,11 +127,11 @@ class CameraController: LuminaViewController {
             //update the startDate to the cloud.            
             ScoreEntry.ServerCalls.update(entry: savedScoreEntry, completion: { entry, error in
                 if error != nil {
-                    SVProgressHUD.showError(withStatus: "Could not start new game")
+                    SVProgressHUD.showError(withStatus: "Could not start new game on server - keep playing!!")
                     print("error during initial user save: \(String(describing: error?.localizedDescription))")
                 } else {
                     guard let entry = entry else {
-                        SVProgressHUD.showError(withStatus: "Could not start new game")
+                        SVProgressHUD.showError(withStatus: "Could not start new game on server - keep playing!!")
                         print("error during initial user save: \(String(describing: error?.localizedDescription))")
                         return
                     }
