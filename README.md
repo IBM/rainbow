@@ -66,7 +66,21 @@ Drag and drop the `Frameworks` folder to the rainbow project - click `add groups
 
 ### To develop the server
 
-TBD!
+1. Provision a Cloudant NoSQL DB instance
+2. Provision a Push Notification instance
+3. Deploy the app
+
+More details to come!
+
+# Build your own version!
+
+1. Pick a theme and set of items -- museum pieces, office hardware, conference booths, whatever
+2. Create a model in Watson Studio -- details to come
+3. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) 
+4. Update the JSON file that lists the objects [iOS/rainbow/Config/GameObjects.json](iOS/rainbow/Config/GameObjects.json)
+5. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/)
+
+More details to come!
 
 # Sample output
 
