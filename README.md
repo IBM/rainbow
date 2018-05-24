@@ -59,12 +59,6 @@ Build the project by navigating to the `iOS` folder on your terminal, and typing
 carthage update --platform iOS
 ```
 
-Create a folder called `Frameworks` in the `iOS` folder. Find the `Lumina.framework` and `VisualRecognitionV3.framework` from the `Carthage Build` folder, and move them to the `Frameworks` folder.
-
-Open the `rainbow.xcodeproj` in XCode. Select the rainbow target, choose the General tab at the top, and scroll down to the Linked Frameworks and Libraries section at the bottom.
-
-Drag and drop the `Frameworks` folder to the rainbow project - click `add groups` instead of add folder references. Navigate to the `embedded binaries` section of the rainbow project general information, and add the two frameworks as embedded binaries.
-
 ### Setting Up Your [Kitura](http://kitura.io) Server
 
 1. Go to the [IBM Cloud console](https://console.bluemix.net), and click Create Resource.
