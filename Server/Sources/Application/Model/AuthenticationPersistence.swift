@@ -13,19 +13,19 @@ import SwiftyJSON
 extension Authentication {
     class Persistence {
         
-        static let databaseName: String = "routes-users"
-        
-        private static func getDatabase(from client: CouchDBClient, completion: @escaping (_ database: Database?, _ error: Error?) -> Void) {
-            client.dbExists(databaseName) { exists, error in
-                Log.debug("Database Existence:: \(exists)")
-                if exists {
-                    completion(Database(connProperties: client.connProperties, dbName: databaseName), nil)
-                } else {
-                    Log.error("Error: \(String(describing: error?.localizedDescription))")
-                    completion(nil, error)
-                }
+    static let databaseName: String = "routes-users"
+    
+    private static func getDatabase(from client: CouchDBClient, completion: @escaping (_ database: Database?, _ error: Error?) -> Void) {
+        client.dbExists(databaseName) { exists, error in
+            Log.debug("Database Existence:: \(exists)")
+            if exists {
+                completion(Database(connProperties: client.connProperties, dbName: databaseName), nil)
+            } else {
+                Log.error("Error: \(String(describing: error?.localizedDescription))")
+                completion(nil, error)
             }
         }
+    }
     
     static func get(from client: CouchDBClient, completion: @escaping (_ entry: Authentication?, _ error: Error?) -> Void) {
         Log.debug("Getting authentication creds")

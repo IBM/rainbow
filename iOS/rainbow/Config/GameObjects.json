@@ -1,32 +1,32 @@
 [
- {
- "name": "Apple",
- "colorIcon": "Apple.png",
- "whiteIcon": "Apple---White.png"
- },
- {
- "name": "Bee",
- "colorIcon": "Bee.png",
- "whiteIcon": "Bee---White.png"
- },
- {
- "name": "Jeans",
- "colorIcon": "Jeans.png",
- "whiteIcon": "Jeans---White.png"
- },
- {
- "name": "Notebook",
- "colorIcon": "Notebook.png",
- "whiteIcon": "Notebook---White.png"
- },
- {
- "name": "Plant",
- "colorIcon": "Plant.png",
- "whiteIcon": "Plant---White.png"
- },
- {
- "name": "Shirt",
- "colorIcon": "Shirt.png",
- "whiteIcon": "Shirt---White.png"
- }
+  {
+  "name": "Apple",
+  "colorIcon": "Apple.png",
+  "whiteIcon": "Apple---White.png"
+  },
+  {
+  "name": "Bee",
+  "colorIcon": "Bee.png",
+  "whiteIcon": "Bee---White.png"
+  },
+  {
+  "name": "Jeans",
+  "colorIcon": "Jeans.png",
+  "whiteIcon": "Jeans---White.png"
+  },
+  {
+  "name": "Notebook",
+  "colorIcon": "Notebook.png",
+  "whiteIcon": "Notebook---White.png"
+  },
+  {
+  "name": "Plant",
+  "colorIcon": "Plant.png",
+  "whiteIcon": "Plant---White.png"
+  },
+  {
+  "name": "Shirt",
+  "colorIcon": "Shirt.png",
+  "whiteIcon": "Shirt---White.png"
+  }
 ]
