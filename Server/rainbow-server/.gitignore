@@ -1,9 +1,0 @@
-.DS_Store
-/.build
-/.build-ubuntu
-/Packages
-Package.resolved
-/config.json
-/spec.json
-./config/localdev-config.json
-rainbow-server.xcodeproj

@@ -2,7 +2,7 @@
 
 This code pattern is an iOS timed game that has users find items based on a list of objects developed for Apple phones. It is built to showcase visual recognition with Core ML in a fun way. This project repository consists of an iOS app and a backend server. Both components are written in the Swift programming language and leverages the Kitura framework for the server side. Cloudant is also used to persist user records and best times, and Push Notifications are used to let a user know when they have been removed from the top of the leaderboard.
 
-Our application has been published to the App Store under the name [Watson ML](https://itunes.apple.com/us/app/watsonml-visrec-game/id1387609935), and we encourage folks to give it a try. It comes with a built-in model for identifying six objects; shirts, jeans, apples, plants, notebooks, and lastly a plush bee. Our app could not have been built if not for fantastic pre-existing content from other IBMers. We use David Okun's Lumina project, and Anton McConville's Avatar generator microservice, see the references belwo for more information.
+Our application has been published to the App Store under the name [WatsonML](https://itunes.apple.com/us/app/watsonml-visrec-game/id1387609935), and we encourage folks to give it a try. It comes with a built-in model for identifying six objects; shirts, jeans, apples, plants, notebooks, and lastly a plush bee. Our app could not have been built if not for fantastic pre-existing content from other IBMers. We use David Okun's Lumina project, and Anton McConville's Avatar generator microservice, see the references belwo for more information.
 
 We include instruction on how to modify the application to fit your own needs. Feel free to fork the code and modify it to create your own conference swap game, scavenger hunt, guided tour, or team building or training event.
 
@@ -44,7 +44,7 @@ The following are prereqs to start developing the application
 
 # Steps
 
-### To develop the iOS app
+### Setting up your iOS app
 
 Clone the project
 
@@ -64,23 +64,65 @@ Open the `rainbow.xcodeproj` in XCode. Select the rainbow target, choose the Gen
 
 Drag and drop the `Frameworks` folder to the rainbow project - click `add groups` instead of add folder references. Navigate to the `embedded binaries` section of the rainbow project general information, and add the two frameworks as embedded binaries.
 
-### To develop the server
+### Setting Up Your [Kitura](http://kitura.io) Server
 
-1. Provision a Cloudant NoSQL DB instance
-2. Provision a Push Notification instance
-3. Deploy the app
+1. Go to the [IBM Cloud console](https://console.bluemix.net), and click Create Resource.
+2.  Search for "Cloudant NoSQL DB" and create a service. Take note of the name of the created service. 
+<p align="center">
+	<img src="./images/cloudantChoice.png" width=300>
+</p>
+3. Go to your Cloudant service home page, and click the green  **Launch** button. Click the database icon on the left, and along the top, click "Create Database". Name it `routes-users`.
+4. Do the same thing for a Push Notifications service as well.
+ <p align="center">
+	<img src="./images/pushNotificationsChoice.png" width=300>
+</p>
+ 
+ (**to set up push notifications with your app, you will need to follow the [guide](https://console.bluemix.net/docs/services/mobilepush/index.html#gettingstartedtemplate) for embedding them into your app**)
+5. After cloning this repository, go to `Server/rainbow-server` from the terminal.
+6.  Run `swift package generate-xcodeproj` which creates the `rainbow-server.xcodeproj` file.
+7. In the `config/` directory, find the file `localdev-config.json` that looks like so:
 
-More details to come!
+```json
+{
+    "Cloudant NoSQL DB-kl": {
+        "username": "hot",
+        "password": "dog",
+        "host": "nothotdog",
+        "port": 443,
+        "url": "hotdog url"
+    },
+    "rainbow-server-PushNotifications-r6m1": {
+        "appGuid": "hotdog guid",
+        "url": "hotdo url",
+        "admin_url": "hotdog admin url",
+        "appSecret": "hotdog",
+        "clientSecret": "not hotdog"
+    }
+}
 
-# Build your own version!
+``` 
+Update the credentials for the Push Notification and Cloudant service in `localdev-config.json`. You will also want to make sure that the names are also correct in `mappings.json`.  
+8. Open the project using Xcode by running: `open rainbow-server.xcodeproj`.  
+9. You can build and run the project in Xcode, or use the accompanying `runDocker.sh` script to test the app in a Docker container.
 
-1. Pick a theme and set of items -- museum pieces, office hardware, conference booths, whatever
-2. Create a model in Watson Studio -- details to come
-3. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) 
+## Build Your Own Model
+
+For this, you should pick a theme and set of items -- museum pieces, office hardware, conference booths, whatever you want! As an example, we'll use fruits, and make a model that can distinguish between 3 fruits: apple, pear, and banana.
+
+1.  Take lots of photos of each of them, and organize each set of photos into their own folders. Zip each of them up so you have:   
+    a. `Apple.zip`
+    b. `Pear.zip`
+    c. `Banana.zip`
+2. If you have already created an account on [IBM Cloud](https://console.bluemix.net), then go to [Watson Studio](https://dataplatform.ibm.com) and log in with the same credentials.
+3. Click the New Project button, then click the Visual Recognition option, then click OK.
+<p align="center">
+	<img src="./images/watsonNewProject.png" width=300>
+	<img src="./images/VisualRecognition.png" width=300>
+</p>
+4. Pick a project name and a description. If you haven't already created a Cloud Object storage instance, the service should create one for you. Click ok.
+4. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) 
 4. Update the JSON file that lists the objects [iOS/rainbow/Config/GameObjects.json](iOS/rainbow/Config/GameObjects.json)
-5. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/)
-
-More details to come!
+5. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/) - you'll want to find both a colored and white icon for each item!
 
 # Sample output
 
