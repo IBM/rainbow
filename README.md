@@ -127,9 +127,9 @@ For this, you should pick a theme and set of items -- museum pieces, office hard
 4. Pick a project name and a description. If you haven't already created a Cloud Object storage instance, the service should create one for you. Click ok.
 5. Look on the right hand side of the screen: you should see a label that says "Upload to project". Select all of the .zip folders you previously created and let the folders upload.
 6. As the folders upload, drag each of them to the center of the screen, and the classes should be automatically created for you.
-7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit. 
-8. Click the Train Model button. Go get a cup of coffee while you wait for this to finish.
-9. When you refresh the page, click the name of the model underneath "Visual Recognition Models". Click the "Implementation" tab, and then click the "Core ML" option. Download the model that it tells you to download.
+7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit.   
+8. Click the Train Model button. Go get a cup of coffee while you wait for this to finish.   
+9. When you refresh the page, click the name of the model underneath "Visual Recognition Models". Click the "Implementation" tab, and then click the "Core ML" option. Download the model that it tells you to download.   
 10. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) with the model you just downloaded.
 11. Update the JSON file that lists the objects [iOS/rainbow/Config/GameObjects.json](iOS/rainbow/Config/GameObjects.json)
 12. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/) - you'll want to find both a colored and white icon for each item!
