@@ -27,6 +27,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ## Included components
 * [Core ML](https://developer.apple.com/documentation/coreml): Is a framework that will allow integration of machine learning models into apps.
+* [Lumina](https://github.com/dokun1/Lumina): Lumina is an open-source Swift framework that allows you to stream video frames through a Core ML model and get instant results.
 * [Kitura](https://www.kitura.io/): Kitura is a free and open-source web framework written in Swift, developed by IBM and licensed under Apache 2.0. It’s an HTTP server and web framework for writing Swift server applications.
 * [Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html): Visual Recognition understands the contents of images - visual concepts tag the image, find human faces, approximate age and gender, and find similar images in a collection.
 
@@ -71,7 +72,7 @@ Drag and drop the `Frameworks` folder to the rainbow project - click `add groups
 <p align="center">
 	<img src="./images/cloudantChoice.png" width=300>
 </p>
-3. Go to your Cloudant service home page, and click the green  **Launch** button. Click the database icon on the left, and along the top, click "Create Database". Name it `routes-users`.
+3. Go to your Cloudant service home page, and click the green  **Launch** button. Click the database icon on the left, and along the top, click "Create Database". Name it `routes-users`, and click "Create Document". Edit your JSON to include a `"username"` and a `"password"` of your choosing. If you do this, you will need this when you set up your iOS application.
 4. Do the same thing for a Push Notifications service as well.
  <p align="center">
 	<img src="./images/pushNotificationsChoice.png" width=300>
@@ -105,14 +106,25 @@ Update the credentials for the Push Notification and Cloudant service in `locald
 8. Open the project using Xcode by running: `open rainbow-server.xcodeproj`.  
 9. You can build and run the project in Xcode, or use the accompanying `runDocker.sh` script to test the app in a Docker container.
 
+### Setting Up Server/Client Credentials
+
+Though the Visual Recognition component of this application does not require API authentication, they are required if you decide to save your high scores to the API. If you created a username and password in your Cloudant database, complete the following steps:
+
+1. Open up the Xcode project for your iOS application.
+2. In the "Model" folder, create a file called `WatsonMLClientCredentials.json`.
+3. For the `cloudant` node, update the username and password with the service credentials you installed in `localdev-config.json` for your server.
+4. For the `routes` node, update the username and password with the service credentials you created in the database in the server set up tutorial. 
+
+From this point forward, you should be able to make valid calls to your Kitura API.
+
 ## Build Your Own Model
 
 For this, you should pick a theme and set of items -- museum pieces, office hardware, conference booths, whatever you want! As an example, we'll use fruits, and make a model that can distinguish between 3 fruits: apple, pear, and banana.
 
-1.  Take lots of photos of each of them, and organize each set of photos into their own folders. Zip each of them up so you have:   
-    a. `Apple.zip`
-    b. `Pear.zip`
-    c. `Banana.zip`
+1.  Take lots of photos of each of them, and organize each set of at least 10 photos into their own folders. Zip each of them up so you have:   
+    a. `Apple.zip`   
+    b. `Pear.zip`   
+    c. `Banana.zip`   
 2. If you have already created an account on [IBM Cloud](https://console.bluemix.net), then go to [Watson Studio](https://dataplatform.ibm.com) and log in with the same credentials.
 3. Click the New Project button, then click the Visual Recognition option, then click OK.
 <p align="center">
@@ -120,9 +132,18 @@ For this, you should pick a theme and set of items -- museum pieces, office hard
 	<img src="./images/VisualRecognition.png" width=300>
 </p>
 4. Pick a project name and a description. If you haven't already created a Cloud Object storage instance, the service should create one for you. Click ok.
-4. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) 
-4. Update the JSON file that lists the objects [iOS/rainbow/Config/GameObjects.json](iOS/rainbow/Config/GameObjects.json)
-5. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/) - you'll want to find both a colored and white icon for each item!
+5. Look on the right hand side of the screen: you should see a label that says "Upload to project". Select all of the .zip folders you previously created and let the folders upload.
+6. As the folders upload, drag each of them to the center of the screen, and the classes should be automatically created for you.
+7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit. 
+8. Click the Train Model button. Go get a cup of coffee while you wait for this to finish.
+9. When you refresh the page, click the name of the model underneath "Visual Recognition Models". Click the "Implementation" tab, and then click the "Core ML" option. Download the model that it tells you to download.
+10. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) with the model you just downloaded.
+11. Update the JSON file that lists the objects [iOS/rainbow/Config/GameObjects.json](iOS/rainbow/Config/GameObjects.json)
+12. If you need icons check out [https://thenounproject.com/](https://thenounproject.com/) - you'll want to find both a colored and white icon for each item!
+
+### Testing The App
+
+You should be able to build and run this app on your device by now. Try to hold the "camera" tab in front of one of the objects, and if it detects the object successfully, you are in the clear!
 
 # Sample output
 
