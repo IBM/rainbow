@@ -94,7 +94,6 @@ carthage update --platform iOS
         "clientSecret": "not hotdog"
     }
 }
-
 ``` 
 Update the credentials for the Push Notification and Cloudant service in `localdev-config.json`. You will also want to make sure that the names are also correct in `mappings.json`.  
 8. Open the project using Xcode by running: `open rainbow-server.xcodeproj`.  
