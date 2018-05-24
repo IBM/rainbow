@@ -1,0 +1,14 @@
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+file_length:
+  warning: 600
+  error: 1000
+included: # paths to include during linting. `--path` is ignored if present.
+  - ./Sources
+excluded:
+  # put paths for excluded swiftlint files here
+type_body_length:
+  - 300 # warning
+  - 400 # error
+reporter: "xcode"
