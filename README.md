@@ -79,7 +79,7 @@ carthage update --platform iOS
  
    > To set up push notifications with your app, you will need to follow the [guide](https://console.bluemix.net/docs/services/mobilepush/index.html#gettingstartedtemplate) for embedding them into your app
 
-5. After cloning this repository, go to `Server/rainbow-server` from the terminal.
+5. After cloning this repository, go to `Server/` from the terminal.
 
 6. Run `swift package generate-xcodeproj` which creates the `rainbow-server.xcodeproj` file.
 
