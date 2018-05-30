@@ -93,7 +93,7 @@ class LeaderboardTableViewController: UITableViewController {
         if let startDate = currentEntry.startDate, let finishDate = currentEntry.finishDate {
             cell.timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
         }
-        let urlString = "https://watsonml-vivatech.mybluemix.net/avatar/leaderboardAvatar/\(currentEntry.id ?? "nil").png"
+        let urlString = "\(UIApplication.shared.rainbowServerBaseURL)avatar/leaderboardAvatar/\(currentEntry.id ?? "nil").png"
         if let url = URL(string: urlString) {
             cell.avatarImageView?.kf.indicatorType = .activity
             cell.avatarImageView?.kf.setImage(with: url)
