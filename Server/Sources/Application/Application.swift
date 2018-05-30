@@ -56,7 +56,7 @@ public class App {
 
     func postInit() throws {
         // Endpoints
-        setupBasicAuth(app: self)
+        //setupBasicAuth(app: self)
         initializeHealthRoutes(app: self)
         initializeScoreRoutes(app: self)
     }

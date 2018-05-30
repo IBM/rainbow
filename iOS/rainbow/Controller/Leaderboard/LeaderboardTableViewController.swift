@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Kingfisher
 
 class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var positionLabel: UILabel?
@@ -93,6 +94,7 @@ class LeaderboardTableViewController: UITableViewController {
         if let startDate = currentEntry.startDate, let finishDate = currentEntry.finishDate {
             cell.timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
         }
+        cell.avatarImageView?.kf.setImage(with: <#T##Resource?#>, placeholder: <#T##Placeholder?#>, options: <#T##KingfisherOptionsInfo?#>, progressBlock: <#T##DownloadProgressBlock?##DownloadProgressBlock?##(Int64, Int64) -> Void#>, completionHandler: <#T##CompletionHandler?##CompletionHandler?##(Image?, NSError?, CacheType, URL?) -> Void#>)
         cell.loadingIndicator?.startAnimating()
         DispatchQueue.global(qos: .background).async {
             ScoreEntry.ServerCalls.getImage(with: currentEntry.id, completion: { image, error in

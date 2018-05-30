@@ -20,6 +20,7 @@ func initializeScoreRoutes(app: App) {
     app.router.post("watsonml/entries", handler: addNewEntry)
     app.router.put("/watsonml/entries", handler: updateEntry)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
+    app.router.get("/watsonml/leaderboardAvatar", handler: getLeaderboardAvatar)
 }
 
 func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, RequestError?) -> Void) {
@@ -82,5 +83,12 @@ func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void
     }
     ScoreEntry.Persistence.getLeaderBoardData(from: client) { entries, error in
         return completion(entries, error as? RequestError)
+    }
+}
+
+func getLeaderboardAvatar(cloudantID: String, completion: @escaping (AvatarImage?, RequestError?) -> Void) {
+    Log.info("Retrieving avatar for id: \(cloudantID)")
+    ScoreEntryAvatar.getImage(with: cloudantID) { imageData, error in
+        return completion(AvatarImage(imageData: imageData), error as? RequestError)
     }
 }

@@ -1,10 +1,10 @@
 {
     "Cloudant NoSQL DB-kl": {
-        "username": "hot",
-        "password": "dog",
-        "host": "nothotdog",
+        "username": "ef94235d-9e39-41e8-9879-ce14d221bf60-bluemix",
+        "password": "bdb99b4e472c5b6e3188cdbb8f42c67f313cb8b4399b796379addb206c15fea9",
+        "host": "ef94235d-9e39-41e8-9879-ce14d221bf60-bluemix.cloudant.com",
         "port": 443,
-        "url": "hotdog url"
+        "url": "https://ef94235d-9e39-41e8-9879-ce14d221bf60-bluemix:bdb99b4e472c5b6e3188cdbb8f42c67f313cb8b4399b796379addb206c15fea9@ef94235d-9e39-41e8-9879-ce14d221bf60-bluemix.cloudant.com"
     },
     "rainbow-server-PushNotifications-r6m1": {
         "appGuid": "hotdog guid",
