@@ -9,6 +9,7 @@ import Foundation
 import CouchDB
 import LoggerAPI
 import KituraContracts
+import Kitura
 
 private var client: CouchDBClient?
 private var pushNotification: PushNotification?
@@ -20,7 +21,7 @@ func initializeScoreRoutes(app: App) {
     app.router.post("watsonml/entries", handler: addNewEntry)
     app.router.put("/watsonml/entries", handler: updateEntry)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
-    app.router.get("/watsonml/leaderboardAvatar", handler: getLeaderboardAvatar)
+    app.router.get("/avatar/leaderboardAvatar/:id", handler: getLeaderboardAvatar)
 }
 
 func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, RequestError?) -> Void) {
@@ -86,9 +87,25 @@ func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void
     }
 }
 
-func getLeaderboardAvatar(cloudantID: String, completion: @escaping (AvatarImage?, RequestError?) -> Void) {
+func getLeaderboardAvatar(request: RouterRequest, response: RouterResponse, next: @escaping () -> Void) {
+    guard let requestID = request.parameters["id"] else {
+        response.status(.badRequest).send(json: [])
+        return
+    }
+    guard let cloudantID = requestID.components(separatedBy: ".").first else {
+        response.status(.badRequest).send(json: [])
+        return
+    }
+    guard let client = client else {
+        response.status(.failedDependency).send(json: [])
+        return
+    }
     Log.info("Retrieving avatar for id: \(cloudantID)")
-    ScoreEntryAvatar.getImage(with: cloudantID) { imageData, error in
-        return completion(AvatarImage(imageData: imageData), error as? RequestError)
+    ScoreEntry.Persistence.getAvatar(for: cloudantID, from: client) { imageData, error in
+        guard let imageData = imageData else {
+            response.status(.preconditionFailed).send(json: ["Error": "No Image Data Available"])
+            return
+        }
+        response.status(.OK).send(data: imageData)
     }
 }

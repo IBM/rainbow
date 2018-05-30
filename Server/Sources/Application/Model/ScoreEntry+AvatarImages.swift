@@ -8,6 +8,7 @@
 import Foundation
 import Kitura
 import SwiftyRequest
+import CouchDB
 
 enum RainbowAvatarError: Error {
     case couldNotCreateClient
@@ -30,14 +31,34 @@ public struct AvatarImage: Codable {
     var imageData: Data?
 }
 
+fileprivate struct CloudantConfig: Codable {
+    var username: String
+    var password: String
+    var url: String
+}
+
 class ScoreEntryAvatar {
+    private static func getCloudantConfig() -> CloudantConfig? {
+        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let path = "./config/ServerConfig.json"
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let decoded = try JSONDecoder().decode(CloudantConfig.self, from: data)
+            return decoded
+        } catch {
+            return nil
+        }
+    }
+    
     static func getImage(with identifier: String?, completion: @escaping (_ image: Data?, _ error: Error?) -> Void) {
         guard let identifier = identifier else {
             return completion(nil, nil)
         }
-        let request = RestRequest(method: .post, url: "https://241de9e3-46be-4625-a256-76eab61af5da-bluemix.cloudant.com/rainbow-entries/_design/avatarImage/_search/avatarImageIdx", containsSelfSignedCert: false)
-        
-        request.credentials = Credentials.basicAuthentication(username: "watsonml", password: "(C0r3MLiPh0neGam3!)")
+        guard let config = getCloudantConfig() else {
+            return completion(nil, nil)
+        }
+        let request = RestRequest(method: .post, url: config.url, containsSelfSignedCert: false)
+        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
         request.headerParameters = ["Content-Type": "application/json"]
         let bodyString = "{\"q\": \"_id:\(identifier)\"}"
         request.messageBody = bodyString.data(using: .utf8)
@@ -45,14 +66,16 @@ class ScoreEntryAvatar {
             switch response.result {
             case .success(let imageResponse):
                 guard let imageString = imageResponse.rows.first?.fields.avatarImage else {
-                    return completion(nil, RainbowAvatarError.couldNotLoadImage)
+                    completion(nil, RainbowAvatarError.couldNotLoadImage)
+                    return
                 }
                 guard let imageData = Data(base64Encoded: imageString) else {
-                    return completion(nil, RainbowAvatarError.couldNotLoadImage)
+                    completion(nil, RainbowAvatarError.couldNotLoadImage)
+                    return
                 }
-                return completion(imageData, nil)
+                completion(imageData, nil)
             case .failure(let error):
-                return completion(nil, error)
+                completion(nil, error)
             }
         }
     }
