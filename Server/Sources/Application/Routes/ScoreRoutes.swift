@@ -96,12 +96,8 @@ func getLeaderboardAvatar(request: RouterRequest, response: RouterResponse, next
         response.status(.badRequest).send(json: [])
         return
     }
-    guard let client = client else {
-        response.status(.failedDependency).send(json: [])
-        return
-    }
     Log.info("Retrieving avatar for id: \(cloudantID)")
-    ScoreEntry.Persistence.getAvatar(for: cloudantID, from: client) { imageData, error in
+    ScoreEntryAvatar.getImage(with: cloudantID) { imageData, error in
         guard let imageData = imageData else {
             response.status(.preconditionFailed).send(json: ["Error": "No Image Data Available"])
             return

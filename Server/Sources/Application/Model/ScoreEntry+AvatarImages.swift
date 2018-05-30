@@ -9,6 +9,7 @@ import Foundation
 import Kitura
 import SwiftyRequest
 import CouchDB
+import FileKit
 
 enum RainbowAvatarError: Error {
     case couldNotCreateClient
@@ -32,17 +33,16 @@ public struct AvatarImage: Codable {
 }
 
 fileprivate struct CloudantConfig: Codable {
-    var username: String
-    var password: String
-    var url: String
+    var cloudantUsername: String
+    var cloudantPassword: String
+    var cloudantAvatarURL: String
 }
 
 class ScoreEntryAvatar {
     private static func getCloudantConfig() -> CloudantConfig? {
-        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let path = "./config/ServerConfig.json"
+        let path = FileKit.projectFolderURL.appendingPathComponent("config/ServerConfig.json")
         do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let data = try Data(contentsOf: path, options: .mappedIfSafe)
             let decoded = try JSONDecoder().decode(CloudantConfig.self, from: data)
             return decoded
         } catch {
@@ -57,8 +57,8 @@ class ScoreEntryAvatar {
         guard let config = getCloudantConfig() else {
             return completion(nil, nil)
         }
-        let request = RestRequest(method: .post, url: config.url, containsSelfSignedCert: false)
-        request.credentials = Credentials.basicAuthentication(username: config.username, password: config.password)
+        let request = RestRequest(method: .post, url: config.cloudantAvatarURL, containsSelfSignedCert: false)
+        request.credentials = Credentials.basicAuthentication(username: config.cloudantUsername, password: config.cloudantPassword)
         request.headerParameters = ["Content-Type": "application/json"]
         let bodyString = "{\"q\": \"_id:\(identifier)\"}"
         request.messageBody = bodyString.data(using: .utf8)
