@@ -86,6 +86,9 @@
 		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
+		53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
+		53C06E3420BEF3CD00C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
+		53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
@@ -121,6 +124,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */,
+				53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */,
 				53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */,
 				53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
 				531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */,
@@ -207,6 +211,7 @@
 		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
 		53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
@@ -230,7 +235,9 @@
 				531AAF9820A4B9C80056B24B /* Lumina.framework in Frameworks */,
 				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
 				5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */,
+				53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */,
 				53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */,
+				53C06E3420BEF3CD00C03BA6 /* Kingfisher.framework in Frameworks */,
 				53AC589220AA2FF50031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				53AC589120AA2FF50031EDC9 /* BMSCore.framework in Frameworks */,
 				531AAF9A20A4B9C80056B24B /* VisualRecognitionV3.framework in Frameworks */,
@@ -461,6 +468,7 @@
 		A259438820A0A06C000B5935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */,
 				5365924120AB8F0900F76E37 /* SVProgressHUD.framework */,
 				53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */,
 				53AC588E20AA2FF50031EDC9 /* BMSCore.framework */,

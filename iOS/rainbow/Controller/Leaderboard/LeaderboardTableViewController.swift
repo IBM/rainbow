@@ -8,13 +8,13 @@
 
 import UIKit
 import SVProgressHUD
+import Kingfisher
 
 class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var positionLabel: UILabel?
     @IBOutlet weak var avatarImageView: UIImageView?
     @IBOutlet weak var usernameLabel: UILabel?
     @IBOutlet weak var timeElapsedLabel: UILabel?
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView?
 }
 
 class LeaderboardTableViewController: UITableViewController {
@@ -93,23 +93,10 @@ class LeaderboardTableViewController: UITableViewController {
         if let startDate = currentEntry.startDate, let finishDate = currentEntry.finishDate {
             cell.timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
         }
-        cell.loadingIndicator?.startAnimating()
-        DispatchQueue.global(qos: .background).async {
-            ScoreEntry.ServerCalls.getImage(with: currentEntry.id, completion: { image, error in
-                if error != nil {
-                    DispatchQueue.main.async {
-                        cell.loadingIndicator?.alpha = 0.0
-                        cell.loadingIndicator?.stopAnimating()
-                        cell.avatarImageView?.backgroundColor = UIColor.RainbowColors.neutral
-                    }
-                } else if let image = image {
-                    DispatchQueue.main.async {
-                        cell.loadingIndicator?.alpha = 0.0
-                        cell.loadingIndicator?.stopAnimating()
-                        cell.avatarImageView?.image = image
-                    }
-                }
-            })
+        let urlString = "\(UIApplication.shared.rainbowServerBaseURL)avatar/leaderboardAvatar/\(currentEntry.id ?? "nil").png"
+        if let url = URL(string: urlString) {
+            cell.avatarImageView?.kf.indicatorType = .activity
+            cell.avatarImageView?.kf.setImage(with: url)
         }
         return cell
     }

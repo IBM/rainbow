@@ -9,6 +9,7 @@ import Foundation
 import CouchDB
 import LoggerAPI
 import KituraContracts
+import Kitura
 
 private var client: CouchDBClient?
 private var pushNotification: PushNotification?
@@ -20,6 +21,7 @@ func initializeScoreRoutes(app: App) {
     app.router.post("watsonml/entries", handler: addNewEntry)
     app.router.put("/watsonml/entries", handler: updateEntry)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
+    app.router.get("/avatar/leaderboardAvatar/:id", handler: getLeaderboardAvatar)
 }
 
 func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, RequestError?) -> Void) {
@@ -82,5 +84,24 @@ func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void
     }
     ScoreEntry.Persistence.getLeaderBoardData(from: client) { entries, error in
         return completion(entries, error as? RequestError)
+    }
+}
+
+func getLeaderboardAvatar(request: RouterRequest, response: RouterResponse, next: @escaping () -> Void) {
+    guard let requestID = request.parameters["id"] else {
+        response.status(.badRequest).send(json: [])
+        return
+    }
+    guard let cloudantID = requestID.components(separatedBy: ".").first else {
+        response.status(.badRequest).send(json: [])
+        return
+    }
+    Log.info("Retrieving avatar for id: \(cloudantID)")
+    ScoreEntryAvatar.getImage(with: cloudantID) { imageData, error in
+        guard let imageData = imageData else {
+            response.status(.preconditionFailed).send(json: ["Error": "No Image Data Available"])
+            return
+        }
+        response.status(.OK).send(data: imageData)
     }
 }
