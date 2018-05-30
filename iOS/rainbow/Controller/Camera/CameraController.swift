@@ -37,7 +37,7 @@ class CameraController: LuminaViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
-        self.streamingModelTypes = [ProjectRainbowModel_1753554316()]
+        self.streamingModels = [LuminaModel(model: ProjectRainbowModel_1753554316().model, type: "WatsonML")]
         self.setShutterButton(visible: false)
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
@@ -104,7 +104,6 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-//            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
             showStartView()
         }
     }
