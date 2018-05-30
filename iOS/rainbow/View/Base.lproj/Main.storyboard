@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o5g-Dy-Ubp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o5g-Dy-Ubp">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -499,13 +499,6 @@
                                                 <constraint firstAttribute="height" constant="80" id="dwf-3o-Rc1"/>
                                             </constraints>
                                         </imageView>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FIa-YD-xz3">
-                                            <rect key="frame" x="76" y="49" width="20" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="RO4-xB-Yq7"/>
-                                                <constraint firstAttribute="width" constant="20" id="z78-Db-nnP"/>
-                                            </constraints>
-                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="QGx-iO-fei" firstAttribute="leading" secondItem="mID-w5-2cF" secondAttribute="trailing" constant="8" id="4dR-Yt-Pxc"/>
@@ -517,14 +510,11 @@
                                         <constraint firstItem="mID-w5-2cF" firstAttribute="leading" secondItem="O1l-JH-a9X" secondAttribute="leadingMargin" id="QGk-hw-rJB"/>
                                         <constraint firstItem="QGx-iO-fei" firstAttribute="top" secondItem="O1l-JH-a9X" secondAttribute="topMargin" constant="8" id="T2x-aI-KWW"/>
                                         <constraint firstItem="mID-w5-2cF" firstAttribute="top" secondItem="O1l-JH-a9X" secondAttribute="topMargin" constant="33" id="VKq-v5-Sw5"/>
-                                        <constraint firstItem="FIa-YD-xz3" firstAttribute="top" secondItem="O1l-JH-a9X" secondAttribute="topMargin" constant="38" id="bkJ-Pp-igA"/>
-                                        <constraint firstItem="FIa-YD-xz3" firstAttribute="leading" secondItem="mID-w5-2cF" secondAttribute="trailing" constant="38" id="lWE-kZ-VXH"/>
                                         <constraint firstItem="ttb-hP-hvo" firstAttribute="leading" secondItem="QGx-iO-fei" secondAttribute="trailing" constant="8" id="ldj-ss-POs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avatarImageView" destination="QGx-iO-fei" id="NOn-Uk-6Mf"/>
-                                    <outlet property="loadingIndicator" destination="FIa-YD-xz3" id="JmJ-oY-ACz"/>
                                     <outlet property="positionLabel" destination="mID-w5-2cF" id="NNX-fO-2Th"/>
                                     <outlet property="timeElapsedLabel" destination="Eln-Yr-6n5" id="aWo-GZ-zd7"/>
                                     <outlet property="usernameLabel" destination="ttb-hP-hvo" id="gd6-ON-bzO"/>
