@@ -118,7 +118,7 @@ public class ScoreEntryService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
         ResponseEntity<byte[]> response=restTemplate.exchange
                 (avatarUrl.toString(), HttpMethod.GET, new HttpEntity<>( headers), byte[].class);
