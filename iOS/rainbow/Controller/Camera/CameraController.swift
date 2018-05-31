@@ -110,18 +110,29 @@ class CameraController: LuminaViewController {
     }
     
     func startNewGame() {
+        defer {
+            continueGame()
+        }
+        var needsServerUpdate = true
         do {
             for view in iconCheckImageViews {
                 view.1.alpha = 0.0
             }
             var savedScoreEntry = try ScoreEntry.ClientPersistence.get()
+            if savedScoreEntry.finishDate != nil {
+                needsServerUpdate = false
+            }
             savedScoreEntry.startDate = Date()
             savedScoreEntry.finishDate = nil
             savedScoreEntry.objects = nil
             try ScoreEntry.ClientPersistence.save(entry: savedScoreEntry)
             cachedScoreEntry = savedScoreEntry
             
+            if needsServerUpdate == false {
+                return
+            }
             //we don't want to send base64 string
+            
             savedScoreEntry.avatarImage = nil
             
             //update the startDate to the cloud.            
@@ -138,7 +149,6 @@ class CameraController: LuminaViewController {
                     print("Successfully updated cloud database with startDate \(String(describing: entry.startDate))")
                 }
             })
-            continueGame()
         } catch {
             SVProgressHUD.showError(withStatus: "Couldn't connect to the server - keep playing!")
         }
