@@ -35,6 +35,9 @@ public class ScoreEntryService {
     @Value("${application.kituraUrl.get.leaderboard}")
     private String getLeaderBoardURL;
 
+    @Value("${application.kituraUrl.get.leaderboard.avatar}")
+    private String getLeaderBoardAvatarURL;
+
     @Autowired
     HttpServletRequest request;
 
@@ -101,5 +104,27 @@ public class ScoreEntryService {
         // delay of 1s
         Thread.sleep(1000L);
         return CompletableFuture.completedFuture(Arrays.asList(response.getBody()));
+    }
+
+    /**
+     * Method to asynchronously call external API
+     * @return
+     * @throws InterruptedException
+     */
+    @Async
+    public CompletableFuture<byte[]> getLeaderBoardAvatar(String id) throws InterruptedException{
+        log.info("Getting leaderboard avatar.");
+        StringBuilder avatarUrl = new StringBuilder(getLeaderBoardAvatarURL).append("/").append(id).append(".png");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+        headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
+
+        ResponseEntity<byte[]> response=restTemplate.exchange
+                (avatarUrl.toString(), HttpMethod.GET, new HttpEntity<>( headers), byte[].class);
+
+        // delay of 1s
+        Thread.sleep(1000L);
+        return CompletableFuture.completedFuture(response.getBody());
     }
 }
