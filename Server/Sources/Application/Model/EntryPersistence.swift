@@ -130,13 +130,10 @@ extension ScoreEntry {
                 guard let database = database else {
                     return completion(nil, error)
                 }
-                
                 let dispatchGroup = DispatchGroup()
-                
                 var entries = [ScoreEntry]()
-                // give me this user and if the game was completed
-                //
-                dispatchGroup.enter();
+                
+                dispatchGroup.enter()
                 database.retrieve(id, callback: { document, error in
                     if let document = document, let newEntry = ScoreEntry(document: document)  {
                         if newEntry.finishDate != nil {
@@ -147,7 +144,7 @@ extension ScoreEntry {
                 })
                 
                 dispatchGroup.enter()
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false)], callback: { (documents, error) in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false)], callback: { documents, error in
                     if let documents = documents {
                         for document in documents["rows"].arrayValue {
                             if let newEntry = ScoreEntry(document: document["value"]) {
@@ -158,11 +155,15 @@ extension ScoreEntry {
                     dispatchGroup.leave()
                 })
                 dispatchGroup.notify(queue: DispatchQueue.global(qos: .default), execute: {
-                        //entries.sorted(by: { $0.totalTime > $1.totalTime })
-                        completion(entries, nil)
+                    let uniqueEntries = Array(Set(entries))
+                    let sortedEntries = uniqueEntries.sorted {
+                        guard let first = $0.totalTime, let second = $1.totalTime else {
+                            return false
+                        }
+                        return first < second
+                    }
+                    completion(sortedEntries, nil)
                 })
-                
-                
             }
         }
         

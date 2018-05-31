@@ -93,7 +93,7 @@ func getLeaderBoardForUser(id: String, completion: @escaping ([ScoreEntry]?, Req
     guard let client = client else {
         return completion(nil, .failedDependency)
     }
-    ScoreEntry.Persistence.getLeaderBoardData(from: client) { entries, error in
+    ScoreEntry.Persistence.getLeaderBoardDataForUser(id: id, from: client) { entries, error in
         return completion(entries, error as? RequestError)
     }
 }
