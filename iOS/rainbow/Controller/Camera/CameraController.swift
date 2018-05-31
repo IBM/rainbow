@@ -104,7 +104,6 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-//            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
             showStartView()
         }
     }
