@@ -8,6 +8,7 @@
 import Foundation
 import CouchDB
 import SwiftyJSON
+import Dispatch
 
 enum RainbowPersistenceError: Error {
     case noAvatar
@@ -123,6 +124,48 @@ extension ScoreEntry {
                 
             }
         }
+        
+        static func getLeaderBoardDataForUser(id: String, from client: CouchDBClient, completion: @escaping (_ entries: [ScoreEntry]?, _ error: Error?) -> Void) {
+            getDatabase(from: client) { database, error in
+                guard let database = database else {
+                    return completion(nil, error)
+                }
+                
+                let dispatchGroup = DispatchGroup()
+                
+                var entries = [ScoreEntry]()
+                // give me this user and if the game was completed
+                //
+                dispatchGroup.enter();
+                database.retrieve(id, callback: { document, error in
+                    if let document = document, let newEntry = ScoreEntry(document: document)  {
+                        if newEntry.finishDate != nil {
+                            entries.append(newEntry)
+                        }
+                    }
+                    dispatchGroup.leave()
+                })
+                
+                dispatchGroup.enter()
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false)], callback: { (documents, error) in
+                    if let documents = documents {
+                        for document in documents["rows"].arrayValue {
+                            if let newEntry = ScoreEntry(document: document["value"]) {
+                                entries.append(newEntry)
+                            }
+                        }
+                    }
+                    dispatchGroup.leave()
+                })
+                dispatchGroup.notify(queue: DispatchQueue.global(qos: .default), execute: {
+                        //entries.sorted(by: { $0.totalTime > $1.totalTime })
+                        completion(entries, nil)
+                })
+                
+                
+            }
+        }
+        
         
         static func getScores(from client: CouchDBClient, completion: @escaping (_ entries: [ScoreEntry]?, _ error: Error?) -> Void) {
             getDatabase(from: client) { database, error in

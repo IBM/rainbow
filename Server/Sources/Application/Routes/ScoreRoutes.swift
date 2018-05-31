@@ -21,6 +21,7 @@ func initializeScoreRoutes(app: App) {
     app.router.post("watsonml/entries", handler: addNewEntry)
     app.router.put("/watsonml/entries", handler: updateEntry)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
+    app.router.get("/watsonml/leaderboard", handler: getLeaderBoardForUser)
     app.router.get("/avatar/leaderboardAvatar/:id", handler: getLeaderboardAvatar)
 }
 
@@ -78,6 +79,16 @@ func updateEntry(identifier: String, newEntry: ScoreEntry, completion: @escaping
 
 /// returns sorted list of scores by time taken
 func getLeaderBoard(completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
+    Log.info("Getting leaderboard data")
+    guard let client = client else {
+        return completion(nil, .failedDependency)
+    }
+    ScoreEntry.Persistence.getLeaderBoardData(from: client) { entries, error in
+        return completion(entries, error as? RequestError)
+    }
+}
+
+func getLeaderBoardForUser(id: String, completion: @escaping ([ScoreEntry]?, RequestError?) -> Void) {
     Log.info("Getting leaderboard data")
     guard let client = client else {
         return completion(nil, .failedDependency)
