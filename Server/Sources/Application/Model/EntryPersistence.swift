@@ -144,7 +144,7 @@ extension ScoreEntry {
                 })
                 
                 dispatchGroup.enter()
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false),Database.QueryParameters.reduce(false)], callback: { documents, error in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false), Database.QueryParameters.reduce(false)], callback: { documents, error in
                     if let documents = documents {
                         for document in documents["rows"].arrayValue {
                             if let newEntry = ScoreEntry(document: document["value"]) {
@@ -192,7 +192,8 @@ extension ScoreEntry {
                     dispatchGroup.leave()
                 })
                 dispatchGroup.notify(queue: DispatchQueue.global(qos: .default), execute: {
-                    completion(UserCount(totalUserCount: totalUserCount, totalUserCountCompletingGame: totalUserCountCompletingGame), nil)
+                    let count = UserCount(totalUsers: totalUserCount, totalUsersCompletingGame: totalUserCountCompletingGame)
+                    completion(count, nil)
                 })
             }
         }

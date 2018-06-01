@@ -10,11 +10,4 @@ import Foundation
 struct UserCount: Codable {
     var totalUsers: Int
     var totalUsersCompletingGame: Int
-    
-    init(totalUserCount: Int, totalUserCountCompletingGame: Int) {
-        totalUsers = totalUserCount
-        totalUsersCompletingGame = totalUserCountCompletingGame
-    }    
 }
-
-
