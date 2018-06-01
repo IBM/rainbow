@@ -10,6 +10,7 @@ import Foundation
 import Lumina
 import AudioToolbox
 import SVProgressHUD
+import VisualRecognitionV3
 
 enum GameCameraState {
     case shouldStartNewGame // when the game should be started, or has finished and could be restarted
@@ -104,7 +105,6 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-//            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
             showStartView()
         }
     }
@@ -166,6 +166,23 @@ class CameraController: LuminaViewController {
         if gameState == .nothingDetected {
             self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
         }
+    }
+    
+    @IBAction func refreshButtonTapped() {
+        let alert = UIAlertController.init(title: "Load New Visual Model", message: "This will attempt to download a file that is between 15-20 MBs. Do you want to continue?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Download", style: .default) { _ in
+            VisualRecognitionUpdate.loadLatestModel(completion: { model, error in
+                if let model = model {
+                    self.streamingModels = [LuminaModel(model: model, type: "WatsonML")]
+                } else {
+                    SVProgressHUD.showError(withStatus: "Could not load new model: \(error?.localizedDescription ?? "")")
+                }
+            })
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
