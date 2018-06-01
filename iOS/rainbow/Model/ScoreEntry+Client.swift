@@ -17,7 +17,7 @@ extension UIApplication {
     
     var rainbowServerBaseURL: String {
         var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        baseURL = "https://watsonml-vivatech.mybluemix.net/"
+        baseURL = "https://watsonml-vivatech.mybluemix.net" // this is the base URL for the java proxy in front of kitura
         return baseURL
     }
 }
@@ -28,6 +28,7 @@ enum RainbowClientError: Error {
     case couldNotGetEntries
     case couldNotLoadImage
     case couldNotUpdateEntry
+    case couldNotGetPlayerCount
 }
 
 struct ImageResponseField: Codable {
@@ -73,6 +74,19 @@ extension ScoreEntry {
             }
         }
         
+        static func getCount(completion: @escaping (_ count: UserCount?, _ error: RainbowClientError?) -> Void) {
+            guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
+                return completion(nil, RainbowClientError.couldNotCreateClient)
+            }
+            client.get("/watsonml/user/counts") { (count: UserCount?, error: RequestError?) in
+                if error != nil {
+                    return completion(nil, RainbowClientError.couldNotGetPlayerCount)
+                } else {
+                    return completion(count, nil)
+                }
+            }
+        }
+        
         static func getAll(for identifier: String?, completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
             guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
@@ -80,6 +94,7 @@ extension ScoreEntry {
             if let identifier = identifier {
                 client.get("/watsonml/leaderboard", identifier: identifier) { (entries: [ScoreEntry]?, error: RequestError?) in
                     if error != nil {
+                        print("leaderboard error: \(error.debugDescription)")
                         return completion(nil, RainbowClientError.couldNotGetEntries)
                     } else {
                         return completion(entries, nil)

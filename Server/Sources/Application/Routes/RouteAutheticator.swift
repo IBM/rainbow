@@ -45,6 +45,7 @@ func setupBasicAuth(app: App) {
                 if result {
                     Log.debug("Successfully authenticated!")
                     callback(UserProfile(id: userId, displayName: userId, provider: "HTTPBasic-Kitura"))
+                    return
                 }
             } catch {
                 Log.error("VerifyPassword internal error")

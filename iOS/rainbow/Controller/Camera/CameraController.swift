@@ -10,6 +10,7 @@ import Foundation
 import Lumina
 import AudioToolbox
 import SVProgressHUD
+import VisualRecognitionV3
 
 enum GameCameraState {
     case shouldStartNewGame // when the game should be started, or has finished and could be restarted
@@ -37,7 +38,13 @@ class CameraController: LuminaViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
-        self.streamingModels = [LuminaModel(model: ProjectRainbowModel_1753554316().model, type: "WatsonML")]
+        VisualRecognitionUpdate.loadLatestModel(useCloudAPI: false) { model, _ in
+            guard let model = model else {
+                SVProgressHUD.showError(withStatus: "Could not load visual model from device")
+                return
+            }
+            self.streamingModels = [LuminaModel(model: model, type: "WatsonML")]
+        }
         self.setShutterButton(visible: false)
         self.setTorchButton(visible: true)
         self.setCancelButton(visible: false)
@@ -81,6 +88,11 @@ class CameraController: LuminaViewController {
         super.viewWillAppear(animated)
         determineGameState()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkIfLatestModelAvailable()
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -104,7 +116,6 @@ class CameraController: LuminaViewController {
                 continueGame()
             }
         } catch {
-//            NotificationCenter.default.post(name: Notification.Name("viva-ml-device-token-registered"), object: "00000000-0000-0000-0000-000000000000")
             showStartView()
         }
     }
@@ -166,6 +177,47 @@ class CameraController: LuminaViewController {
         if gameState == .nothingDetected {
             self.textPrompt = GameTimer.getTimeElapsedString(for: cachedScoreEntry)
         }
+    }
+    
+    fileprivate func checkIfLatestModelAvailable() {
+        let defaults = UserDefaults.standard
+        guard let lastCheckDate = defaults.string(forKey: "lastModelCheckDate")?.dateFromISO8601 else {
+            // this has never checked - log the first date and continually check whenever we load this screen again
+            defaults.set(Date().iso8601, forKey: "lastModelCheckDate")
+            defaults.synchronize()
+            return
+        }
+        let interval = Date().timeIntervalSince(lastCheckDate)
+        if interval > TimeInterval(60 * 60 * 24 * 7) {
+            // its been 7 days since the last check for a fresh model, let's see if there's something new to download
+            defaults.set(Date().iso8601, forKey: "lastModelCheckDate")
+            defaults.synchronize()
+            VisualRecognitionUpdate.checkNewModelAvailable { available in
+                DispatchQueue.main.async {
+                    if available { self.promptForLatestModel() }
+                }
+            }
+        }
+    }
+    
+    private func promptForLatestModel() {
+        let alert = UIAlertController.init(title: "Load New Visual Model", message: "This will attempt to download a file that is between 15-20 MBs. Do you want to continue?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "Download", style: .default) { _ in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            VisualRecognitionUpdate.loadLatestModel(useCloudAPI: true, completion: { model, _ in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                if let model = model {
+                    SVProgressHUD.showSuccess(withStatus: "Latest model loaded")
+                    self.streamingModels = [LuminaModel(model: model, type: "WatsonML")]
+                } else {
+                    SVProgressHUD.showError(withStatus: "Could not download - using existing model")
+                }
+            })
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

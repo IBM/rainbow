@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfp-dX-ufy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026.4000000000001" y="-517.6911544227886"/>
+            <point key="canvasLocation" x="-1026" y="-518"/>
         </scene>
         <!--Guidebook-->
         <scene sceneID="vCC-i1-m2u">
@@ -286,7 +286,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j0j-Xz-mVk">
-                                <rect key="frame" x="37" y="143.5" width="300" height="380"/>
+                                <rect key="frame" x="37" y="163.5" width="300" height="340"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrg-2J-NV7">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
@@ -380,22 +380,8 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lOK-Uc-2qf" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="280" width="300" height="20"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="tEF-2q-kEq"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5b-Vt-bye" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="300" width="300" height="20"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="e5a-Cc-Fju"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mb6-l4-HLk">
-                                        <rect key="frame" x="0.0" y="320" width="300" height="60"/>
+                                        <rect key="frame" x="0.0" y="280" width="300" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0Q-em-HSV">
                                                 <rect key="frame" x="50" y="10" width="200" height="40"/>
@@ -425,10 +411,22 @@
                                     <constraint firstAttribute="width" constant="300" id="Xzi-Uu-zF5"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing: --" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-QD-BPb">
+                                <rect key="frame" x="37" y="504" width="300" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="JHk-a1-XgN"/>
+                                    <constraint firstAttribute="height" constant="41" id="Xjb-A6-yus"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="22"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.32156862749999998" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="YRX-QD-BPb" firstAttribute="top" secondItem="j0j-Xz-mVk" secondAttribute="bottom" id="LxJ-jb-4N5"/>
                             <constraint firstItem="j0j-Xz-mVk" firstAttribute="centerX" secondItem="1X2-xn-izW" secondAttribute="centerX" id="UOR-p1-HKe"/>
+                            <constraint firstItem="YRX-QD-BPb" firstAttribute="centerX" secondItem="1X2-xn-izW" secondAttribute="centerX" id="VJL-lW-Qcs"/>
                             <constraint firstItem="j0j-Xz-mVk" firstAttribute="centerY" secondItem="1X2-xn-izW" secondAttribute="centerY" id="g7a-uH-OOf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yqv-hy-23R"/>
@@ -438,6 +436,7 @@
                         <outlet property="avatarImageView" destination="RlH-dx-jc8" id="cDr-ao-AWt"/>
                         <outlet property="leaderboardButton" destination="X0Q-em-HSV" id="kQT-zv-4lS"/>
                         <outlet property="nameTextField" destination="QH0-nn-Skq" id="CgK-dR-xax"/>
+                        <outlet property="nowPlayingLabel" destination="YRX-QD-BPb" id="HKd-mv-Cqz"/>
                         <outlet property="progressLabel" destination="UEf-HW-pqO" id="ph5-o6-jFb"/>
                         <outlet property="scavagingSinceLabel" destination="6gp-6H-gtM" id="Otw-Tu-w12"/>
                         <outlet property="startDateLabel" destination="Awk-lk-4Pb" id="L8l-bP-Lxp"/>

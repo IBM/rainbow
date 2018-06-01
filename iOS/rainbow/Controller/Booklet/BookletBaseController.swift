@@ -16,5 +16,4 @@ class BookletBaseController: UIViewController {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
     }
-
 }

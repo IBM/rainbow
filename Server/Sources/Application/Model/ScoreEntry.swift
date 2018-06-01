@@ -27,7 +27,7 @@ struct ScoreEntry: Codable {
 
 extension ScoreEntry: Hashable {
     var hashValue: Int {
-        return id?.hashValue ?? Int(INT_MAX)
+        return id?.hashValue ?? Int.max
     }
     
     static func == (lhs: ScoreEntry, rhs: ScoreEntry) -> Bool {
