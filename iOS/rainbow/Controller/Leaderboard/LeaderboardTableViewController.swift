@@ -19,11 +19,17 @@ class LeaderboardTableViewCell: UITableViewCell {
 
 class LeaderboardTableViewController: UITableViewController {
     var leaderboard: [ScoreEntry]?
+    var yourUser: ScoreEntry?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         SVProgressHUD.show(withStatus: "Loading Leaderboard...")
-        getLeaderboard()
+        do {
+            yourUser = try ScoreEntry.ClientPersistence.get()
+            getLeaderboard()
+        } catch {
+            print("Could not load your user")
+        }
     }
     
     override func viewDidLoad() {
@@ -46,7 +52,7 @@ class LeaderboardTableViewController: UITableViewController {
     }
     
     private func getLeaderboard() {
-        ScoreEntry.ServerCalls.getAll { entries, error in
+        ScoreEntry.ServerCalls.getAll(for: yourUser?.id) { entries, error in
             DispatchQueue.main.async {
                 if error != nil {
                     SVProgressHUD.showError(withStatus: "Could not load leaderboard")
@@ -97,6 +103,9 @@ class LeaderboardTableViewController: UITableViewController {
         if let url = URL(string: urlString) {
             cell.avatarImageView?.kf.indicatorType = .activity
             cell.avatarImageView?.kf.setImage(with: url)
+        }
+        if yourUser?.username == currentEntry.username {
+            cell.backgroundColor = UIColor.RainbowColors.neutral
         }
         return cell
     }

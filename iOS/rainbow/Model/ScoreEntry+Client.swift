@@ -17,7 +17,7 @@ extension UIApplication {
     
     var rainbowServerBaseURL: String {
         var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        baseURL = "https://watsonml-vivatech.mybluemix.net/"                
+        baseURL = "https://watsonml-vivatech.mybluemix.net/"
         return baseURL
     }
 }
@@ -73,15 +73,25 @@ extension ScoreEntry {
             }
         }
         
-        static func getAll(completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
+        static func getAll(for identifier: String?, completion: @escaping (_ entries: [ScoreEntry]?, _ error: RainbowClientError?) -> Void) {
             guard let client = KituraKit(baseURL: UIApplication.shared.rainbowServerBaseURL) else {
                 return completion(nil, RainbowClientError.couldNotCreateClient)
             }
-            client.get("/watsonml/leaderboard") { (entries: [ScoreEntry]?, error: RequestError?) in
-                if error != nil {
-                    return completion(nil, RainbowClientError.couldNotGetEntries)
-                } else {
-                    return completion(entries, nil)
+            if let identifier = identifier {
+                client.get("/watsonml/leaderboard", identifier: identifier) { (entries: [ScoreEntry]?, error: RequestError?) in
+                    if error != nil {
+                        return completion(nil, RainbowClientError.couldNotGetEntries)
+                    } else {
+                        return completion(entries, nil)
+                    }
+                }
+            } else {
+                client.get("/watsonml/leaderboard") { (entries: [ScoreEntry]?, error: RequestError?) in
+                    if error != nil {
+                        return completion(nil, RainbowClientError.couldNotGetEntries)
+                    } else {
+                        return completion(entries, nil)
+                    }
                 }
             }
         }
