@@ -31,17 +31,11 @@
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Wl7-7S-oHG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="neS-VX-XST">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="0UA-i6-JvX">
-                            <connections>
-                                <action selector="refreshButtonTapped" destination="iME-hB-Q7I" id="Ax4-ii-dMg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Camera" id="neS-VX-XST"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfp-dX-ufy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1026.4000000000001" y="-517.6911544227886"/>
+            <point key="canvasLocation" x="-1026" y="-518"/>
         </scene>
         <!--Guidebook-->
         <scene sceneID="vCC-i1-m2u">

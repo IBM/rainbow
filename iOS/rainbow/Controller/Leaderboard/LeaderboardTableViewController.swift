@@ -15,6 +15,11 @@ class LeaderboardTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView?
     @IBOutlet weak var usernameLabel: UILabel?
     @IBOutlet weak var timeElapsedLabel: UILabel?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.backgroundColor = UIColor.white
+    }
 }
 
 class LeaderboardTableViewController: UITableViewController {
@@ -99,13 +104,16 @@ class LeaderboardTableViewController: UITableViewController {
         if let startDate = currentEntry.startDate, let finishDate = currentEntry.finishDate {
             cell.timeElapsedLabel?.text = GameTimer.getTimeFoundString(startDate: startDate, objectTimestamp: finishDate)
         }
-        let urlString = "\(UIApplication.shared.rainbowServerBaseURL)avatar/leaderboardAvatar/\(currentEntry.id ?? "nil").png"
+        let urlString = "\(UIApplication.shared.rainbowServerBaseURL)/avatar/leaderboardAvatar/\(currentEntry.id ?? "nil").png"
         if let url = URL(string: urlString) {
             cell.avatarImageView?.kf.indicatorType = .activity
             cell.avatarImageView?.kf.setImage(with: url)
         }
         if yourUser?.username == currentEntry.username {
             cell.backgroundColor = UIColor.RainbowColors.neutral
+            if indexPath.row == 10 {
+                cell.positionLabel?.text = ""
+            }
         }
         return cell
     }

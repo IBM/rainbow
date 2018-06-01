@@ -45,6 +45,7 @@ func setupBasicAuth(app: App) {
                 if result {
                     Log.debug("Successfully authenticated!")
                     callback(UserProfile(id: userId, displayName: userId, provider: "HTTPBasic-Kitura"))
+                    return
                 }
             } catch {
                 Log.error("VerifyPassword internal error")
@@ -69,11 +70,13 @@ func setupBasicAuth(app: App) {
             if let userProfile = request.userProfile {
                 Log.debug("User Successfully Authenticated \(userProfile.id)")
                 next()
+                //next()
                 return
             }
             // if 401 returned
             Log.debug("User Authentication failed")
-            try response.status(.unauthorized).send("You are not authorized to use this API").end()
+            try response.status(.unauthorized).send("You are not authorized to use this API")
+            
         } catch {
             Log.error("Could not send unauthorized status.")
         }
