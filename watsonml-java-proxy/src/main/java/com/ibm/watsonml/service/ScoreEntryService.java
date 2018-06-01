@@ -152,6 +152,12 @@ public class ScoreEntryService {
         return CompletableFuture.completedFuture(response.getBody());
     }
 
+
+    /**
+     * Get count of users and users completing the game
+     * @return
+     * @throws InterruptedException
+     */
     public CompletableFuture<UserCount> getUserCount() throws InterruptedException {
         log.info("Getting User count.");
 

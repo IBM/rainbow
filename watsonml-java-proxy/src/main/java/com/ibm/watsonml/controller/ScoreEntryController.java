@@ -79,7 +79,7 @@ public class ScoreEntryController {
 
 
     @GetMapping("/user/counts")
-    public CompletableFuture<UserCount> getTotaUsersCount(@PathVariable String id) {
+    public CompletableFuture<UserCount> getTotaUsersCount() {
         log.debug("REST request to get leaderboard");
         CompletableFuture<UserCount> entries = new CompletableFuture<>();
         try {
