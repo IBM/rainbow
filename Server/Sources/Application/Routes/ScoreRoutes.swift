@@ -23,6 +23,7 @@ func initializeScoreRoutes(app: App) {
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoardForUser)
     app.router.get("/avatar/leaderboardAvatar/:id", handler: getLeaderboardAvatar)
+    app.router.get("/watsonml/leaderboard", handler: getLeaderBoardForUser)
 }
 
 func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, RequestError?) -> Void) {
