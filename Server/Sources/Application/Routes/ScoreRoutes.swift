@@ -23,6 +23,7 @@ func initializeScoreRoutes(app: App) {
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoard)
     app.router.get("/watsonml/leaderboard", handler: getLeaderBoardForUser)
     app.router.get("/avatar/leaderboardAvatar/:id", handler: getLeaderboardAvatar)
+    app.router.get("/watsonml/user/counts", handler: getUserCounts)
 }
 
 func addNewEntry(newEntry: ScoreEntry, completion: @escaping(ScoreEntry?, RequestError?) -> Void) {
@@ -95,6 +96,16 @@ func getLeaderBoardForUser(id: String, completion: @escaping ([ScoreEntry]?, Req
     }
     ScoreEntry.Persistence.getLeaderBoardDataForUser(id: id, from: client) { entries, error in
         return completion(entries, error as? RequestError)
+    }
+}
+
+func getUserCounts(completion: @escaping (UserCount?, RequestError?) -> Void) {
+    Log.info("Getting user counts for dashboard")
+    guard let client = client else {
+        return completion(nil, .failedDependency)
+    }
+    ScoreEntry.Persistence.getUserCounts( from: client) { userCounts, error in
+        return completion(userCounts, error as? RequestError)
     }
 }
 

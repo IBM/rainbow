@@ -144,7 +144,7 @@ extension ScoreEntry {
                 })
                 
                 dispatchGroup.enter()
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false)], callback: { documents, error in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.limit(10) ,Database.QueryParameters.descending(false), Database.QueryParameters.reduce(false)], callback: { documents, error in
                     if let documents = documents {
                         for document in documents["rows"].arrayValue {
                             if let newEntry = ScoreEntry(document: document["value"]) {
@@ -168,13 +168,44 @@ extension ScoreEntry {
         }
         
         
+        static func getUserCounts(from client: CouchDBClient, completion: @escaping (_ entries: UserCount?, _ error: Error?) -> Void) {
+            getDatabase(from: client) { database, error in
+                guard let database = database else {
+                    return completion(nil, error)
+                }
+                let dispatchGroup = DispatchGroup()
+                var totalUserCount: Int = 0
+                var totalUserCountCompletingGame: Int = 0
+                
+                dispatchGroup.enter()
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.reduce(true)], callback: { documents, error in
+                    if let documents = documents {
+                        totalUserCountCompletingGame =  documents["rows"][0]["value"].intValue
+                    }
+                    dispatchGroup.leave()
+                })
+                dispatchGroup.enter()
+                database.queryByView("totalUserCount", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.reduce(true)], callback: { documents, error in
+                    if let documents = documents {
+                        totalUserCount =  documents["rows"][0]["value"].intValue
+                    }
+                    dispatchGroup.leave()
+                })
+                dispatchGroup.notify(queue: DispatchQueue.global(qos: .default), execute: {
+                    let count = UserCount(totalUsers: totalUserCount, totalUsersCompletingGame: totalUserCountCompletingGame)
+                    completion(count, nil)
+                })
+            }
+        }
+        
+        
         static func getScores(from client: CouchDBClient, completion: @escaping (_ entries: [ScoreEntry]?, _ error: Error?) -> Void) {
             getDatabase(from: client) { database, error in
                 guard let database = database else {
                     return completion(nil, error)
                 }
                 
-                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(false)], callback: { (documents, error) in
+                database.queryByView("leader-board", ofDesign: "LeaderBoard", usingParameters: [Database.QueryParameters.descending(false),Database.QueryParameters.reduce(false)], callback: { (documents, error) in
                     guard let documents = documents else {
                         return completion(nil, error)
                     }
