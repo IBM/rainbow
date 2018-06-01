@@ -61,7 +61,7 @@ carthage update --platform iOS
 
 ### Setting Up Your [Kitura](http://kitura.io) Server
 
-1. Go to the [IBM Cloud console](https://console.bluemix.net), and click Create Resource.
+1. Go to the [IBM Cloud console](https://console.bluemix.net), and click `Create Resource`.
 
 2. Search for "Cloudant NoSQL DB" and create a service. Take note of the name of the created service. 
 
@@ -69,7 +69,7 @@ carthage update --platform iOS
     <img src="./images/cloudantChoice.png" width=300>
   </p>
 
-3. Go to your Cloudant service home page, and click the green  **Launch** button. Click the database icon on the left, and along the top, click "Create Database". Name it `routes-users`, and click "Create Document". Edit your JSON to include a `"username"` and a `"password"` of your choosing. If you do this, you will need this when you set up your iOS application.
+3. Go to your Cloudant service home page, and click the green  **Launch** button. Click the database icon on the left, and along the top, click `Create Database`. Name it `routes-users`, and click `Create Document`. Edit your JSON to include a `"username"` and a `"password"` of your choosing. If you do this, you will need this when you set up your iOS application.
 
 4. Do the same thing for a Push Notifications service as well.
 
@@ -116,7 +116,7 @@ Though the Visual Recognition component of this application does not require API
 
 1. Open up the Xcode project for your iOS application.
 
-2. In the "Model" folder, create a file called `WatsonMLClientCredentials.json`.
+2. In the `Model` folder, create a file called `WatsonMLClientCredentials.json`.
 
 3. For the `cloudant` node, update the username and password with the service credentials you installed in `localdev-config.json` for your server.
 
@@ -135,24 +135,24 @@ For this, you should pick a theme and set of items -- museum pieces, office hard
 
 2. If you have already created an account on [IBM Cloud](https://console.bluemix.net), then go to [Watson Studio](https://dataplatform.ibm.com) and log in with the same credentials.
 
-3. Click the New Project button, then click the Visual Recognition option, then click OK.
+3. Click the `New Project` button, then click the `Visual Recognition` option, then click `OK`.
 
 <p align="center">
 	<img src="./images/watsonNewProject.png" width=300>
 	<img src="./images/VisualRecognition.png" width=300>
 </p>
 
-4. Pick a project name and a description. If you haven't already created a Cloud Object storage instance, the service should create one for you. Click ok.
+4. Pick a project name and a description. If you haven't already created a Cloud Object storage instance, the service should create one for you. Click `Ok`.
 
-5. Look on the right hand side of the screen: you should see a label that says "Upload to project". Select all of the .zip folders you previously created and let the folders upload.
+5. Look on the right hand side of the screen: you should see a label that says "Upload to project". Select all of the `.zip` folders you previously created and let the folders upload.
 
 6. As the folders upload, drag each of them to the center of the screen, and the classes should be automatically created for you.
 
 7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit. 
 
-8. Click the Train Model button. Go get a cup of coffee while you wait for this to finish.
+8. Click the `Train Model` button. Go get a cup of coffee while you wait for this to finish.
 
-9. When you refresh the page, click the name of the model underneath "Visual Recognition Models". Click the "Implementation" tab, and then click the "Core ML" option. Download the model that it tells you to download.
+9. When you refresh the page, click the name of the model underneath `Visual Recognition Models`. Click the `Implementation` tab, and then click the `Core ML` option. Download the model that it tells you to download.
 
 10. Replace the model at [iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel](iOS/rainbow/Model/ProjectRainbowModel_1753554316.mlmodel) with the model you just downloaded.
 
