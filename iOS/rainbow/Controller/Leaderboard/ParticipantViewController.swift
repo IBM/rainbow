@@ -16,6 +16,17 @@ class ParticipantViewController: UIViewController {
     @IBOutlet weak var scavagingSinceLabel: UILabel?
     @IBOutlet weak var progressLabel: UILabel?
     @IBOutlet weak var leaderboardButton: UIButton?
+    @IBOutlet weak var nowPlayingLabel: UILabel?
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ScoreEntry.ServerCalls.getCount { count, error in
+            DispatchQueue.main.async {
+                if let count = count {
+                    self.nowPlayingLabel?.text = "Now Playing: \(count.totalUsers) players"
+                }
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +42,7 @@ class ParticipantViewController: UIViewController {
             leaderboardButton.layer.borderWidth = 0.5
             leaderboardButton.layer.borderColor = UIColor.RainbowColors.orange.cgColor
             leaderboardButton.setTitleColor(UIColor.RainbowColors.orange, for: .normal)
+
             guard let imageData = savedEntry.avatarImage else {
                 return
             }
