@@ -43,9 +43,7 @@
 		531AAF8920A4B0690056B24B /* Booklet.json in Resources */ = {isa = PBXBuildFile; fileRef = 531AAF8620A4B0690056B24B /* Booklet.json */; };
 		531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; };
 		531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */; };
-		531AAF9820A4B9C80056B24B /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; };
 		531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		531AAF9A20A4B9C80056B24B /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */; };
 		531AAF9B20A4B9C80056B24B /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		531AAF9D20A4BA280056B24B /* StyleGuides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AAF9C20A4BA280056B24B /* StyleGuides.swift */; };
 		53381902209757B900DE66CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381901209757B900DE66CB /* AppDelegate.swift */; };
@@ -61,7 +59,6 @@
 		5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */; };
 		5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */; };
 		5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
-		5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
 		5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
 		538D191420ACB03100742E17 /* Fireworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D191320ACB03100742E17 /* Fireworks.swift */; };
@@ -74,23 +71,20 @@
 		53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588820A9382B0031EDC9 /* GameStartView.swift */; };
 		53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 53AC588A20A9E9160031EDC9 /* GameObjects.json */; };
 		53AC588D20AA17130031EDC9 /* ObjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588C20AA17130031EDC9 /* ObjectConfig.swift */; };
-		53AC589120AA2FF50031EDC9 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; };
-		53AC589220AA2FF50031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */; };
 		53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
 		53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */; };
 		53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; };
 		53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		53AC589820AA30030031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
 		53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
 		53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
-		53C06E3420BEF3CD00C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
 		53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
+		53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FA729F20C1B2A500F516B3 /* UserCount.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
 		A22DB41E20ACBF3E00FA0419 /* BookletBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41D20ACBF3D00FA0419 /* BookletBaseController.swift */; };
 		A22DB42020ACBF4900FA0419 /* BookletInstructionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */; };
@@ -214,6 +208,7 @@
 		53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
 		53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
+		53FA729F20C1B2A500F516B3 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
 		A22DB41D20ACBF3D00FA0419 /* BookletBaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletBaseController.swift; sourceTree = "<group>"; };
 		A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletInstructionController.swift; sourceTree = "<group>"; };
@@ -232,16 +227,9 @@
 				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
 				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
 				531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */,
-				531AAF9820A4B9C80056B24B /* Lumina.framework in Frameworks */,
 				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
-				5365924320AB8F1000F76E37 /* SVProgressHUD.framework in Frameworks */,
 				53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */,
 				53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */,
-				53C06E3420BEF3CD00C03BA6 /* Kingfisher.framework in Frameworks */,
-				53AC589220AA2FF50031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
-				53AC589120AA2FF50031EDC9 /* BMSCore.framework in Frameworks */,
-				531AAF9A20A4B9C80056B24B /* VisualRecognitionV3.framework in Frameworks */,
-				53AC589820AA30030031EDC9 /* BMSPush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +390,7 @@
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
 				53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
+				53FA729F20C1B2A500F516B3 /* UserCount.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
 				53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */,
 				53AC588620A914880031EDC9 /* ScoreEntry+CoreData.swift */,
@@ -553,7 +542,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = IBM;
 				TargetAttributes = {
 					533818FD209757B900DE66CB = {
@@ -683,6 +672,7 @@
 				5305A1AF20A219380040A9A9 /* RestToken.swift in Sources */,
 				53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */,
 				5338190A209757B900DE66CB /* rainbow.xcdatamodeld in Sources */,
+				53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */,
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
@@ -825,7 +815,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -879,7 +869,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

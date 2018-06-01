@@ -39,7 +39,11 @@ extension ScoreEntry {
         startDate = potentialStartDate
         finishDate = document["finishDate"].dateTime
         objects = nil
+        
         totalTime = nil
+        if document["finishDate"] != nil {
+            totalTime = document["finishDate"].doubleValue - document["startDate"].doubleValue
+        }
     }
     
     mutating func toJSONDocument() -> JSON? {        

@@ -24,3 +24,13 @@ struct ScoreEntry: Codable {
     var objects: [ObjectEntry]?
     var totalTime: Double?
 }
+
+extension ScoreEntry: Hashable {
+    var hashValue: Int {
+        return id?.hashValue ?? Int(INT_MAX)
+    }
+    
+    static func == (lhs: ScoreEntry, rhs: ScoreEntry) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
