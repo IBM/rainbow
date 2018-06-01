@@ -15,8 +15,5 @@ class BookletBaseController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
-        ScoreEntry.ServerCalls.getCount { count, _ in
-            print("Current user counts: \(count?.totalUsers) have started, \(count?.totalUsersCompletingGame) have finished")
-        }
     }
 }

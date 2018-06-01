@@ -70,13 +70,11 @@ func setupBasicAuth(app: App) {
             if let userProfile = request.userProfile {
                 Log.debug("User Successfully Authenticated \(userProfile.id)")
                 next()
-                //next()
                 return
             }
             // if 401 returned
             Log.debug("User Authentication failed")
-            try response.status(.unauthorized).send("You are not authorized to use this API")
-            
+            try response.status(.unauthorized).send("You are not authorized to use this API").end()
         } catch {
             Log.error("Could not send unauthorized status.")
         }
