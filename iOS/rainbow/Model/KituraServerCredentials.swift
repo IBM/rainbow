@@ -46,14 +46,14 @@ class VisualRecognitionUpdate {
             return completion(nil, nil)
         }
         let instance = VisualRecognition(apiKey: key, version: "2018-03-19")
-        instance.updateLocalModel(classifierID: "DefaultCustomModel_2136728037", failure: { error in
+        instance.updateLocalModel(classifierID: "DefaultCustomModel_1753554316", failure: { error in
             DispatchQueue.main.async {
                 completion(nil, error)
             }
         }, success: {
             DispatchQueue.main.async {
                 do {
-                    let model = try instance.getLocalModel(classifierID: "DefaultCustomModel_2136728037")
+                    let model = try instance.getLocalModel(classifierID: "DefaultCustomModel_1753554316")
                     completion(model, nil)
                 } catch let error {
                     completion(nil, error)
