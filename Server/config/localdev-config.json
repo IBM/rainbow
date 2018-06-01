@@ -1,16 +1,16 @@
 {
     "Cloudant NoSQL DB-kl": {
-        "username": "hot",
-        "password": "dog",
-        "host": "nothotdog",
+        "username": "241de9e3-46be-4625-a256-76eab61af5da-bluemix",
+        "password": "3ddaa90570bcb467799d05dca406984d8fb21d1b99c39def703d07756ead700f",
+        "host": "241de9e3-46be-4625-a256-76eab61af5da-bluemix.cloudant.com",
         "port": 443,
-        "url": "hotdog url"
+        "url": "https://241de9e3-46be-4625-a256-76eab61af5da-bluemix:3ddaa90570bcb467799d05dca406984d8fb21d1b99c39def703d07756ead700f@241de9e3-46be-4625-a256-76eab61af5da-bluemix.cloudant.com"
     },
     "rainbow-server-PushNotifications-r6m1": {
-        "appGuid": "hotdog guid",
-        "url": "hotdo url",
-        "admin_url": "hotdog admin url",
-        "appSecret": "hotdog",
-        "clientSecret": "not hotdog"
+        "appGuid": "c8a1c28e-3934-4e03-b8e2-e305ada1bb85",
+        "url": "http://imfpush.ng.bluemix.net/imfpush/v1/apps/c8a1c28e-3934-4e03-b8e2-e305ada1bb85",
+        "admin_url": "//mobile.ng.bluemix.net/imfpushdashboard/?appGuid=c8a1c28e-3934-4e03-b8e2-e305ada1bb85",
+        "appSecret": "dce59c6a-411a-414f-93c2-7cf439cbf763",
+        "clientSecret": "cead9064-e0a6-4a0e-86c0-b6bbf060d871"
     }
 }
