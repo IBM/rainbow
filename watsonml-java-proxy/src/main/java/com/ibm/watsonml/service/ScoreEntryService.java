@@ -2,6 +2,7 @@ package com.ibm.watsonml.service;
 
 
 import com.ibm.watsonml.model.ScoreEntry;
+import com.ibm.watsonml.model.UserCount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class ScoreEntryService {
 
     @Value("${application.kituraUrl.get.leaderboard.avatar}")
     private String getLeaderBoardAvatarURL;
+
+    @Value("${application.kituraUrl.get.user.count}")
+    private String getUserCountURL;
 
     @Autowired
     HttpServletRequest request;
@@ -112,6 +116,26 @@ public class ScoreEntryService {
      * @throws InterruptedException
      */
     @Async
+    public CompletableFuture<List<ScoreEntry>> getLeaderBoard(String id) throws InterruptedException{
+        log.info("Getting leaderboard data for top 10 users.");
+
+        HttpHeaders headers = getHeader();
+
+        StringBuilder topTenLeaderBoardURl = new StringBuilder(getLeaderBoardURL).append("/").append(id);
+        ResponseEntity<ScoreEntry[]> response=restTemplate.exchange
+                (topTenLeaderBoardURl.toString(), HttpMethod.GET, new HttpEntity<>( headers), ScoreEntry[].class);
+
+        // delay of 1s
+        Thread.sleep(1000L);
+        return CompletableFuture.completedFuture(Arrays.asList(response.getBody()));
+    }
+
+    /**
+     * Method to asynchronously call external API
+     * @return
+     * @throws InterruptedException
+     */
+    @Async
     public CompletableFuture<byte[]> getLeaderBoardAvatar(String id) throws InterruptedException{
         log.info("Getting leaderboard avatar.");
         StringBuilder avatarUrl = new StringBuilder(getLeaderBoardAvatarURL).append("/").append(id).append(".png");
@@ -126,5 +150,18 @@ public class ScoreEntryService {
         // delay of 1s
         Thread.sleep(1000L);
         return CompletableFuture.completedFuture(response.getBody());
+    }
+
+    public CompletableFuture<UserCount> getUserCount() throws InterruptedException {
+        log.info("Getting User count.");
+
+        HttpHeaders headers = getHeader();
+        ResponseEntity<UserCount> response=restTemplate.exchange
+                (getUserCountURL, HttpMethod.GET, new HttpEntity<>( headers), UserCount.class);
+
+        // delay of 1s
+        Thread.sleep(1000L);
+        return CompletableFuture.completedFuture(response.getBody());
+
     }
 }

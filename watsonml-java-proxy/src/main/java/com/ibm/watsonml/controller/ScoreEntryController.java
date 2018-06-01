@@ -2,6 +2,7 @@ package com.ibm.watsonml.controller;
 
 
 import com.ibm.watsonml.model.ScoreEntry;
+import com.ibm.watsonml.model.UserCount;
 import com.ibm.watsonml.service.ScoreEntryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +57,33 @@ public class ScoreEntryController {
         CompletableFuture<List<ScoreEntry>> entries = new CompletableFuture<>();
         try {
             entries.complete(scoreEntryService.getLeaderBoard().get());
+        } catch (Exception e) {
+            log.error("Error while making external API call {}", e);
+            entries.completeExceptionally(e);
+        }
+        return entries;
+    }
+
+    @GetMapping("/leaderboard/{id}")
+    public CompletableFuture<List<ScoreEntry>> getLeaderBoardForUser(@PathVariable String id) {
+        log.debug("REST request to get leaderboard");
+        CompletableFuture<List<ScoreEntry>> entries = new CompletableFuture<>();
+        try {
+            entries.complete(scoreEntryService.getLeaderBoard(id).get());
+        } catch (Exception e) {
+            log.error("Error while making external API call {}", e);
+            entries.completeExceptionally(e);
+        }
+        return entries;
+    }
+
+
+    @GetMapping("/user/counts")
+    public CompletableFuture<UserCount> getTotaUsersCount(@PathVariable String id) {
+        log.debug("REST request to get leaderboard");
+        CompletableFuture<UserCount> entries = new CompletableFuture<>();
+        try {
+            entries.complete(scoreEntryService.getUserCount().get());
         } catch (Exception e) {
             log.error("Error while making external API call {}", e);
             entries.completeExceptionally(e);

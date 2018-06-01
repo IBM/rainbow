@@ -18,3 +18,4 @@ application:
       update.score: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/entries
       get.leaderboard: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/leaderboard
       get.leaderboard.avatar: https://rainbow-scavenger-viz-rec.mybluemix.net/avatar/leaderboardAvatar
+      get.user.count: https://rainbow-scavenger-viz-rec.mybluemix.net/watsonml/user/count
