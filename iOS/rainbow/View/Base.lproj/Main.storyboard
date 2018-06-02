@@ -411,23 +411,45 @@
                                     <constraint firstAttribute="width" constant="300" id="Xzi-Uu-zF5"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing: --" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-QD-BPb">
-                                <rect key="frame" x="37" y="504" width="300" height="41"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU5-8T-sZZ">
+                                <rect key="frame" x="37" y="505" width="300" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-4w-jTk">
+                                        <rect key="frame" x="0.0" y="5" width="136" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="4KD-B0-vLb"/>
+                                            <constraint firstAttribute="width" constant="136" id="wpF-9X-Xad"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="IBMPlexSans-Bold" family="IBM Plex Sans" pointSize="22"/>
+                                        <color key="textColor" red="0.23529411759999999" green="0.32156862749999998" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRX-QD-BPb">
+                                        <rect key="frame" x="144" y="4" width="148" height="42"/>
+                                        <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="22"/>
+                                        <color key="textColor" red="0.23529411759999999" green="0.32156862749999998" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="JHk-a1-XgN"/>
-                                    <constraint firstAttribute="height" constant="41" id="Xjb-A6-yus"/>
+                                    <constraint firstItem="YRX-QD-BPb" firstAttribute="top" secondItem="NU5-8T-sZZ" secondAttribute="top" constant="4" id="Bm7-k6-iIF"/>
+                                    <constraint firstItem="aAM-4w-jTk" firstAttribute="leading" secondItem="NU5-8T-sZZ" secondAttribute="leading" id="GSc-Ex-M2q"/>
+                                    <constraint firstItem="YRX-QD-BPb" firstAttribute="leading" secondItem="aAM-4w-jTk" secondAttribute="trailing" constant="8" id="HPm-3T-Lnk"/>
+                                    <constraint firstItem="aAM-4w-jTk" firstAttribute="top" secondItem="NU5-8T-sZZ" secondAttribute="top" constant="5" id="UcV-9e-YL9"/>
+                                    <constraint firstAttribute="height" constant="50" id="V8H-8U-DUE"/>
+                                    <constraint firstAttribute="trailing" secondItem="YRX-QD-BPb" secondAttribute="trailing" constant="8" id="jpA-Kg-r0r"/>
+                                    <constraint firstAttribute="width" constant="300" id="tTu-sp-xQd"/>
+                                    <constraint firstAttribute="bottom" secondItem="YRX-QD-BPb" secondAttribute="bottom" constant="4" id="xPM-ya-Eut"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="22"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.32156862749999998" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YRX-QD-BPb" firstAttribute="top" secondItem="j0j-Xz-mVk" secondAttribute="bottom" id="LxJ-jb-4N5"/>
                             <constraint firstItem="j0j-Xz-mVk" firstAttribute="centerX" secondItem="1X2-xn-izW" secondAttribute="centerX" id="UOR-p1-HKe"/>
-                            <constraint firstItem="YRX-QD-BPb" firstAttribute="centerX" secondItem="1X2-xn-izW" secondAttribute="centerX" id="VJL-lW-Qcs"/>
+                            <constraint firstItem="NU5-8T-sZZ" firstAttribute="top" secondItem="j0j-Xz-mVk" secondAttribute="bottom" constant="1.5" id="f6J-WK-gVt"/>
                             <constraint firstItem="j0j-Xz-mVk" firstAttribute="centerY" secondItem="1X2-xn-izW" secondAttribute="centerY" id="g7a-uH-OOf"/>
+                            <constraint firstItem="NU5-8T-sZZ" firstAttribute="centerX" secondItem="1X2-xn-izW" secondAttribute="centerX" id="wx0-L1-TNZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yqv-hy-23R"/>
                     </view>

@@ -201,7 +201,7 @@ class CameraController: LuminaViewController {
     }
     
     private func promptForLatestModel() {
-        let alert = UIAlertController.init(title: "Load New Visual Model", message: "This will attempt to download a file that is between 15-20 MBs. Do you want to continue?", preferredStyle: .alert)
+        let alert = UIAlertController.init(title: "Load New Visual Model", message: "A new recognition model is available, and requires a download of 15-20 MB. Would you like to improve your gameplay?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "Download", style: .default) { _ in
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
