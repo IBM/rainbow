@@ -19,10 +19,10 @@ class ParticipantViewController: UIViewController {
     @IBOutlet weak var nowPlayingLabel: UILabel?
     
     override func viewDidAppear(_ animated: Bool) {
-        ScoreEntry.ServerCalls.getCount { count, error in
+        ScoreEntry.ServerCalls.getCount { count, _ in
             DispatchQueue.main.async {
                 if let count = count {
-                    self.nowPlayingLabel?.text = "Now Playing: \(count.totalUsers) players"
+                    self.nowPlayingLabel?.text = "\(count.totalUsers) Players"
                 }
             }
         }

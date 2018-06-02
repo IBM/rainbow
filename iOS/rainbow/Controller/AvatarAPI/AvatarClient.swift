@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SVProgressHUD
 
 struct UserAvatar: Codable {
     var name: String
@@ -30,6 +31,11 @@ class AvatarClient {
 
     static func getRandomAvatar(completion: @escaping (_ avatar: UserAvatar?, _ error: Error?) -> Void) {
         let request = RestRequest(method: .get, url: "https://avatar-rainbow.mybluemix.net/new", containsSelfSignedCert: false)
+//        request.circuitParameters = CircuitParameters(timeout: 30, fallback: { _, _ in
+//            DispatchQueue.main.async {
+//                SVProgressHUD.showError(withStatus: "Could not get avatar")
+//            }
+//        })
         request.responseObject { (response: RestResponse<UserAvatar>) in
             DispatchQueue.main.async {
                 switch response.result {

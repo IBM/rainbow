@@ -14,7 +14,12 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(MainTabBarController.deviceRegistrationComplete(notification:)), name: Notification.Name("viva-ml-device-token-registered"), object: nil)
-        SVProgressHUD.show(withStatus: "Preparing WatsonML...")
+        do {
+            _ = try ScoreEntry.ClientPersistence.get()
+        } catch {
+            // if there are any issues finding an existing users, this is the only reason we need to show this
+            SVProgressHUD.show(withStatus: "Preparing WatsonML...")
+        }
     }
     
     @objc func deviceRegistrationComplete(notification: Notification) {
