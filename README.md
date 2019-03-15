@@ -13,9 +13,17 @@ When the reader has completed this Code Pattern, they will understand how to:
 * Deploy a Kitura based leaderboard
 * Detect objects with Core ML and Lumina
 
-![](images/architecture.png)
+## Sample output and gameplay
+
+![](images/screenshots.png)
+
+|   |   |
+| - | - |
+| ![](images/rainbow-app.gif) | ![](images/rainbow-gameplay.gif) |
 
 ## Flow
+
+![](images/architecture.png)
 
 1. Generate a Core ML model using Watson Visual Recognition and Watson Studio.
 2. User runs the iOS application for the first time.
@@ -26,12 +34,14 @@ When the reader has completed this Code Pattern, they will understand how to:
 7. The user receives a push notification if they are bumped from the leaderboard.
 
 ## Included components
+
 * [Core ML](https://developer.apple.com/documentation/coreml): Is a framework that will allow integration of machine learning models into apps.
 * [Lumina](https://github.com/dokun1/Lumina): Lumina is an open-source Swift framework that allows you to stream video frames through a Core ML model and get instant results.
 * [Kitura](https://www.kitura.io/): Kitura is a free and open-source web framework written in Swift, developed by IBM and licensed under Apache 2.0. It’s an HTTP server and web framework for writing Swift server applications.
 * [Watson Visual Recognition](https://www.ibm.com/watson/developercloud/visual-recognition.html): Visual Recognition understands the contents of images - visual concepts tag the image, find human faces, approximate age and gender, and find similar images in a collection.
 
 ## Featured technologies
+
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Mobile](https://mobilefirstplatform.ibmcloud.com/): Systems of engagement are increasingly using mobile technology as the platform for delivery.
 
@@ -63,7 +73,7 @@ carthage update --platform iOS
 
 1. Go to the [IBM Cloud console](https://console.bluemix.net), and click `Create Resource`.
 
-2. Search for "Cloudant NoSQL DB" and create a service. Take note of the name of the created service. 
+2. Search for "Cloudant NoSQL DB" and create a service. Take note of the name of the created service.
 
   <p align="center">
     <img src="./images/cloudantChoice.png" width=300>
@@ -76,7 +86,7 @@ carthage update --platform iOS
   <p align="center">
     <img src="./images/pushNotificationsChoice.png" width=300>
   </p>
- 
+
    > To set up push notifications with your app, you will need to follow the [guide](https://console.bluemix.net/docs/services/mobilepush/index.html#gettingstartedtemplate) for embedding them into your app
 
 5. After cloning this repository, go to `Server/` from the terminal.
@@ -102,11 +112,11 @@ carthage update --platform iOS
             "clientSecret": "not hotdog"
         }
     }
-    ``` 
+    ```
 
-    Update the credentials for the Push Notification and Cloudant service in `localdev-config.json`. You will also want to make sure that the names are also correct in `mappings.json`.  
+    Update the credentials for the Push Notification and Cloudant service in `localdev-config.json`. You will also want to make sure that the names are also correct in `mappings.json`.
 
-8. Open the project using Xcode by running: `open rainbow-server.xcodeproj`.  
+8. Open the project using Xcode by running: `open rainbow-server.xcodeproj`.
 
 9. You can build and run the project in Xcode, or use the accompanying `runDocker.sh` script to test the app in a Docker container.
 
@@ -120,7 +130,7 @@ Though the Visual Recognition component of this application does not require API
 
 3. For the `cloudant` node, update the username and password with the service credentials you installed in `localdev-config.json` for your server.
 
-4. For the `routes` node, update the username and password with the service credentials you created in the database in the server set up tutorial. 
+4. For the `routes` node, update the username and password with the service credentials you created in the database in the server set up tutorial.
 
 From this point forward, you should be able to make valid calls to your Kitura API.
 
@@ -128,10 +138,10 @@ From this point forward, you should be able to make valid calls to your Kitura A
 
 For this, you should pick a theme and set of items -- museum pieces, office hardware, conference booths, whatever you want! As an example, we'll use fruits, and make a model that can distinguish between 3 fruits: apple, pear, and banana.
 
-1.  Take lots of photos of each of them, and organize each set of at least 10 photos into their own folders. Zip each of them up so you have:   
-  a. `Apple.zip`   
-  b. `Pear.zip`   
-  c. `Banana.zip`   
+1.  Take lots of photos of each of them, and organize each set of at least 10 photos into their own folders. Zip each of them up so you have:
+  a. `Apple.zip`
+  b. `Pear.zip`
+  c. `Banana.zip`
 
 2. If you have already created an account on [IBM Cloud](https://console.bluemix.net), then go to [Watson Studio](https://dataplatform.ibm.com) and log in with the same credentials.
 
@@ -148,7 +158,7 @@ For this, you should pick a theme and set of items -- museum pieces, office hard
 
 6. As the folders upload, drag each of them to the center of the screen, and the classes should be automatically created for you.
 
-7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit. 
+7. As a bonus, add as many photos as you can to the "Negative" training class. In this example, try to add as many photos as you can that resemble anything that is not an object you want to recognize. In our example, this could be an orange, grapes, or another fruit.
 
 8. Click the `Train Model` button. Go get a cup of coffee while you wait for this to finish.
 
@@ -164,11 +174,8 @@ For this, you should pick a theme and set of items -- museum pieces, office hard
 
 You should be able to build and run this app on your device by now. Try to hold the "camera" tab in front of one of the objects, and if it detects the object successfully, you are in the clear!
 
-# Sample output
-
-![](images/screenshots.png)
-
 # Links
+
 * [Lumina](https://github.com/dokun1/Lumina): A camera designed in Swift for easily integrating CoreML models - as well as image streaming, QR/Barcode detection, and many other features.
 * [IBM’s Watson Visual Recognition service to support Apple Core ML technology](https://developer.ibm.com/code/2018/03/21/ibm-watson-visual-recognition-service-to-support-apple-core-ml/): Blog from the code pattern author, Steve Martinelli.
 * [Deploy a Core ML model with Watson Visual Recognition](https://developer.ibm.com/code/patterns/deploy-a-core-ml-model-with-watson-visual-recognition): code pattern shows you how to create a Core ML model using Watson Visual Recognition, which is then deployed into an iOS application.
@@ -176,10 +183,12 @@ You should be able to build and run this app on your device by now. Try to hold 
 * [Watson Studio Tooling](https://dataplatform.ibm.com/registration/tepone?target=watson_vision_combined&context=wdp&apps=watson_studio/): Start creating your own Watson Visual Recognition classifier.
 
 # Learn more
+
 * **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 
 # License
+
 This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
 
 [Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
