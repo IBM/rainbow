@@ -12,10 +12,10 @@
 
 # kills the executable for this project and the lldb debug server (if running)
 function killServerProcesses() {
-    pid="$(pgrep rainbow-server)"
+    pid="$(pgrep watsonml)"
     if [ "$pid" != "" ]
     then
-        echo "killing rainbow-server"
+        echo "killing watsonml"
         kill $pid
     fi
 
@@ -80,11 +80,14 @@ while true; do
             # assumes you are inside of Dockerfile-tools container
             # starts debug server on port 1024
             cd /swift-project/
-            /swift-utils/tools-utils.sh debug rainbow-server 1024
+            /swift-utils/tools-utils.sh debug watsonml 1024
         else
             # assumes you are running from "normal"/host operating system
             swift build
-            ./.build/debug/rainbow-server &
+            if [[ $? == 0 ]]; then 
+                # only start server is build was successful (result code 0)
+                ./.build/debug/watsonml &
+            fi
         fi
         
     fi

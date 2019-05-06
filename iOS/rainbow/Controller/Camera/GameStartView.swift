@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class GameStartView: UIView {
-    //swiftlint:disable weak_delegate
+    //swiftlint:disable:previous
     weak var delegate: GameStartViewDelegate?
     
     required init?(coder aDecoder: NSCoder) {

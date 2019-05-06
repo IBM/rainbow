@@ -26,8 +26,9 @@ struct ScoreEntry: Codable {
 }
 
 extension ScoreEntry: Hashable {
-    var hashValue: Int {
-        return id?.hashValue ?? Int.max
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(username)
     }
     
     static func == (lhs: ScoreEntry, rhs: ScoreEntry) -> Bool {

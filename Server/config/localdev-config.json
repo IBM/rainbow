@@ -1,16 +1,15 @@
 {
-    "Cloudant NoSQL DB-kl": {
-        "username": "hot",
-        "password": "dog",
-        "host": "nothotdog",
-        "port": 443,
-        "url": "hotdog url"
-    },
-    "rainbow-server-PushNotifications-r6m1": {
-        "appGuid": "hotdog guid",
-        "url": "hotdo url",
-        "admin_url": "hotdog admin url",
-        "appSecret": "hotdog",
-        "clientSecret": "not hotdog"
-    }
+  "crudDataStore": {
+    "secured": true,
+    "host": "a8b17faf-dbe5-47c8-ab5c-bb510d0bd845-bluemix.cloudantnosqldb.appdomain.cloud",
+    "password": "40db21d40725a36612cc6500477274e31a4597a19ee32149c9962071d0eb8664",
+    "port": 443,
+    "url": "https://a8b17faf-dbe5-47c8-ab5c-bb510d0bd845-bluemix:40db21d40725a36612cc6500477274e31a4597a19ee32149c9962071d0eb8664@a8b17faf-dbe5-47c8-ab5c-bb510d0bd845-bluemix.cloudantnosqldb.appdomain.cloud",
+    "username": "a8b17faf-dbe5-47c8-ab5c-bb510d0bd845-bluemix"
+  },
+  "watsonml-PushNotifications": {
+      "appGuid": "",
+      "appApikey": "",
+      "appSecret": ""
+  }
 }

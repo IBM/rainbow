@@ -17,11 +17,11 @@ enum RainbowPersistenceError: Error {
 extension ScoreEntry {
     class Persistence {
         private static func getDatabase(from client: CouchDBClient, completion: @escaping (_ database: Database?, _ error: Error?) -> Void) {
-            client.dbExists("rainbow-entries") { exists, error in
+            client.dbExists("watsonml-entries") { exists, error in
                 if exists {
-                    completion(Database(connProperties: client.connProperties, dbName: "rainbow-entries"), nil)
+                    completion(Database(connProperties: client.connProperties, dbName: "watsonml-entries"), nil)
                 } else {
-                    client.createDB("rainbow-entries", callback: { database, error in
+                    client.createDB("watsonml-entries", callback: { database, error in
                         completion(database, error)
                     })
                 }

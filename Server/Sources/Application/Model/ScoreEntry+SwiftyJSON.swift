@@ -14,8 +14,8 @@ extension ScoreEntry {
         deviceIdentifier = document["deviceIdentifier"].stringValue
         username = document["username"].stringValue
         startDate = document["startDate"].dateTime
-        avatarImage = nil        
         finishDate = document["finishDate"].dateTime
+        avatarImage = nil
         var objectEntries = [ObjectEntry]()
         for object in document["objects"].arrayValue {
             let name = object["name"].stringValue
@@ -26,6 +26,15 @@ extension ScoreEntry {
         }
         objects = objectEntries
         totalTime = nil
+        avatarImage = getImageData(avatarImageString: document["avatarImage"].stringValue)
+    }
+    
+    private func getImageData(avatarImageString: String) -> Data?{
+        guard let imageData = Data(base64Encoded: avatarImageString) else {
+            print("Canot conver avatarImage to base64Encoded string")
+            return nil
+        }
+        return imageData
     }
     
     init?(document: JSON) {

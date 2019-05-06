@@ -9,3 +9,5 @@ applications:
   services:
     - Cloudant NoSQL DB-kl
     - Push Notifications-dh-rainbow-testing
+  env:
+    OPENAPI_SPEC : "/swagger/api"

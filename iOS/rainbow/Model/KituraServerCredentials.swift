@@ -10,6 +10,8 @@ import Foundation
 import CoreML
 import VisualRecognitionV3
 
+let watsonMLModelId = "WatsonMLModel_1753554316"
+
 public struct ServerCredentials: Codable {
     var routes: VivaMLConfig
     var cloudant: VivaMLConfig
@@ -45,16 +47,21 @@ class VisualRecognitionUpdate {
         guard let key = KituraServerCredentials.loadedCredentials()?.visualRecognition.apiKey else {
             return completion(false)
         }
-        let instance = VisualRecognition(apiKey: key, version: "2018-03-19")
-
-        instance.getClassifier(classifierID: "DefaultCustomModel_1753554316") { classifier in
-            guard let status = classifier.status else {
+        let instance = VisualRecognition(version: "2018-03-19", apiKey: key)
+        
+        instance.getClassifier(classifierID: watsonMLModelId) { classifier, error in
+            
+            if error != nil {
+                return completion(false)
+            }
+            
+            guard let status = classifier?.result?.status else {
                 return completion(false)
             }
             if status != "ready" {
                 return completion(false)
             }
-            guard let updated = classifier.updated?.dateFromWatson, let created = classifier.created?.dateFromWatson else {
+            guard let updated = classifier?.result?.updated, let created = classifier?.result?.created else {
                 return completion(false)
             }
             completion(updated > created)
@@ -65,7 +72,7 @@ class VisualRecognitionUpdate {
         guard let key = KituraServerCredentials.loadedCredentials()?.visualRecognition.apiKey else {
             return completion(nil, nil)
         }
-        let instance = VisualRecognition(apiKey: key, version: "2018-03-19")
+        let instance = VisualRecognition(version: "2018-03-19", apiKey: key)
         if !useCloudAPI {
             guard let list = try? instance.listLocalModels() else {
                 return completion(nil, nil)
@@ -79,25 +86,28 @@ class VisualRecognitionUpdate {
                 }
             }
             if models.count == 0 {
-                return completion(ProjectRainbowModel_1753554316().model, nil)
+                return completion(WatsonMLModel_1753554316().model, nil)
             } else {
                 return completion(models.first, nil)
             }
         }
-
-        instance.updateLocalModel(classifierID: "DefaultCustomModel_1753554316", failure: { error in
-            DispatchQueue.main.async {
-                completion(nil, error)
+        
+        instance.updateLocalModel(classifierID: watsonMLModelId) { _, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
-        }, success: {
+            
             DispatchQueue.main.async {
                 do {
-                    let model = try instance.getLocalModel(classifierID: "DefaultCustomModel_1753554316")
+                    let model = try instance.getLocalModel(classifierID: watsonMLModelId)
                     completion(model, nil)
                 } catch let error {
                     completion(nil, error)
                 }
             }
-        })
+            
+        }
     }
 }

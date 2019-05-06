@@ -82,7 +82,7 @@
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
 		53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
 		53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */; };
+		53C6D18B20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FA729F20C1B2A500F516B3 /* UserCount.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
@@ -90,7 +90,9 @@
 		A22DB42020ACBF4900FA0419 /* BookletInstructionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB41F20ACBF4900FA0419 /* BookletInstructionController.swift */; };
 		A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */; };
 		A22DB42420ACBF5800FA0419 /* BookletGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */; };
-		A2B2CB2620ADDA5700A6F585 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B2CB2520ADDA5700A6F585 /* WebKit.framework */; };
+		B40C77062278CE8300FD8878 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B40C77052278CE8300FD8878 /* Cartfile */; };
+		B40C77102278F03B00FD8878 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; };
+		B40C77112278F03B00FD8878 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,7 @@
 				5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */,
 				53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */,
 				53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */,
+				B40C77112278F03B00FD8878 /* RestKit.framework in Embed Frameworks */,
 				53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
 				531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */,
 				531AAF9B20A4B9C80056B24B /* VisualRecognitionV3.framework in Embed Frameworks */,
@@ -206,7 +209,7 @@
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
-		53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ProjectRainbowModel_1753554316.mlmodel; sourceTree = "<group>"; };
+		53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = WatsonMLModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		53FA729F20C1B2A500F516B3 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 		A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletCoverController.swift; sourceTree = "<group>"; };
 		A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletGuideController.swift; sourceTree = "<group>"; };
 		A2B2CB2520ADDA5700A6F585 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		B40C77052278CE8300FD8878 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		B40C770F2278F03B00FD8878 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,10 +227,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B2CB2620ADDA5700A6F585 /* WebKit.framework in Frameworks */,
 				5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */,
 				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
 				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
+				B40C77102278F03B00FD8878 /* RestKit.framework in Frameworks */,
 				531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */,
 				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
 				53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */,
@@ -291,6 +296,8 @@
 		533818F5209757B900DE66CB = {
 			isa = PBXGroup;
 			children = (
+				B40C770F2278F03B00FD8878 /* RestKit.framework */,
+				B40C77052278CE8300FD8878 /* Cartfile */,
 				53381900209757B900DE66CB /* rainbow */,
 				53381918209757BB00DE66CB /* rainbowTests */,
 				53381923209757BB00DE66CB /* rainbowUITests */,
@@ -388,7 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
-				53C6D18A20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel */,
+				53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				53FA729F20C1B2A500F516B3 /* UserCount.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
@@ -592,6 +599,7 @@
 				53AC587420A8D5EC0031EDC9 /* IBMPlexSans-Regular.ttf in Resources */,
 				5338190F209757BB00DE66CB /* LaunchScreen.storyboard in Resources */,
 				5338190C209757BB00DE66CB /* Assets.xcassets in Resources */,
+				B40C77062278CE8300FD8878 /* Cartfile in Resources */,
 				A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */,
 				53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */,
 				53381907209757B900DE66CB /* Main.storyboard in Resources */,
@@ -644,7 +652,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -676,7 +684,7 @@
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
-				53C6D18B20ADBB10008DF112 /* ProjectRainbowModel_1753554316.mlmodel in Sources */,
+				53C6D18B20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
@@ -885,8 +893,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = RQ632LL2X3;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4P74ZXW29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -897,10 +905,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.watsonml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "66e5859b-30cc-40fd-8d6e-285e15fb6cdd";
-				PROVISIONING_PROFILE_SPECIFIER = "Viva ML Dev Profile 2018";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -912,9 +920,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = RQ632LL2X3;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V4P74ZXW29;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -925,10 +933,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.watsonml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4a53f4b4-d362-4b9e-b5f8-36375d8f9dfb";
-				PROVISIONING_PROFILE_SPECIFIER = "Viva ML App Store Profile 2018";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

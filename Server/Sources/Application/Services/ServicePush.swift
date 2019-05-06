@@ -16,10 +16,11 @@ class PushNotification {
             throw ServiceInitializationError.pushNotificationError("Could not load credentials for Push Notifications.")
         }
         let pushNotifications = PushNotifications(
-            pushRegion: PushNotifications.Region.US_SOUTH,
+            pushApiKey: pushNotificationsCredentials.apiKey,
             pushAppGuid: pushNotificationsCredentials.appGuid,
-            pushAppSecret: pushNotificationsCredentials.appSecret
+            pushRegion: PushNotifications.Region.US_SOUTH
         )
+        
         Log.info("Found and loaded credentials for Push Notifications.")
         self.pushNotifications = pushNotifications
         self.couchDBClient = couchDBClient

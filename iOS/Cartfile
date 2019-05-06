@@ -1,5 +1,5 @@
 github "dokun1/Lumina" "new-font-plus-open"
-github "watson-developer-cloud/swift-sdk"
+github "watson-developer-cloud/swift-sdk" ~> 2.0.2
 github "ibm-bluemix-mobile-services/bms-clientsdk-swift-push"
 github "SVProgressHUD/SVProgressHUD"
 github "onevcat/Kingfisher"
