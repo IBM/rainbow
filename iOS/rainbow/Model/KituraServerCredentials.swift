@@ -10,7 +10,7 @@ import Foundation
 import CoreML
 import VisualRecognitionV3
 
-let watsonMLModelId = "WatsonMLModel_1753554316"
+let watsonMLModelId = "WatsonMLModel_263558779"
 
 public struct ServerCredentials: Codable {
     var routes: VivaMLConfig
@@ -86,7 +86,7 @@ class VisualRecognitionUpdate {
                 }
             }
             if models.count == 0 {
-                return completion(WatsonMLModel_1753554316().model, nil)
+                return completion(WatsonMLModel_263558779().model, nil)
             } else {
                 return completion(models.first, nil)
             }

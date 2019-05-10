@@ -17,9 +17,9 @@ extension UIApplication {
     
     var rainbowServerBaseURL: String {
         var baseURL = UIApplication.shared.isDebugMode ? "http://localhost:8080" : "https://rainbow-scavenger-viz-rec.mybluemix.net" // need to update when we deploy
-        // baseURL = "https://watsonml-vivatech.mybluemix.net" // this is the base URL for the java proxy in front of kitura
-        baseURL = "http://5531bb81.ngrok.io"
-        print("Server URL: ", baseURL)
+        baseURL = "https://watsonml-vivatech.mybluemix.net" // this is the base URL for the java proxy in front of kitura
+        //baseURL = "https://rainbow-scavenger-viz-rec.mybluemix.net/"
+        baseURL = "http://2206166d.ngrok.io"
         return baseURL
     }
 }

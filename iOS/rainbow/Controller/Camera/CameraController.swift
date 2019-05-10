@@ -273,7 +273,10 @@ extension CameraController: LuminaDelegate {
         guard let bestConfidence = predictions?.first?.predictions?.first?.confidence else {
             return
         }
-        if bestConfidence >= 0.9 {
+        
+        print("Name: \(bestName), Score: \(bestConfidence)")
+        
+            if bestConfidence >= 0.8 {
             var objects = [ObjectEntry]()
             if let cachedObjects = cachedScoreEntry?.objects {
                 objects = cachedObjects

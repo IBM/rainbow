@@ -2,7 +2,7 @@
   "cloudant": {
     "credentials": {
       "searchPatterns": [
-        "cloudfoundry:crudDataStore",
+        "cloudfoundry:Cloudant NoSQL DB-kl",
         "env:service_cloudant",
         "file:/config/localdev-config.json:crudDataStore"
       ]
@@ -11,7 +11,7 @@
   "push": {
       "credentials": {
           "searchPatterns": [
-              "cloudfoundry:watsonml-PushNotifications",
+              "cloudfoundry:watson ml Push Notifications-rs",
               "env:service_push",
               "file:/config/localdev-config.json:watsonml-PushNotifications"
           ]

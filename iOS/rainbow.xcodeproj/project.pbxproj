@@ -82,7 +82,6 @@
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
 		53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
 		53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		53C6D18B20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FA729F20C1B2A500F516B3 /* UserCount.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
@@ -93,6 +92,7 @@
 		B40C77062278CE8300FD8878 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B40C77052278CE8300FD8878 /* Cartfile */; };
 		B40C77102278F03B00FD8878 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; };
 		B40C77112278F03B00FD8878 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B43B55FF22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B43B55FE22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,7 +209,6 @@
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
-		53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = WatsonMLModel_1753554316.mlmodel; sourceTree = "<group>"; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		53FA729F20C1B2A500F516B3 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
@@ -220,6 +219,7 @@
 		A2B2CB2520ADDA5700A6F585 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B40C77052278CE8300FD8878 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		B40C770F2278F03B00FD8878 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		B43B55FE22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = WatsonMLModel_263558779.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,8 +394,8 @@
 		53864ACE2098DD19006B8264 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B43B55FE22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel */,
 				53381908209757B900DE66CB /* rainbow.xcdatamodeld */,
-				53C6D18A20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel */,
 				53864AD22098DD5D006B8264 /* ScoreEntry.swift */,
 				53FA729F20C1B2A500F516B3 /* UserCount.swift */,
 				5305A1C220A219DA0040A9A9 /* ScoreEntry+Client.swift */,
@@ -684,7 +684,6 @@
 				5305A1B020A219380040A9A9 /* JSONWrapper.swift in Sources */,
 				53381902209757B900DE66CB /* AppDelegate.swift in Sources */,
 				5305A1AC20A219380040A9A9 /* Logger.swift in Sources */,
-				53C6D18B20ADBB10008DF112 /* WatsonMLModel_1753554316.mlmodel in Sources */,
 				5305A1BA20A219380040A9A9 /* PersistableExtension.swift in Sources */,
 				5305A1AE20A219380040A9A9 /* BodyFormat.swift in Sources */,
 				A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */,
@@ -711,6 +710,7 @@
 				5305A1C120A219380040A9A9 /* QueryEncoder.swift in Sources */,
 				5305A1BF20A219380040A9A9 /* Coder.swift in Sources */,
 				5305A1B520A219380040A9A9 /* RestUtilities.swift in Sources */,
+				B43B55FF22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel in Sources */,
 				A22DB41E20ACBF3E00FA0419 /* BookletBaseController.swift in Sources */,
 				5341F39F209B5D0600AD37EF /* CameraController.swift in Sources */,
 				53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */,
