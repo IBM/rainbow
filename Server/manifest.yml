@@ -3,11 +3,11 @@ applications:
 - instances: 1
   timeout: 180
   name: rainbow-scavenger-viz-rec
-  buildpack: swift_buildpack
   memory: 256M
-  random-route: true
+  random-route: false
+  command: watsonml
   services:
     - Cloudant NoSQL DB-kl
-    - Push Notifications-dh-rainbow-testing
+    - watson ml Push Notifications-rs
   env:
     OPENAPI_SPEC : "/swagger/api"
