@@ -264,7 +264,7 @@ extension CameraController: GameStartViewDelegate {
 
 extension CameraController: LuminaDelegate {
     func streamed(videoFrame: UIImage, with predictions: [LuminaRecognitionResult]?, from controller: LuminaViewController) {
-        if gameState == .objectDetected {
+        if gameState == .objectDetected || gameState == .shouldStartNewGame {
             return
         }
         guard let bestName = predictions?.first?.predictions?.first?.name else {

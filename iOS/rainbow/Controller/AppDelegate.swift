@@ -41,9 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMSPushObserver {
         SVProgressHUD.setBackgroundColor(UIColor.RainbowColors.blue)
         SVProgressHUD.setForegroundColor(UIColor.white)
         /// MARK: push notificaiton settings
-        BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usSouth)
+        BMSClient.sharedInstance.initialize(bluemixRegion: BMSClient.Region.usEast)
         // MARK: remove the hardcoding in future
-        BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "c8a1c28e-3934-4e03-b8e2-e305ada1bb85", clientSecret: "cead9064-e0a6-4a0e-86c0-b6bbf060d871")
+        BMSPushClient.sharedInstance.initializeWithAppGUID(appGUID: "b9a8fbb5-fbe0-4b7e-bba1-36432b7043b2", clientSecret: "8a2241d0-0a30-4e31-964c-96a106df948f")
         BMSPushClient.sharedInstance.delegate = self
         do {
             Network.reachability = try Reachability(hostname: "www.google.com")

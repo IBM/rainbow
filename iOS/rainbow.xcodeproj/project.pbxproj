@@ -41,10 +41,6 @@
 		530A351D20B56389003D36C5 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530A351C20B56389003D36C5 /* Reachability.swift */; };
 		531AAF8820A4B0690056B24B /* AssetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AAF8520A4B0690056B24B /* AssetViewController.swift */; };
 		531AAF8920A4B0690056B24B /* Booklet.json in Resources */ = {isa = PBXBuildFile; fileRef = 531AAF8620A4B0690056B24B /* Booklet.json */; };
-		531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; };
-		531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */; };
-		531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9420A4B98F0056B24B /* Lumina.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		531AAF9B20A4B9C80056B24B /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		531AAF9D20A4BA280056B24B /* StyleGuides.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531AAF9C20A4BA280056B24B /* StyleGuides.swift */; };
 		53381902209757B900DE66CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381901209757B900DE66CB /* AppDelegate.swift */; };
 		53381904209757B900DE66CB /* BookletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53381903209757B900DE66CB /* BookletViewController.swift */; };
@@ -58,8 +54,6 @@
 		5341F4CD209BEAA000AD37EF /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */; };
 		5341F4CF209BEAD600AD37EF /* ChecklistTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */; };
 		5365924020AB8B3500F76E37 /* Date+WatsonML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */; };
-		5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; };
-		5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5365924120AB8F0900F76E37 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53864AD32098DD5D006B8264 /* ScoreEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53864AD22098DD5D006B8264 /* ScoreEntry.swift */; };
 		538D191420ACB03100742E17 /* Fireworks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D191320ACB03100742E17 /* Fireworks.swift */; };
 		53A66F4C20AB863E00B52E55 /* ParticipantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */; };
@@ -71,17 +65,33 @@
 		53AC588920A9382B0031EDC9 /* GameStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588820A9382B0031EDC9 /* GameStartView.swift */; };
 		53AC588B20A9E9160031EDC9 /* GameObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 53AC588A20A9E9160031EDC9 /* GameObjects.json */; };
 		53AC588D20AA17130031EDC9 /* ObjectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AC588C20AA17130031EDC9 /* ObjectConfig.swift */; };
-		53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; };
-		53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */; };
-		53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; };
-		53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC588E20AA2FF50031EDC9 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53AC589020AA2FF50031EDC9 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53BAF34820AB3BB200583BE6 /* AvatarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34720AB3BB200583BE6 /* AvatarClient.swift */; };
 		53BAF34C20AB3E4A00583BE6 /* DefaultAvatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */; };
 		53BAF35020AB52DF00583BE6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */; };
-		53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; };
-		53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4DFFF228E05CD00FFD124 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */; };
+		53C4E000228E05CD00FFD124 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF8228E05CD00FFD124 /* BMSPush.framework */; };
+		53C4E001228E05CD00FFD124 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF9228E05CD00FFD124 /* Kingfisher.framework */; };
+		53C4E002228E05CD00FFD124 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFA228E05CD00FFD124 /* BMSCore.framework */; };
+		53C4E003228E05CD00FFD124 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFB228E05CD00FFD124 /* Starscream.framework */; };
+		53C4E004228E05CD00FFD124 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */; };
+		53C4E006228E05CD00FFD124 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFE228E05CD00FFD124 /* RestKit.framework */; };
+		53C4E008228E05DD00FFD124 /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E007228E05DC00FFD124 /* Lumina.framework */; };
+		53C4E009228E05E400FFD124 /* Lumina.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E007228E05DC00FFD124 /* Lumina.framework */; };
+		53C4E00A228E05E400FFD124 /* Lumina.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E007228E05DC00FFD124 /* Lumina.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E00D228E05E400FFD124 /* BMSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFA228E05CD00FFD124 /* BMSCore.framework */; };
+		53C4E00E228E05E400FFD124 /* BMSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFA228E05CD00FFD124 /* BMSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E00F228E05E400FFD124 /* BMSPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF8228E05CD00FFD124 /* BMSPush.framework */; };
+		53C4E010228E05E400FFD124 /* BMSPush.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF8228E05CD00FFD124 /* BMSPush.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E011228E05E400FFD124 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF9228E05CD00FFD124 /* Kingfisher.framework */; };
+		53C4E012228E05E400FFD124 /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF9228E05CD00FFD124 /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E013228E05E400FFD124 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFE228E05CD00FFD124 /* RestKit.framework */; };
+		53C4E014228E05E400FFD124 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFE228E05CD00FFD124 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E015228E05E400FFD124 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFB228E05CD00FFD124 /* Starscream.framework */; };
+		53C4E016228E05E400FFD124 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFB228E05CD00FFD124 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E017228E05E400FFD124 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */; };
+		53C4E018228E05E400FFD124 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E019228E05E400FFD124 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */; };
+		53C4E01A228E05E400FFD124 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FA729F20C1B2A500F516B3 /* UserCount.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
@@ -90,8 +100,6 @@
 		A22DB42220ACBF5100FA0419 /* BookletCoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42120ACBF5100FA0419 /* BookletCoverController.swift */; };
 		A22DB42420ACBF5800FA0419 /* BookletGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */; };
 		B40C77062278CE8300FD8878 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B40C77052278CE8300FD8878 /* Cartfile */; };
-		B40C77102278F03B00FD8878 /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; };
-		B40C77112278F03B00FD8878 /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B40C770F2278F03B00FD8878 /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B43B55FF22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B43B55FE22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel */; };
 /* End PBXBuildFile section */
 
@@ -113,20 +121,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5338193820975C2100DE66CB /* Embed Frameworks */ = {
+		53F0C396228B217B00EAA812 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5365924420AB8F1000F76E37 /* SVProgressHUD.framework in Embed Frameworks */,
-				53C06E3520BEF3CD00C03BA6 /* Kingfisher.framework in Embed Frameworks */,
-				53AC589720AA30030031EDC9 /* BMSCore.framework in Embed Frameworks */,
-				B40C77112278F03B00FD8878 /* RestKit.framework in Embed Frameworks */,
-				53AC589520AA30030031EDC9 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
-				531AAF9920A4B9C80056B24B /* Lumina.framework in Embed Frameworks */,
-				531AAF9B20A4B9C80056B24B /* VisualRecognitionV3.framework in Embed Frameworks */,
-				53AC589920AA30030031EDC9 /* BMSPush.framework in Embed Frameworks */,
+				53C4E012228E05E400FFD124 /* Kingfisher.framework in Embed Frameworks */,
+				53C4E016228E05E400FFD124 /* Starscream.framework in Embed Frameworks */,
+				53C4E018228E05E400FFD124 /* SVProgressHUD.framework in Embed Frameworks */,
+				53C4E00A228E05E400FFD124 /* Lumina.framework in Embed Frameworks */,
+				53C4E00E228E05E400FFD124 /* BMSCore.framework in Embed Frameworks */,
+				53C4E010228E05E400FFD124 /* BMSPush.framework in Embed Frameworks */,
+				53C4E01A228E05E400FFD124 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				53C4E014228E05E400FFD124 /* RestKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,8 +176,6 @@
 		530A351C20B56389003D36C5 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		531AAF8520A4B0690056B24B /* AssetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetViewController.swift; sourceTree = "<group>"; };
 		531AAF8620A4B0690056B24B /* Booklet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Booklet.json; sourceTree = "<group>"; };
-		531AAF9420A4B98F0056B24B /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lumina.framework; path = Carthage/Build/iOS/Lumina.framework; sourceTree = SOURCE_ROOT; };
-		531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 		531AAF9C20A4BA280056B24B /* StyleGuides.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleGuides.swift; sourceTree = "<group>"; };
 		531AAF9E20A4BC620056B24B /* rainbow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = rainbow.entitlements; sourceTree = "<group>"; };
 		533818FE209757B900DE66CB /* rainbow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rainbow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,7 +196,6 @@
 		5341F4CC209BEAA000AD37EF /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		5341F4CE209BEAD600AD37EF /* ChecklistTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistTableViewController.swift; sourceTree = "<group>"; };
 		5365923F20AB8B3500F76E37 /* Date+WatsonML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+WatsonML.swift"; sourceTree = "<group>"; };
-		5365924120AB8F0900F76E37 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = SOURCE_ROOT; };
 		53864AD22098DD5D006B8264 /* ScoreEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntry.swift; sourceTree = "<group>"; };
 		538D191320ACB03100742E17 /* Fireworks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fireworks.swift; sourceTree = "<group>"; };
 		53A66F4B20AB863E00B52E55 /* ParticipantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
@@ -202,13 +207,17 @@
 		53AC588820A9382B0031EDC9 /* GameStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartView.swift; sourceTree = "<group>"; };
 		53AC588A20A9E9160031EDC9 /* GameObjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GameObjects.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
 		53AC588C20AA17130031EDC9 /* ObjectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectConfig.swift; sourceTree = "<group>"; };
-		53AC588E20AA2FF50031EDC9 /* BMSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSCore.framework; path = Carthage/Build/iOS/BMSCore.framework; sourceTree = SOURCE_ROOT; };
-		53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = SOURCE_ROOT; };
-		53AC589020AA2FF50031EDC9 /* BMSPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSPush.framework; path = Carthage/Build/iOS/BMSPush.framework; sourceTree = SOURCE_ROOT; };
 		53BAF34720AB3BB200583BE6 /* AvatarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarClient.swift; sourceTree = "<group>"; };
 		53BAF34B20AB3E4A00583BE6 /* DefaultAvatar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultAvatar.json; sourceTree = "<group>"; };
 		53BAF34F20AB52DF00583BE6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFF8228E05CD00FFD124 /* BMSPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSPush.framework; path = Carthage/Build/iOS/BMSPush.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFF9228E05CD00FFD124 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFFA228E05CD00FFD124 /* BMSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSCore.framework; path = Carthage/Build/iOS/BMSCore.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFFB228E05CD00FFD124 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
+		53C4DFFE228E05CD00FFD124 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = SOURCE_ROOT; };
+		53C4E007228E05DC00FFD124 /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lumina.framework; path = Carthage/Build/iOS/Lumina.framework; sourceTree = SOURCE_ROOT; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		53FA729F20C1B2A500F516B3 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
@@ -218,7 +227,6 @@
 		A22DB42320ACBF5800FA0419 /* BookletGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookletGuideController.swift; sourceTree = "<group>"; };
 		A2B2CB2520ADDA5700A6F585 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B40C77052278CE8300FD8878 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		B40C770F2278F03B00FD8878 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		B43B55FE22860AC500CB71DC /* WatsonMLModel_263558779.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = WatsonMLModel_263558779.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,14 +235,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5365924220AB8F0900F76E37 /* SVProgressHUD.framework in Frameworks */,
-				531AAF9620A4B98F0056B24B /* Lumina.framework in Frameworks */,
-				53AC589420AA30030031EDC9 /* BMSAnalyticsAPI.framework in Frameworks */,
-				B40C77102278F03B00FD8878 /* RestKit.framework in Frameworks */,
-				531AAF9720A4B98F0056B24B /* VisualRecognitionV3.framework in Frameworks */,
-				53AC589320AA2FF50031EDC9 /* BMSPush.framework in Frameworks */,
-				53C06E3320BEF3C700C03BA6 /* Kingfisher.framework in Frameworks */,
-				53AC589620AA30030031EDC9 /* BMSCore.framework in Frameworks */,
+				53C4DFFF228E05CD00FFD124 /* SVProgressHUD.framework in Frameworks */,
+				53C4E004228E05CD00FFD124 /* VisualRecognitionV3.framework in Frameworks */,
+				53C4E003228E05CD00FFD124 /* Starscream.framework in Frameworks */,
+				53C4E000228E05CD00FFD124 /* BMSPush.framework in Frameworks */,
+				53C4E015228E05E400FFD124 /* Starscream.framework in Frameworks */,
+				53C4E019228E05E400FFD124 /* VisualRecognitionV3.framework in Frameworks */,
+				53C4E017228E05E400FFD124 /* SVProgressHUD.framework in Frameworks */,
+				53C4E001228E05CD00FFD124 /* Kingfisher.framework in Frameworks */,
+				53C4E009228E05E400FFD124 /* Lumina.framework in Frameworks */,
+				53C4E011228E05E400FFD124 /* Kingfisher.framework in Frameworks */,
+				53C4E00D228E05E400FFD124 /* BMSCore.framework in Frameworks */,
+				53C4E002228E05CD00FFD124 /* BMSCore.framework in Frameworks */,
+				53C4E013228E05E400FFD124 /* RestKit.framework in Frameworks */,
+				53C4E006228E05CD00FFD124 /* RestKit.framework in Frameworks */,
+				53C4E008228E05DD00FFD124 /* Lumina.framework in Frameworks */,
+				53C4E00F228E05E400FFD124 /* BMSPush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +312,6 @@
 		533818F5209757B900DE66CB = {
 			isa = PBXGroup;
 			children = (
-				B40C770F2278F03B00FD8878 /* RestKit.framework */,
 				B40C77052278CE8300FD8878 /* Cartfile */,
 				53381900209757B900DE66CB /* rainbow */,
 				53381918209757BB00DE66CB /* rainbowTests */,
@@ -464,13 +479,14 @@
 		A259438820A0A06C000B5935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				53C06E3220BEF3C700C03BA6 /* Kingfisher.framework */,
-				5365924120AB8F0900F76E37 /* SVProgressHUD.framework */,
-				53AC588F20AA2FF50031EDC9 /* BMSAnalyticsAPI.framework */,
-				53AC588E20AA2FF50031EDC9 /* BMSCore.framework */,
-				53AC589020AA2FF50031EDC9 /* BMSPush.framework */,
-				531AAF9420A4B98F0056B24B /* Lumina.framework */,
-				531AAF9520A4B98F0056B24B /* VisualRecognitionV3.framework */,
+				53C4E007228E05DC00FFD124 /* Lumina.framework */,
+				53C4DFFA228E05CD00FFD124 /* BMSCore.framework */,
+				53C4DFF8228E05CD00FFD124 /* BMSPush.framework */,
+				53C4DFF9228E05CD00FFD124 /* Kingfisher.framework */,
+				53C4DFFE228E05CD00FFD124 /* RestKit.framework */,
+				53C4DFFB228E05CD00FFD124 /* Starscream.framework */,
+				53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */,
+				53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -494,8 +510,9 @@
 				533818FB209757B900DE66CB /* Frameworks */,
 				533818FC209757B900DE66CB /* Resources */,
 				5338193220975A1200DE66CB /* Swiftlint */,
-				5338193820975C2100DE66CB /* Embed Frameworks */,
 				5358556820AF8FB2009DE350 /* Framework Lipo */,
+				53F0C396228B217B00EAA812 /* Embed Frameworks */,
+				53C4E01B228E085400FFD124 /* Strip Frameworks */,
 			);
 			buildRules = (
 			);
@@ -653,6 +670,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone\n";
+		};
+		53C4E01B228E085400FFD124 /* Strip Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"",
+			);
+			name = "Strip Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "code_sign() {\n# Use the current code_sign_identitiy\necho \"Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}\"\necho \"/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements $1\"\n/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\"\n}\n\necho \"Stripping frameworks\"\ncd \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\n\nfor file in $(find . -type f -perm +111); do\n# Skip non-dynamic libraries\nif ! [[ \"$(file \"$file\")\" == *\"dynamically linked shared library\"* ]]; then\ncontinue\nfi\n# Get architectures for current file\narchs=\"$(lipo -info \"${file}\" | rev | cut -d ':' -f1 | rev)\"\nstripped=\"\"\nfor arch in $archs; do\nif ! [[ \"${VALID_ARCHS}\" == *\"$arch\"* ]]; then\n# Strip non-valid architectures in-place\nlipo -remove \"$arch\" -output \"$file\" \"$file\" || exit 1\nstripped=\"$stripped $arch\"\nfi\ndone\nif [[ \"$stripped\" != \"\" ]]; then\necho \"Stripped $file of architectures:$stripped\"\nif [ \"${CODE_SIGNING_REQUIRED}\" == \"YES\" ]; then\ncode_sign \"${file}\"\nfi\nfi\ndone\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -894,7 +930,7 @@
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4P74ZXW29;
+				DEVELOPMENT_TEAM = RQ632LL2X3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -906,7 +942,7 @@
 					"@executable_path/Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.watsonml;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -922,7 +958,7 @@
 				CODE_SIGN_ENTITLEMENTS = rainbow/rainbow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V4P74ZXW29;
+				DEVELOPMENT_TEAM = RQ632LL2X3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -933,7 +969,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibm.watsonml;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okun.io.vivaml;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
