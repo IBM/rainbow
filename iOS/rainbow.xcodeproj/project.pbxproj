@@ -92,6 +92,9 @@
 		53C4E018228E05E400FFD124 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFF7228E05CD00FFD124 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53C4E019228E05E400FFD124 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */; };
 		53C4E01A228E05E400FFD124 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53C4E01D228E2B4500FFD124 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E01C228E2B4500FFD124 /* BMSAnalyticsAPI.framework */; };
+		53C4E01E228E2B5300FFD124 /* BMSAnalyticsAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E01C228E2B4500FFD124 /* BMSAnalyticsAPI.framework */; };
+		53C4E01F228E2B5300FFD124 /* BMSAnalyticsAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53C4E01C228E2B4500FFD124 /* BMSAnalyticsAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		53C953A220ABA1E40059F593 /* KituraServerCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */; };
 		53FA72A020C1B2A500F516B3 /* UserCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FA729F20C1B2A500F516B3 /* UserCount.swift */; };
 		A22DB41C20ACB9B800FA0419 /* WatsonMLClientCredentials.json in Resources */ = {isa = PBXBuildFile; fileRef = A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */; };
@@ -133,6 +136,7 @@
 				53C4E00A228E05E400FFD124 /* Lumina.framework in Embed Frameworks */,
 				53C4E00E228E05E400FFD124 /* BMSCore.framework in Embed Frameworks */,
 				53C4E010228E05E400FFD124 /* BMSPush.framework in Embed Frameworks */,
+				53C4E01F228E2B5300FFD124 /* BMSAnalyticsAPI.framework in Embed Frameworks */,
 				53C4E01A228E05E400FFD124 /* VisualRecognitionV3.framework in Embed Frameworks */,
 				53C4E014228E05E400FFD124 /* RestKit.framework in Embed Frameworks */,
 			);
@@ -218,6 +222,7 @@
 		53C4DFFC228E05CD00FFD124 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 		53C4DFFE228E05CD00FFD124 /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = SOURCE_ROOT; };
 		53C4E007228E05DC00FFD124 /* Lumina.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lumina.framework; path = Carthage/Build/iOS/Lumina.framework; sourceTree = SOURCE_ROOT; };
+		53C4E01C228E2B4500FFD124 /* BMSAnalyticsAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BMSAnalyticsAPI.framework; path = Carthage/Build/iOS/BMSAnalyticsAPI.framework; sourceTree = SOURCE_ROOT; };
 		53C953A120ABA1E40059F593 /* KituraServerCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KituraServerCredentials.swift; sourceTree = "<group>"; };
 		53FA729F20C1B2A500F516B3 /* UserCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCount.swift; sourceTree = "<group>"; };
 		A22DB41B20ACB9B800FA0419 /* WatsonMLClientCredentials.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WatsonMLClientCredentials.json; sourceTree = "<group>"; };
@@ -250,6 +255,8 @@
 				53C4E013228E05E400FFD124 /* RestKit.framework in Frameworks */,
 				53C4E006228E05CD00FFD124 /* RestKit.framework in Frameworks */,
 				53C4E008228E05DD00FFD124 /* Lumina.framework in Frameworks */,
+				53C4E01E228E2B5300FFD124 /* BMSAnalyticsAPI.framework in Frameworks */,
+				53C4E01D228E2B4500FFD124 /* BMSAnalyticsAPI.framework in Frameworks */,
 				53C4E00F228E05E400FFD124 /* BMSPush.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +486,7 @@
 		A259438820A0A06C000B5935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53C4E01C228E2B4500FFD124 /* BMSAnalyticsAPI.framework */,
 				53C4E007228E05DC00FFD124 /* Lumina.framework */,
 				53C4DFFA228E05CD00FFD124 /* BMSCore.framework */,
 				53C4DFF8228E05CD00FFD124 /* BMSPush.framework */,

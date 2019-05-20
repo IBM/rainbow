@@ -17,7 +17,11 @@ class BookletGuideController: BookletBaseController {
     @IBOutlet var button: UIButton?
     
     @IBAction func openLink(_ sender: UIButton) {
-        performSegue(withIdentifier: "webkitSegue", sender: self)
+        // this should be using webkit to show the page in line, but something seems to have happened. this ios segue still provides a quick link to go back to the app.
+        if let url = URL(string: self.link) {
+            UIApplication.shared.open(url)
+        }
+        //performSegue(withIdentifier: "webkitSegue", sender: self)
     }
     
     var link: String = ""

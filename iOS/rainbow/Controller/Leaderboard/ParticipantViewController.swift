@@ -76,3 +76,9 @@ class ParticipantViewController: UIViewController {
         }
     }
 }
+
+extension ParticipantViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
+}

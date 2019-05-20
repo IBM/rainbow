@@ -314,6 +314,9 @@
                                                 <color key="textColor" red="0.23529411764705882" green="0.32156862745098036" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="IBMPlexSans-Bold" family="IBM Plex Sans" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="oP6-Af-YJH" id="zUc-dl-5Ev"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
