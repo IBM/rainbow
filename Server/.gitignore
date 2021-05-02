@@ -7,3 +7,4 @@ Package.resolved
 /spec.json
 ./config/localdev-config.json
 rainbow-server.xcodeproj
+watsonml.xcodeproj

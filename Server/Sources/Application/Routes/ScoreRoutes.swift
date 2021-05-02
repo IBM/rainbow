@@ -10,6 +10,7 @@ import CouchDB
 import LoggerAPI
 import KituraContracts
 import Kitura
+import IBMPushNotifications
 
 private var client: CouchDBClient?
 private var pushNotification: PushNotification?
@@ -119,11 +120,17 @@ func getLeaderboardAvatar(request: RouterRequest, response: RouterResponse, next
         return
     }
     Log.info("Retrieving avatar for id: \(cloudantID)")
-    ScoreEntryAvatar.getImage(with: cloudantID) { imageData, error in
-        guard let imageData = imageData else {
+    guard let client = client else {
+        print("Error while getting couch db client")
+        return
+    }
+    ScoreEntry.Persistence.get(from: client, with: cloudantID){ scoreEntry, error in
+        guard let imageData = scoreEntry?.avatarImage else {
             response.status(.preconditionFailed).send(json: ["Error": "No Image Data Available"])
             return
         }
         response.status(.OK).send(data: imageData)
     }
+    
+    
 }

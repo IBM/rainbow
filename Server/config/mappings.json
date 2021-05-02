@@ -4,17 +4,17 @@
       "searchPatterns": [
         "cloudfoundry:Cloudant NoSQL DB-kl",
         "env:service_cloudant",
-        "file:/config/localdev-config.json:Cloudant NoSQL DB-kl"
+        "file:/config/localdev-config.json:crudDataStore"
       ]
     }
   },
   "push": {
-    "credentials": {
-      "searchPatterns": [
-        "cloudfoundry:rainbow-server-PushNotifications-r6m1",
-        "env:service_push",
-        "file:/config/localdev-config.json:rainbow-server-PushNotifications-r6m1"
-      ]
-    }
+      "credentials": {
+          "searchPatterns": [
+              "cloudfoundry:watson ml Push Notifications-rs",
+              "env:service_push",
+              "file:/config/localdev-config.json:watsonml-PushNotifications"
+          ]
+      }
   }
 }

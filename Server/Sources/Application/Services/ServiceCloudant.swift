@@ -1,7 +1,6 @@
 import LoggerAPI
 import CloudEnvironment
 import CouchDB
-import Configuration
 
 func initializeServiceCloudant(cloudEnv: CloudEnv) throws -> CouchDBClient {
     // Load credentials for Cloudant/CouchDB using CloudEnvironment
